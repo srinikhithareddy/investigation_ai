@@ -475,7 +475,12 @@
 
     <script>
 
-        const BACKEND_URL = window.location.origin;
+        const isLocalHost = ["localhost", "127.0.0.1", "[::1]"].includes(
+            window.location.hostname
+        );
+        const BACKEND_URL = isLocalHost && window.location.port !== "8000"
+            ? `${window.location.protocol}//${window.location.hostname}:8000`
+            : window.location.origin;
 
         const HEALTH_TIMEOUT_MS = 5000;
 
