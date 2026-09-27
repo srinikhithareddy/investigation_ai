@@ -52,8 +52,21 @@
         .status-dot {
             width: 9px;
             height: 9px;
-            background: #22c55e;
+            background: #f59e0b;
             border-radius: 50%;
+        }
+
+        .status-dot.online {
+            background: #22c55e;
+        }
+
+        .status-dot.degraded,
+        .status-dot.checking {
+            background: #f59e0b;
+        }
+
+        .status-dot.offline {
+            background: #ef4444;
         }
 
         .container {
@@ -323,9 +336,9 @@
             🔎 Incident Investigation Agent
         </div>
 
-        <div class="status">
-            <div class="status-dot"></div>
-            Agent Online
+        <div class="status" id="backendStatus" role="status" aria-live="polite">
+            <div class="status-dot checking" id="backendStatusDot"></div>
+            <span id="backendStatusText">Checking backend...</span>
         </div>
 
     </nav>
@@ -462,8 +475,11 @@
 
     <script>
 
-        const BACKEND_URL =
-            "http://127.0.0.1:8000";
+        const BACKEND_URL = window.location.origin;
+
+        const HEALTH_TIMEOUT_MS = 5000;
+
+        const REQUEST_TIMEOUT_MS = 120000;
 
         const QUESTION_DRAFT_KEY =
             "incident-investigation-question";
@@ -479,38 +495,111 @@
             }
         }
 
-        function wait(milliseconds) {
-            return new Promise(resolve => setTimeout(resolve, milliseconds));
+        async function fetchWithTimeout(url, options, timeoutMs, timeoutMessage) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(
+                () => controller.abort(),
+                timeoutMs
+            );
+
+            try {
+                return await fetch(url, {
+                    ...options,
+                    signal: controller.signal
+                });
+            } catch (error) {
+                if (error.name === "AbortError") {
+                    throw new Error(timeoutMessage);
+                }
+                throw new Error("The backend is unavailable. Check that the server is running.");
+            } finally {
+                clearTimeout(timeoutId);
+            }
+        }
+
+        function setBackendStatus(state, label, details) {
+            const dot = document.getElementById("backendStatusDot");
+            const text = document.getElementById("backendStatusText");
+            const status = document.getElementById("backendStatus");
+
+            dot.className = `status-dot ${state}`;
+            text.innerText = label;
+            status.title = details || label;
+        }
+
+        async function checkBackendHealth() {
+            try {
+                const response = await fetchWithTimeout(
+                    `${BACKEND_URL}/health`,
+                    { headers: { "Accept": "application/json" } },
+                    HEALTH_TIMEOUT_MS,
+                    "Health check timed out."
+                );
+                const health = await response.json().catch(() => null);
+
+                if (response.ok && health && health.status === "ok") {
+                    setBackendStatus("online", "Agent Online", "Backend checks passed.");
+                } else if (health && health.status === "degraded") {
+                    const failedChecks = Object.entries(health.checks || {})
+                        .filter(([, value]) => !["ok", "ready", "configured"].includes(value))
+                        .map(([name]) => name);
+                    setBackendStatus(
+                        "degraded",
+                        "Backend Degraded",
+                        failedChecks.length
+                            ? `Unavailable: ${failedChecks.join(", ")}`
+                            : "One or more backend checks failed."
+                    );
+                } else {
+                    setBackendStatus(
+                        "offline",
+                        "Backend Offline",
+                        `Health check failed (HTTP ${response.status}).`
+                    );
+                }
+            } catch (error) {
+                setBackendStatus("offline", "Backend Offline", error.message);
+            }
         }
 
         async function requestInvestigation(question) {
-            let lastError;
+            return fetchWithTimeout(
+                `${BACKEND_URL}/investigate`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({ question })
+                },
+                REQUEST_TIMEOUT_MS,
+                "The investigation timed out. Please try again."
+            );
+        }
 
-            for (let attempt = 1; attempt <= 3; attempt++) {
-                try {
-                    return await fetch(
-                        `${BACKEND_URL}/investigate`,
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                question: question
-                            })
-                        }
-                    );
-                } catch (error) {
-                    lastError = error;
-                    if (attempt < 3) {
-                        document.getElementById("loadingMessage").innerText =
-                            `Reconnecting to the investigation service (${attempt}/3)...`;
-                        await wait(1000);
-                    }
-                }
+        async function readResponseJson(response) {
+            const body = await response.text();
+            if (!body.trim()) {
+                return null;
             }
+            try {
+                return JSON.parse(body);
+            } catch (_) {
+                return null;
+            }
+        }
 
-            throw lastError;
+        function formatApiError(data, status) {
+            let detail = data && data.detail;
+            if (Array.isArray(detail)) {
+                detail = detail
+                    .map(item => item.msg || item.type || "Invalid request")
+                    .join("; ");
+            }
+            return typeof detail === "string" && detail.trim()
+                ? detail
+                : `The backend returned an error (HTTP ${status}).`;
         }
 
 
@@ -553,32 +642,23 @@
                 const response =
                     await requestInvestigation(question);
 
+                const data =
+                    await readResponseJson(response);
 
                 if (!response.ok) {
-
-                    let errorMessage =
-                        `Backend error: ${response.status}`;
-
-                    try {
-
-                        const errorData =
-                            await response.json();
-
-                        if (errorData.detail) {
-                            errorMessage =
-                                errorData.detail;
-                        }
-
-                    } catch (_) {
-                        // Backend did not return JSON.
-                    }
-
-                    throw new Error(errorMessage);
+                    throw new Error(formatApiError(data, response.status));
                 }
 
-
-                const data =
-                    await response.json();
+                if (
+                    !data ||
+                    typeof data.answer !== "string" ||
+                    typeof data.confidence !== "string" ||
+                    !Array.isArray(data.evidence) ||
+                    !Array.isArray(data.contradictions) ||
+                    !Array.isArray(data.trace)
+                ) {
+                    throw new Error("The backend returned an empty or invalid investigation response.");
+                }
 
 
                 displayResults(data);
@@ -666,20 +746,20 @@
 
 
             if (
-                value.includes("supported") ||
-                value.includes("high") ||
-                value.includes("sufficient")
-            ) {
-                return "badge-green";
-            }
-
-
-            if (
                 value.includes("insufficient") ||
                 value.includes("low") ||
                 value.includes("unknown")
             ) {
                 return "badge-red";
+            }
+
+
+            if (
+                value.includes("supported") ||
+                value.includes("high") ||
+                value.includes("sufficient")
+            ) {
+                return "badge-green";
             }
 
 
@@ -988,6 +1068,9 @@
                 saveQuestionDraft(questionInput.value);
             }
         );
+
+        checkBackendHealth();
+        window.setInterval(checkBackendHealth, 30000);
 
     </script>
 

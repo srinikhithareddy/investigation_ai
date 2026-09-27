@@ -88,7 +88,7 @@ def analyze_question_node(state: InvestigationState) -> dict:
         "retrieved_documents": [],
         "evidence": [],
         "iteration": 0,
-        "max_iterations": settings.max_investigation_iterations,
+        "max_iterations": max(1, settings.max_investigation_iterations),
         "investigation_steps": trace,
     }
 
@@ -99,6 +99,7 @@ def search_node(state: InvestigationState) -> dict:
     existing_raw = {d["document_id"]: d for d in state.get("retrieved_documents", [])}
 
     updated_docs, search_trace = investigator.run_searches(queries, entities, existing_raw)
+    last_round_found_new = any(document_id not in existing_raw for document_id in updated_docs)
 
     trace = list(state.get("investigation_steps", []))
     trace.extend(search_trace)
@@ -114,6 +115,7 @@ def search_node(state: InvestigationState) -> dict:
         "executed_queries": executed,
         "search_queries": [],
         "iteration": state.get("iteration", 0) + 1,
+        "last_round_found_new": last_round_found_new,
         "investigation_steps": trace,
     }
 
@@ -126,10 +128,7 @@ def analyze_evidence_node(state: InvestigationState) -> dict:
     if timeline:
         trace.append(f"Built timeline from {len(timeline)} dated document(s).")
 
-    # Determine whether the last search round surfaced anything new by
-    # comparing document counts before/after is implicit in evidence growth;
-    # we approximate using whether any evidence exists at all plus iteration.
-    last_round_found_new = len(evidence) > 0
+    last_round_found_new = state.get("last_round_found_new", bool(evidence))
 
     gap_result = analyzer.analyze_gaps(
         question=state["question"],
@@ -278,6 +277,10 @@ def generate_answer_node(state: InvestigationState) -> dict:
     }
 
 
+def route_after_expansion(state: InvestigationState) -> Literal["search_again", "answer"]:
+    return "search_again" if state.get("search_queries") else "answer"
+
+
 # ---------------------------------------------------------------------------
 # Conditional routing
 # ---------------------------------------------------------------------------
@@ -326,7 +329,11 @@ def build_graph():
         decide_next,
         {"search_again": "expand_queries", "answer": "generate_answer"},
     )
-    workflow.add_edge("expand_queries", "search")
+    workflow.add_conditional_edges(
+        "expand_queries",
+        route_after_expansion,
+        {"search_again": "search", "answer": "generate_answer"},
+    )
     workflow.add_edge("generate_answer", END)
 
     return workflow.compile()

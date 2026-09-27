@@ -1,0 +1,1352 @@
+[
+  {
+    "document_id": "INC-10013",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-01-03",
+    "version": "v2.7.0",
+    "title": "auth-service Dependency failure",
+    "content": "The auth-service experienced queue backlog. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10072",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-01-11",
+    "version": "v2.7.0",
+    "title": "payments-api Elevated error rate",
+    "content": "The payments-api experienced elevated P95 latency. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10105",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-01-12",
+    "version": "v2.6.0",
+    "title": "payments-api Timeout increase",
+    "content": "The payments-api experienced intermittent timeouts. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10041",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-01-16",
+    "version": "v3.0.0",
+    "title": "catalog-api Database saturation incident",
+    "content": "The catalog-api experienced increased request errors. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10147",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-01-16",
+    "version": "v2.8.1",
+    "title": "inventory-service Dependency failure",
+    "content": "The inventory-service experienced dependency failures. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10068",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-01-23",
+    "version": "v3.0.0",
+    "title": "orders-api Database saturation incident",
+    "content": "The orders-api experienced cache misses. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10135",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-01-26",
+    "version": "v2.7.0",
+    "title": "inventory-service Database saturation incident",
+    "content": "The inventory-service experienced database connection saturation. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10009",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-01-29",
+    "version": "v2.5.1",
+    "title": "orders-api Latency spike",
+    "content": "The orders-api experienced CPU saturation. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10048",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-02-01",
+    "version": "v2.4.0",
+    "title": "auth-service Availability degradation",
+    "content": "The auth-service experienced memory pressure. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10090",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-02-01",
+    "version": "v2.6.0",
+    "title": "shipping-api Dependency failure",
+    "content": "The shipping-api experienced queue backlog. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10140",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-02-01",
+    "version": "v2.6.0",
+    "title": "user-api Latency spike",
+    "content": "The user-api experienced elevated P95 latency. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10031",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-02-04",
+    "version": "v2.5.1",
+    "title": "auth-service Latency spike",
+    "content": "The auth-service experienced intermittent timeouts. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10021",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-02-16",
+    "version": "v2.6.0",
+    "title": "orders-api Latency spike",
+    "content": "The orders-api experienced increased request errors. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10098",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-02-17",
+    "version": "v2.4.0",
+    "title": "inventory-service Timeout increase",
+    "content": "The inventory-service experienced dependency failures. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10022",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-02-24",
+    "version": "v2.5.1",
+    "title": "auth-service Latency spike",
+    "content": "The auth-service experienced cache misses. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10111",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-03-01",
+    "version": "v2.5.1",
+    "title": "orders-api Authentication failure",
+    "content": "The orders-api experienced database connection saturation. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10106",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-03-13",
+    "version": "v2.5.1",
+    "title": "auth-service Latency spike",
+    "content": "The auth-service experienced CPU saturation. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10027",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-03-23",
+    "version": "v2.5.1",
+    "title": "catalog-api Authentication failure",
+    "content": "The catalog-api experienced memory pressure. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10125",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-03-23",
+    "version": "v2.5.1",
+    "title": "user-api Database saturation incident",
+    "content": "The user-api experienced queue backlog. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10056",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-03-24",
+    "version": "v2.6.0",
+    "title": "payments-api Elevated error rate",
+    "content": "The payments-api experienced elevated P95 latency. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10066",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-03-27",
+    "version": "v2.7.0",
+    "title": "user-api Latency spike",
+    "content": "The user-api experienced intermittent timeouts. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10050",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-04-05",
+    "version": "v2.5.1",
+    "title": "user-api Queue backlog incident",
+    "content": "The user-api experienced increased request errors. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10062",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2025-04-08",
+    "version": "v2.6.0",
+    "title": "notification-service Dependency failure",
+    "content": "The notification-service experienced dependency failures. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10003",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-04-11",
+    "version": "v2.5.1",
+    "title": "catalog-api Availability degradation",
+    "content": "The catalog-api experienced cache misses. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10014",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-04-11",
+    "version": "v2.4.0",
+    "title": "user-api Latency spike",
+    "content": "The user-api experienced database connection saturation. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10049",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2025-04-12",
+    "version": "v2.6.0",
+    "title": "notification-service Queue backlog incident",
+    "content": "The notification-service experienced CPU saturation. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10146",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-04-29",
+    "version": "v2.5.1",
+    "title": "inventory-service Latency spike",
+    "content": "The inventory-service experienced memory pressure. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10133",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-05-07",
+    "version": "v2.5.1",
+    "title": "payments-api Timeout increase",
+    "content": "The payments-api experienced queue backlog. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10042",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-05-08",
+    "version": "v2.8.1",
+    "title": "user-api Availability degradation",
+    "content": "The user-api experienced elevated P95 latency. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10069",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-05-08",
+    "version": "v2.5.1",
+    "title": "orders-api Latency spike",
+    "content": "The orders-api experienced intermittent timeouts. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10087",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2025-05-09",
+    "version": "v2.6.0",
+    "title": "notification-service Availability degradation",
+    "content": "The notification-service experienced increased request errors. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10006",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-05-13",
+    "version": "v2.5.1",
+    "title": "auth-service Timeout increase",
+    "content": "The auth-service experienced dependency failures. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10070",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-05-18",
+    "version": "v2.7.0",
+    "title": "payments-api Dependency failure",
+    "content": "The payments-api experienced cache misses. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10094",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-05-23",
+    "version": "v2.6.0",
+    "title": "user-api Queue backlog incident",
+    "content": "The user-api experienced database connection saturation. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10095",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-05-29",
+    "version": "v2.6.0",
+    "title": "user-api Dependency failure",
+    "content": "The user-api experienced CPU saturation. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10001",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-06-07",
+    "version": "v2.8.1",
+    "title": "inventory-service Latency spike",
+    "content": "The inventory-service experienced memory pressure. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10032",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-06-07",
+    "version": "v2.8.1",
+    "title": "user-api Dependency failure",
+    "content": "The user-api experienced queue backlog. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10046",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-06-07",
+    "version": "v2.8.1",
+    "title": "user-api Dependency failure",
+    "content": "The user-api experienced elevated P95 latency. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10002",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-06-10",
+    "version": "v2.6.0",
+    "title": "shipping-api Elevated error rate",
+    "content": "The shipping-api experienced intermittent timeouts. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10130",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-06-11",
+    "version": "v3.0.0",
+    "title": "shipping-api Queue backlog incident",
+    "content": "The shipping-api experienced increased request errors. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10028",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-06-17",
+    "version": "v2.6.0",
+    "title": "catalog-api Availability degradation",
+    "content": "The catalog-api experienced dependency failures. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10109",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-06-18",
+    "version": "v3.0.0",
+    "title": "inventory-service Database saturation incident",
+    "content": "The inventory-service experienced cache misses. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10054",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-06-20",
+    "version": "v2.8.1",
+    "title": "catalog-api Timeout increase",
+    "content": "The catalog-api experienced database connection saturation. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10036",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-06-25",
+    "version": "v2.7.0",
+    "title": "user-api Database saturation incident",
+    "content": "The user-api experienced CPU saturation. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10092",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-06-26",
+    "version": "v2.7.0",
+    "title": "shipping-api Authentication failure",
+    "content": "The shipping-api experienced memory pressure. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10112",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-07-04",
+    "version": "v2.5.1",
+    "title": "orders-api Latency spike",
+    "content": "The orders-api experienced queue backlog. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10034",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-07-07",
+    "version": "v2.4.0",
+    "title": "user-api Timeout increase",
+    "content": "The user-api experienced elevated P95 latency. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10043",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-07-07",
+    "version": "v2.8.1",
+    "title": "catalog-api Dependency failure",
+    "content": "The catalog-api experienced intermittent timeouts. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10132",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-07-09",
+    "version": "v2.8.1",
+    "title": "shipping-api Authentication failure",
+    "content": "The shipping-api experienced increased request errors. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10099",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-07-10",
+    "version": "v2.8.1",
+    "title": "inventory-service Timeout increase",
+    "content": "The inventory-service experienced dependency failures. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10122",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-07-12",
+    "version": "v2.6.0",
+    "title": "inventory-service Queue backlog incident",
+    "content": "The inventory-service experienced cache misses. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10035",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-07-16",
+    "version": "v2.8.1",
+    "title": "shipping-api Availability degradation",
+    "content": "The shipping-api experienced database connection saturation. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10131",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-07-17",
+    "version": "v3.0.0",
+    "title": "user-api Availability degradation",
+    "content": "The user-api experienced CPU saturation. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10047",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-07-21",
+    "version": "v2.5.1",
+    "title": "catalog-api Availability degradation",
+    "content": "The catalog-api experienced memory pressure. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10129",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-07-24",
+    "version": "v2.6.0",
+    "title": "payments-api Latency spike",
+    "content": "The payments-api experienced queue backlog. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10017",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-07-25",
+    "version": "v2.7.0",
+    "title": "payments-api Dependency failure",
+    "content": "The payments-api experienced elevated P95 latency. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10139",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-07-31",
+    "version": "v2.6.0",
+    "title": "payments-api Queue backlog incident",
+    "content": "The payments-api experienced intermittent timeouts. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10064",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-08-01",
+    "version": "v2.7.0",
+    "title": "payments-api Queue backlog incident",
+    "content": "The payments-api experienced increased request errors. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10093",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-08-14",
+    "version": "v3.0.0",
+    "title": "shipping-api Queue backlog incident",
+    "content": "The shipping-api experienced dependency failures. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10073",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-08-28",
+    "version": "v2.7.0",
+    "title": "payments-api Availability degradation",
+    "content": "The payments-api experienced cache misses. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10053",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-09-03",
+    "version": "v2.7.0",
+    "title": "shipping-api Timeout increase",
+    "content": "The shipping-api experienced database connection saturation. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10051",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-09-06",
+    "version": "v2.4.0",
+    "title": "catalog-api Database saturation incident",
+    "content": "The catalog-api experienced CPU saturation. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10126",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-09-09",
+    "version": "v2.7.0",
+    "title": "auth-service Elevated error rate",
+    "content": "The auth-service experienced memory pressure. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10145",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-09-12",
+    "version": "v2.8.1",
+    "title": "auth-service Availability degradation",
+    "content": "The auth-service experienced queue backlog. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10063",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-09-18",
+    "version": "v3.0.0",
+    "title": "payments-api Dependency failure",
+    "content": "The payments-api experienced elevated P95 latency. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10008",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-09-25",
+    "version": "v2.4.0",
+    "title": "payments-api Timeout increase",
+    "content": "The payments-api experienced intermittent timeouts. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10084",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-09-29",
+    "version": "v2.7.0",
+    "title": "catalog-api Timeout increase",
+    "content": "The catalog-api experienced increased request errors. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10019",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-10-12",
+    "version": "v2.6.0",
+    "title": "user-api Availability degradation",
+    "content": "The user-api experienced dependency failures. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10030",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-10-15",
+    "version": "v2.6.0",
+    "title": "auth-service Latency spike",
+    "content": "The auth-service experienced cache misses. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10113",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-10-15",
+    "version": "v3.0.0",
+    "title": "payments-api Availability degradation",
+    "content": "The payments-api experienced database connection saturation. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10128",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2025-10-20",
+    "version": "v2.7.0",
+    "title": "notification-service Latency spike",
+    "content": "The notification-service experienced CPU saturation. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10136",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-10-28",
+    "version": "v2.7.0",
+    "title": "user-api Queue backlog incident",
+    "content": "The user-api experienced memory pressure. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10097",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-10-31",
+    "version": "v3.0.0",
+    "title": "shipping-api Latency spike",
+    "content": "The shipping-api experienced queue backlog. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10052",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-11-01",
+    "version": "v2.4.0",
+    "title": "catalog-api Elevated error rate",
+    "content": "The catalog-api experienced elevated P95 latency. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10121",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-11-01",
+    "version": "v2.7.0",
+    "title": "catalog-api Timeout increase",
+    "content": "The catalog-api experienced intermittent timeouts. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10089",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2025-11-07",
+    "version": "v2.4.0",
+    "title": "notification-service Elevated error rate",
+    "content": "The notification-service experienced increased request errors. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10082",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-11-14",
+    "version": "v3.0.0",
+    "title": "user-api Authentication failure",
+    "content": "The user-api experienced dependency failures. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10110",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-11-14",
+    "version": "v2.5.1",
+    "title": "catalog-api Dependency failure",
+    "content": "The catalog-api experienced cache misses. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10083",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-11-17",
+    "version": "v2.7.0",
+    "title": "auth-service Authentication failure",
+    "content": "The auth-service experienced database connection saturation. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10010",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-11-24",
+    "version": "v3.0.0",
+    "title": "catalog-api Database saturation incident",
+    "content": "The catalog-api experienced CPU saturation. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10096",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-12-02",
+    "version": "v2.7.0",
+    "title": "orders-api Latency spike",
+    "content": "The orders-api experienced memory pressure. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10103",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-12-03",
+    "version": "v2.6.0",
+    "title": "inventory-service Authentication failure",
+    "content": "The inventory-service experienced queue backlog. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10026",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-12-04",
+    "version": "v2.7.0",
+    "title": "catalog-api Database saturation incident",
+    "content": "The catalog-api experienced elevated P95 latency. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10116",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-12-06",
+    "version": "v2.5.1",
+    "title": "shipping-api Timeout increase",
+    "content": "The shipping-api experienced intermittent timeouts. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10134",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2025-12-10",
+    "version": "v2.8.1",
+    "title": "user-api Elevated error rate",
+    "content": "The user-api experienced increased request errors. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10059",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2025-12-14",
+    "version": "v3.0.0",
+    "title": "orders-api Queue backlog incident",
+    "content": "The orders-api experienced dependency failures. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10033",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-12-24",
+    "version": "v2.6.0",
+    "title": "payments-api Elevated error rate",
+    "content": "The payments-api experienced cache misses. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10118",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2025-12-24",
+    "version": "v2.7.0",
+    "title": "auth-service Timeout increase",
+    "content": "The auth-service experienced database connection saturation. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10075",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2025-12-25",
+    "version": "v2.5.1",
+    "title": "catalog-api Dependency failure",
+    "content": "The catalog-api experienced CPU saturation. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10067",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2025-12-28",
+    "version": "v2.6.0",
+    "title": "notification-service Timeout increase",
+    "content": "The notification-service experienced memory pressure. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10137",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2025-12-28",
+    "version": "v2.6.0",
+    "title": "payments-api Timeout increase",
+    "content": "The payments-api experienced queue backlog. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10044",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2025-12-29",
+    "version": "v2.6.0",
+    "title": "inventory-service Authentication failure",
+    "content": "The inventory-service experienced elevated P95 latency. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10018",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2025-12-31",
+    "version": "v2.6.0",
+    "title": "shipping-api Availability degradation",
+    "content": "The shipping-api experienced intermittent timeouts. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10123",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-01-04",
+    "version": "v2.8.1",
+    "title": "payments-api Timeout increase",
+    "content": "The payments-api experienced increased request errors. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10104",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-01-06",
+    "version": "v2.5.1",
+    "title": "notification-service Elevated error rate",
+    "content": "The notification-service experienced dependency failures. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10016",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-01-20",
+    "version": "v2.8.1",
+    "title": "auth-service Availability degradation",
+    "content": "The auth-service experienced cache misses. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10076",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-01-23",
+    "version": "v2.7.0",
+    "title": "notification-service Elevated error rate",
+    "content": "The notification-service experienced database connection saturation. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10107",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-01-23",
+    "version": "v2.4.0",
+    "title": "inventory-service Timeout increase",
+    "content": "The inventory-service experienced CPU saturation. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10086",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2026-01-30",
+    "version": "v2.5.1",
+    "title": "catalog-api Latency spike",
+    "content": "The catalog-api experienced memory pressure. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10108",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-02-08",
+    "version": "v3.0.0",
+    "title": "orders-api Authentication failure",
+    "content": "The orders-api experienced queue backlog. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10037",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-02-10",
+    "version": "v2.8.1",
+    "title": "inventory-service Authentication failure",
+    "content": "The inventory-service experienced elevated P95 latency. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10040",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-02-13",
+    "version": "v2.6.0",
+    "title": "payments-api Authentication failure",
+    "content": "The payments-api experienced intermittent timeouts. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10057",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-02-20",
+    "version": "v2.8.1",
+    "title": "inventory-service Dependency failure",
+    "content": "The inventory-service experienced increased request errors. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10061",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-02-28",
+    "version": "v2.8.1",
+    "title": "auth-service Authentication failure",
+    "content": "The auth-service experienced dependency failures. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10007",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-03-05",
+    "version": "v2.6.0",
+    "title": "inventory-service Latency spike",
+    "content": "The inventory-service experienced cache misses. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10029",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-03-08",
+    "version": "v2.5.1",
+    "title": "auth-service Latency spike",
+    "content": "The auth-service experienced database connection saturation. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10077",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-03-08",
+    "version": "v2.4.0",
+    "title": "notification-service Elevated error rate",
+    "content": "The notification-service experienced CPU saturation. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10085",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-03-14",
+    "version": "v2.7.0",
+    "title": "auth-service Elevated error rate",
+    "content": "The auth-service experienced memory pressure. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10115",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2026-03-14",
+    "version": "v2.8.1",
+    "title": "catalog-api Availability degradation",
+    "content": "The catalog-api experienced queue backlog. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10011",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2026-03-22",
+    "version": "v2.6.0",
+    "title": "catalog-api Authentication failure",
+    "content": "The catalog-api experienced elevated P95 latency. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10080",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-03-24",
+    "version": "v2.7.0",
+    "title": "orders-api Timeout increase",
+    "content": "The orders-api experienced intermittent timeouts. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10101",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-03-28",
+    "version": "v3.0.0",
+    "title": "auth-service Queue backlog incident",
+    "content": "The auth-service experienced increased request errors. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10127",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-03-30",
+    "version": "v2.5.1",
+    "title": "orders-api Availability degradation",
+    "content": "The orders-api experienced dependency failures. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10024",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-04-09",
+    "version": "v2.6.0",
+    "title": "orders-api Dependency failure",
+    "content": "The orders-api experienced cache misses. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10012",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-04-10",
+    "version": "v2.7.0",
+    "title": "notification-service Latency spike",
+    "content": "The notification-service experienced database connection saturation. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10079",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2026-04-16",
+    "version": "v2.5.1",
+    "title": "user-api Elevated error rate",
+    "content": "The user-api experienced CPU saturation. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10025",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-04-23",
+    "version": "v2.8.1",
+    "title": "inventory-service Database saturation incident",
+    "content": "The inventory-service experienced memory pressure. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10141",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-05-04",
+    "version": "v3.0.0",
+    "title": "payments-api Database saturation incident",
+    "content": "The payments-api experienced queue backlog. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10124",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-05-10",
+    "version": "v3.0.0",
+    "title": "orders-api Latency spike",
+    "content": "The orders-api experienced elevated P95 latency. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10055",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-05-15",
+    "version": "v2.6.0",
+    "title": "payments-api Latency spike",
+    "content": "The payments-api experienced intermittent timeouts. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10100",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-05-19",
+    "version": "v2.7.0",
+    "title": "payments-api Latency spike",
+    "content": "The payments-api experienced increased request errors. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10144",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-05-22",
+    "version": "v3.0.0",
+    "title": "notification-service Availability degradation",
+    "content": "The notification-service experienced dependency failures. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10065",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-06-01",
+    "version": "v2.8.1",
+    "title": "inventory-service Database saturation incident",
+    "content": "The inventory-service experienced cache misses. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10038",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2026-06-03",
+    "version": "v2.7.0",
+    "title": "catalog-api Database saturation incident",
+    "content": "The catalog-api experienced database connection saturation. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10117",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2026-06-04",
+    "version": "v2.8.1",
+    "title": "shipping-api Queue backlog incident",
+    "content": "The shipping-api experienced CPU saturation. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10045",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-06-05",
+    "version": "v2.5.1",
+    "title": "inventory-service Latency spike",
+    "content": "The inventory-service experienced memory pressure. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10078",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2026-06-07",
+    "version": "v2.7.0",
+    "title": "user-api Availability degradation",
+    "content": "The user-api experienced queue backlog. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10119",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-06-11",
+    "version": "v2.7.0",
+    "title": "inventory-service Latency spike",
+    "content": "The inventory-service experienced elevated P95 latency. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10039",
+    "type": "incident_report",
+    "service": "inventory-service",
+    "date": "2026-06-13",
+    "version": "v2.4.0",
+    "title": "inventory-service Timeout increase",
+    "content": "The inventory-service experienced intermittent timeouts. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10071",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-06-14",
+    "version": "v2.6.0",
+    "title": "notification-service Authentication failure",
+    "content": "The notification-service experienced increased request errors. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10102",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2026-06-14",
+    "version": "v2.4.0",
+    "title": "user-api Authentication failure",
+    "content": "The user-api experienced dependency failures. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10088",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2026-06-15",
+    "version": "v2.8.1",
+    "title": "shipping-api Latency spike",
+    "content": "The shipping-api experienced cache misses. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10143",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-06-18",
+    "version": "v2.8.1",
+    "title": "notification-service Authentication failure",
+    "content": "The notification-service experienced database connection saturation. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10015",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2026-06-28",
+    "version": "v2.6.0",
+    "title": "user-api Availability degradation",
+    "content": "The user-api experienced CPU saturation. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10058",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-06-29",
+    "version": "v3.0.0",
+    "title": "payments-api Availability degradation",
+    "content": "The payments-api experienced memory pressure. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10023",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-07-02",
+    "version": "v2.8.1",
+    "title": "auth-service Timeout increase",
+    "content": "The auth-service experienced queue backlog. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10142",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2026-07-11",
+    "version": "v2.7.0",
+    "title": "user-api Database saturation incident",
+    "content": "The user-api experienced elevated P95 latency. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-300",
+    "type": "incident_report",
+    "service": "catalog-api",
+    "date": "2026-07-11",
+    "version": "v5",
+    "title": "Catalog latency",
+    "content": "The catalog-api reported a latency increase associated with database saturation. Engineers correlated latency with database connection and query activity, then reviewed the timing against recent operational changes. The incident record distinguishes the observed saturation from any broader root-cause conclusion."
+  },
+  {
+    "document_id": "INC-10074",
+    "type": "incident_report",
+    "service": "user-api",
+    "date": "2026-07-12",
+    "version": "v2.5.1",
+    "title": "user-api Dependency failure",
+    "content": "The user-api experienced increased request errors. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-301",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-07-12",
+    "version": "v4",
+    "title": "Order errors",
+    "content": "The orders-api reported request failures caused by an expired certificate. Engineers validated the certificate state and correlated the failures with affected requests and service telemetry. The incident record documents the certificate issue as the direct failure mechanism."
+  },
+  {
+    "document_id": "INC-10081",
+    "type": "incident_report",
+    "service": "shipping-api",
+    "date": "2026-07-13",
+    "version": "v2.7.0",
+    "title": "shipping-api Database saturation incident",
+    "content": "The shipping-api experienced cache misses. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10005",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-07-14",
+    "version": "v2.7.0",
+    "title": "auth-service Elevated error rate",
+    "content": "The auth-service experienced database connection saturation. Engineers validated the reported symptom against telemetry and separated observed evidence from possible contributing factors. The documented investigation considered overloaded downstream dependency as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10091",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-07-22",
+    "version": "v2.8.1",
+    "title": "notification-service Database saturation incident",
+    "content": "The notification-service experienced CPU saturation. Engineers reviewed rollback and recovery signals, then checked whether the symptom persisted across service instances. The documented investigation considered cache exhaustion as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10138",
+    "type": "incident_report",
+    "service": "auth-service",
+    "date": "2026-07-29",
+    "version": "v2.8.1",
+    "title": "auth-service Database saturation incident",
+    "content": "The auth-service experienced memory pressure. Engineers inspected alerts, traces, and recent configuration changes to identify correlations rather than assuming the initial hypothesis. The documented investigation considered resource saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-10060",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-07-30",
+    "version": "v3.0.0",
+    "title": "orders-api Database saturation incident",
+    "content": "The orders-api experienced queue backlog. Engineers correlated the onset with the deployment timeline and checked application logs, traces, and service metrics. The documented investigation considered configuration mismatch as a possible contributing factor. The incident record retained the suspected cause as a hypothesis until supporting telemetry was reviewed."
+  },
+  {
+    "document_id": "INC-10120",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-08-04",
+    "version": "v2.7.0",
+    "title": "payments-api Dependency failure",
+    "content": "The payments-api experienced elevated P95 latency. Engineers compared affected and healthy instances, then reviewed dependency latency, error rates, and saturation signals. The documented investigation considered unexpected traffic growth as a possible contributing factor. Engineers mitigated the immediate impact and recorded follow-up monitoring for the suspected failure mode."
+  },
+  {
+    "document_id": "INC-10020",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-08-06",
+    "version": "v2.7.0",
+    "title": "notification-service Elevated error rate",
+    "content": "The notification-service experienced intermittent timeouts. Engineers examined request traces, connection-pool behavior, cache metrics, and resource utilization before changing configuration. The documented investigation considered failed deployment as a possible contributing factor. The response focused on restoring service first, followed by validation of the suspected contributing factor."
+  },
+  {
+    "document_id": "INC-10114",
+    "type": "incident_report",
+    "service": "notification-service",
+    "date": "2026-08-29",
+    "version": "v2.6.0",
+    "title": "notification-service Elevated error rate",
+    "content": "The notification-service experienced increased request errors. Engineers reviewed version history and operational events while validating whether the suspected dependency was degraded. The documented investigation considered expired certificate as a possible contributing factor. After recovery, the team documented additional telemetry and safeguards to make the failure easier to isolate."
+  },
+  {
+    "document_id": "INC-10004",
+    "type": "incident_report",
+    "service": "payments-api",
+    "date": "2026-09-10",
+    "version": "v2.6.0",
+    "title": "payments-api Availability degradation",
+    "content": "The payments-api experienced dependency failures. Engineers checked logs for the affected endpoint, compared traffic levels with normal baselines, and inspected downstream calls. The documented investigation considered database connection saturation as a possible contributing factor. Engineers confirmed recovery through latency, error, dependency, and resource metrics before closing the investigation."
+  },
+  {
+    "document_id": "INC-1042",
+    "type": "incident_report",
+    "service": "orders-api",
+    "date": "2026-09-16",
+    "version": "v2.8.1",
+    "title": "Order API latency spike",
+    "content": "P95 latency increased significantly for the orders-api shortly after the latest deployment. Engineers correlated the latency change with deployment timing, compared pre- and post-release metrics, and reviewed downstream calls and resource utilization. The timing was treated as evidence for investigation rather than proof of causation."
+  }
+]

@@ -30,6 +30,7 @@ class InvestigationState(TypedDict, total=False):
     iteration: int
     max_iterations: int
     needs_more_evidence: bool
+    last_round_found_new: bool
 
     # Output
     confidence: str

@@ -1,0 +1,1352 @@
+[
+  {
+    "document_id": "COMP-10084",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-01-02",
+    "version": "v2.5.1",
+    "title": "auth-service Checkout issue reported",
+    "content": "A customer contacted support after a queue backlog was affecting the customer-facing experience during a normal checkout attempt. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for auth-service on 2025-01-02 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10008",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-01-03",
+    "version": "v2.7.0",
+    "title": "catalog-api Checkout issue reported",
+    "content": "Support received a report that memory pressure was affecting the customer-facing experience during a normal checkout attempt. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for catalog-api on 2025-01-03 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10072",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-01-03",
+    "version": "v2.4.0",
+    "title": "catalog-api Checkout issue reported",
+    "content": "A customer case was opened when elevated P95 latency was affecting the customer-facing experience during a normal checkout attempt. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for catalog-api on 2025-01-03 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10129",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-01-08",
+    "version": "v2.8.1",
+    "title": "shipping-api Unavailable service complaint",
+    "content": "A user reported that database connection saturation was affecting the customer-facing experience during a normal checkout attempt. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for shipping-api on 2025-01-08 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10001",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-01-09",
+    "version": "v2.6.0",
+    "title": "payments-api Slow requests reported",
+    "content": "The support queue recorded a complaint about a queue backlog was affecting the customer-facing experience during a normal checkout attempt. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for payments-api on 2025-01-09 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish resource saturation as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10143",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-01-15",
+    "version": "v2.8.1",
+    "title": "auth-service Intermittent timeout complaint",
+    "content": "A customer described database connection saturation was affecting the customer-facing experience during a normal checkout attempt. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for auth-service on 2025-01-15 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10057",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-01-16",
+    "version": "v2.6.0",
+    "title": "orders-api Unavailable service complaint",
+    "content": "Customer support logged an issue in which dependency failures was affecting the customer-facing experience during a normal checkout attempt. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for orders-api on 2025-01-16 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish unexpected traffic growth as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10070",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-01-18",
+    "version": "v2.8.1",
+    "title": "auth-service Slow requests reported",
+    "content": "A customer reached out after dependency failures was affecting the customer-facing experience during a normal checkout attempt. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for auth-service on 2025-01-18 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an overloaded downstream dependency as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10064",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-01-29",
+    "version": "v2.5.1",
+    "title": "orders-api Delayed response complaint",
+    "content": "The service desk received a report of cache misses was affecting the customer-facing experience during a normal checkout attempt. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for orders-api on 2025-01-29 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10004",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-02-07",
+    "version": "v2.5.1",
+    "title": "user-api Unavailable service complaint",
+    "content": "A customer case noted a queue backlog was affecting the customer-facing experience during a normal checkout attempt. The customer requested an explanation after the issue recurred. The complaint was recorded for user-api on 2025-02-07 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10138",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-02-08",
+    "version": "v2.7.0",
+    "title": "shipping-api Failed requests reported",
+    "content": "A customer contacted support after database connection saturation was affecting the customer-facing experience while completing a request through the service. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for shipping-api on 2025-02-08 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10131",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-02-09",
+    "version": "v3.0.0",
+    "title": "auth-service Checkout issue reported",
+    "content": "Support received a report that elevated P95 latency was affecting the customer-facing experience while completing a request through the service. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for auth-service on 2025-02-09 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10015",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-02-14",
+    "version": "v2.8.1",
+    "title": "auth-service Unavailable service complaint",
+    "content": "A customer case was opened when elevated P95 latency was affecting the customer-facing experience while completing a request through the service. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for auth-service on 2025-02-14 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10031",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-02-14",
+    "version": "v2.6.0",
+    "title": "payments-api Unavailable service complaint",
+    "content": "A user reported that intermittent timeouts was affecting the customer-facing experience while completing a request through the service. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for payments-api on 2025-02-14 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10019",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-02-18",
+    "version": "v2.5.1",
+    "title": "user-api Slow requests reported",
+    "content": "The support queue recorded a complaint about memory pressure was affecting the customer-facing experience while completing a request through the service. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for user-api on 2025-02-18 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10144",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-02-18",
+    "version": "v2.4.0",
+    "title": "orders-api Unavailable service complaint",
+    "content": "A customer described CPU saturation was affecting the customer-facing experience while completing a request through the service. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for orders-api on 2025-02-18 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10120",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-02-24",
+    "version": "v2.8.1",
+    "title": "auth-service Delayed response complaint",
+    "content": "Customer support logged an issue in which intermittent timeouts was affecting the customer-facing experience while completing a request through the service. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for auth-service on 2025-02-24 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish resource saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10107",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-03-02",
+    "version": "v2.4.0",
+    "title": "catalog-api Unavailable service complaint",
+    "content": "A customer reached out after database connection saturation was affecting the customer-facing experience while completing a request through the service. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for catalog-api on 2025-03-02 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10114",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-03-05",
+    "version": "v2.8.1",
+    "title": "orders-api Failed requests reported",
+    "content": "The service desk received a report of elevated P95 latency was affecting the customer-facing experience while completing a request through the service. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for orders-api on 2025-03-05 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10146",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-03-06",
+    "version": "v2.8.1",
+    "title": "catalog-api Intermittent timeout complaint",
+    "content": "A customer case noted memory pressure was affecting the customer-facing experience while completing a request through the service. The customer requested an explanation after the issue recurred. The complaint was recorded for catalog-api on 2025-03-06 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish resource saturation as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10065",
+    "type": "customer_complaint",
+    "service": "notification-service",
+    "date": "2025-03-13",
+    "version": "v2.5.1",
+    "title": "notification-service Unavailable service complaint",
+    "content": "A customer contacted support after elevated P95 latency was affecting the customer-facing experience when trying the affected operation repeatedly. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for notification-service on 2025-03-13 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10104",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-03-13",
+    "version": "v2.5.1",
+    "title": "shipping-api Slow requests reported",
+    "content": "Support received a report that database connection saturation was affecting the customer-facing experience when trying the affected operation repeatedly. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for shipping-api on 2025-03-13 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10140",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-03-13",
+    "version": "v2.4.0",
+    "title": "orders-api Checkout issue reported",
+    "content": "A customer case was opened when intermittent timeouts was affecting the customer-facing experience when trying the affected operation repeatedly. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for orders-api on 2025-03-13 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10141",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-03-26",
+    "version": "v2.6.0",
+    "title": "catalog-api Intermittent timeout complaint",
+    "content": "A user reported that dependency failures was affecting the customer-facing experience when trying the affected operation repeatedly. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for catalog-api on 2025-03-26 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10068",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-03-27",
+    "version": "v2.4.0",
+    "title": "payments-api Unavailable service complaint",
+    "content": "The support queue recorded a complaint about memory pressure was affecting the customer-facing experience when trying the affected operation repeatedly. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for payments-api on 2025-03-27 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish resource saturation as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10110",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-03-27",
+    "version": "v2.5.1",
+    "title": "user-api Checkout issue reported",
+    "content": "A customer described increased request errors was affecting the customer-facing experience when trying the affected operation repeatedly. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for user-api on 2025-03-27 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10024",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-04-01",
+    "version": "v2.8.1",
+    "title": "shipping-api Checkout issue reported",
+    "content": "Customer support logged an issue in which cache misses was affecting the customer-facing experience when trying the affected operation repeatedly. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for shipping-api on 2025-04-01 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10034",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-04-09",
+    "version": "v2.5.1",
+    "title": "catalog-api Failed requests reported",
+    "content": "A customer reached out after cache misses was affecting the customer-facing experience when trying the affected operation repeatedly. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for catalog-api on 2025-04-09 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10117",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-04-10",
+    "version": "v3.0.0",
+    "title": "inventory-service Slow requests reported",
+    "content": "The service desk received a report of database connection saturation was affecting the customer-facing experience when trying the affected operation repeatedly. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for inventory-service on 2025-04-10 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10043",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-04-11",
+    "version": "v2.5.1",
+    "title": "auth-service Checkout issue reported",
+    "content": "A customer case noted increased request errors was affecting the customer-facing experience when trying the affected operation repeatedly. The customer requested an explanation after the issue recurred. The complaint was recorded for auth-service on 2025-04-11 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an overloaded downstream dependency as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10063",
+    "type": "customer_complaint",
+    "service": "notification-service",
+    "date": "2025-04-12",
+    "version": "v2.5.1",
+    "title": "notification-service Delayed response complaint",
+    "content": "A customer contacted support after elevated P95 latency was affecting the customer-facing experience while using the service from a production account. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for notification-service on 2025-04-12 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10036",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-04-15",
+    "version": "v2.5.1",
+    "title": "inventory-service Unavailable service complaint",
+    "content": "Support received a report that cache misses was affecting the customer-facing experience while using the service from a production account. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for inventory-service on 2025-04-15 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish resource saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10021",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-05-01",
+    "version": "v3.0.0",
+    "title": "user-api Intermittent timeout complaint",
+    "content": "A customer case was opened when cache misses was affecting the customer-facing experience while using the service from a production account. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for user-api on 2025-05-01 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish database connection saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10060",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-05-03",
+    "version": "v2.6.0",
+    "title": "auth-service Delayed response complaint",
+    "content": "A user reported that increased request errors was affecting the customer-facing experience while using the service from a production account. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for auth-service on 2025-05-03 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10132",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-05-07",
+    "version": "v3.0.0",
+    "title": "orders-api Unavailable service complaint",
+    "content": "The support queue recorded a complaint about cache misses was affecting the customer-facing experience while using the service from a production account. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for orders-api on 2025-05-07 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10080",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-05-12",
+    "version": "v2.4.0",
+    "title": "auth-service Checkout issue reported",
+    "content": "A customer described memory pressure was affecting the customer-facing experience while using the service from a production account. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for auth-service on 2025-05-12 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10005",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-05-13",
+    "version": "v2.4.0",
+    "title": "payments-api Failed requests reported",
+    "content": "Customer support logged an issue in which dependency failures was affecting the customer-facing experience while using the service from a production account. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for payments-api on 2025-05-13 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish database connection saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10006",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-05-14",
+    "version": "v2.8.1",
+    "title": "inventory-service Unavailable service complaint",
+    "content": "A customer reached out after elevated P95 latency was affecting the customer-facing experience while using the service from a production account. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for inventory-service on 2025-05-14 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish resource saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10134",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-05-22",
+    "version": "v2.8.1",
+    "title": "auth-service Unavailable service complaint",
+    "content": "The service desk received a report of intermittent timeouts was affecting the customer-facing experience while using the service from a production account. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for auth-service on 2025-05-22 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10055",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-05-24",
+    "version": "v3.0.0",
+    "title": "shipping-api Checkout issue reported",
+    "content": "A customer case noted dependency failures was affecting the customer-facing experience while using the service from a production account. The customer requested an explanation after the issue recurred. The complaint was recorded for shipping-api on 2025-05-24 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10076",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-05-24",
+    "version": "v2.8.1",
+    "title": "user-api Failed requests reported",
+    "content": "A customer contacted support after elevated P95 latency was affecting the customer-facing experience during a period when the customer expected normal response times. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for user-api on 2025-05-24 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10002",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-06-09",
+    "version": "v2.6.0",
+    "title": "inventory-service Unavailable service complaint",
+    "content": "Support received a report that elevated P95 latency was affecting the customer-facing experience during a period when the customer expected normal response times. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for inventory-service on 2025-06-09 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10094",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-06-10",
+    "version": "v2.5.1",
+    "title": "orders-api Checkout issue reported",
+    "content": "A customer case was opened when cache misses was affecting the customer-facing experience during a period when the customer expected normal response times. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for orders-api on 2025-06-10 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish unexpected traffic growth as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10018",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-06-11",
+    "version": "v2.7.0",
+    "title": "payments-api Slow requests reported",
+    "content": "A user reported that CPU saturation was affecting the customer-facing experience during a period when the customer expected normal response times. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for payments-api on 2025-06-11 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10067",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-06-30",
+    "version": "v2.4.0",
+    "title": "inventory-service Failed requests reported",
+    "content": "The support queue recorded a complaint about a queue backlog was affecting the customer-facing experience during a period when the customer expected normal response times. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for inventory-service on 2025-06-30 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10108",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-07-04",
+    "version": "v2.7.0",
+    "title": "payments-api Slow requests reported",
+    "content": "A customer described CPU saturation was affecting the customer-facing experience during a period when the customer expected normal response times. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for payments-api on 2025-07-04 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10092",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-07-06",
+    "version": "v2.6.0",
+    "title": "user-api Slow requests reported",
+    "content": "Customer support logged an issue in which cache misses was affecting the customer-facing experience during a period when the customer expected normal response times. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for user-api on 2025-07-06 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10091",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-07-10",
+    "version": "v2.4.0",
+    "title": "payments-api Delayed response complaint",
+    "content": "A customer reached out after memory pressure was affecting the customer-facing experience during a period when the customer expected normal response times. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for payments-api on 2025-07-10 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10041",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-07-11",
+    "version": "v2.4.0",
+    "title": "inventory-service Delayed response complaint",
+    "content": "The service desk received a report of database connection saturation was affecting the customer-facing experience during a period when the customer expected normal response times. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for inventory-service on 2025-07-11 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10017",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-07-21",
+    "version": "v2.8.1",
+    "title": "shipping-api Delayed response complaint",
+    "content": "A customer case noted database connection saturation was affecting the customer-facing experience during a period when the customer expected normal response times. The customer requested an explanation after the issue recurred. The complaint was recorded for shipping-api on 2025-07-21 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10099",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-07-23",
+    "version": "v3.0.0",
+    "title": "user-api Checkout issue reported",
+    "content": "A customer contacted support after intermittent timeouts was affecting the customer-facing experience while submitting requests from the customer-facing application. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for user-api on 2025-07-23 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10083",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-07-29",
+    "version": "v2.7.0",
+    "title": "auth-service Unavailable service complaint",
+    "content": "Support received a report that database connection saturation was affecting the customer-facing experience while submitting requests from the customer-facing application. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for auth-service on 2025-07-29 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10069",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-08-03",
+    "version": "v2.4.0",
+    "title": "orders-api Failed requests reported",
+    "content": "A customer case was opened when cache misses was affecting the customer-facing experience while submitting requests from the customer-facing application. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for orders-api on 2025-08-03 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10050",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-08-04",
+    "version": "v2.4.0",
+    "title": "shipping-api Failed requests reported",
+    "content": "A user reported that a queue backlog was affecting the customer-facing experience while submitting requests from the customer-facing application. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for shipping-api on 2025-08-04 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10007",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-08-09",
+    "version": "v3.0.0",
+    "title": "payments-api Checkout issue reported",
+    "content": "The support queue recorded a complaint about a queue backlog was affecting the customer-facing experience while submitting requests from the customer-facing application. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for payments-api on 2025-08-09 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10059",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-08-21",
+    "version": "v2.8.1",
+    "title": "payments-api Slow requests reported",
+    "content": "A customer described increased request errors was affecting the customer-facing experience while submitting requests from the customer-facing application. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for payments-api on 2025-08-21 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10079",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-08-28",
+    "version": "v2.8.1",
+    "title": "shipping-api Checkout issue reported",
+    "content": "Customer support logged an issue in which a queue backlog was affecting the customer-facing experience while submitting requests from the customer-facing application. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for shipping-api on 2025-08-28 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10081",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-08-31",
+    "version": "v2.8.1",
+    "title": "inventory-service Intermittent timeout complaint",
+    "content": "A customer reached out after increased request errors was affecting the customer-facing experience while submitting requests from the customer-facing application. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for inventory-service on 2025-08-31 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10047",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-09-11",
+    "version": "v3.0.0",
+    "title": "inventory-service Delayed response complaint",
+    "content": "The service desk received a report of memory pressure was affecting the customer-facing experience while submitting requests from the customer-facing application. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for inventory-service on 2025-09-11 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10088",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-09-14",
+    "version": "v3.0.0",
+    "title": "shipping-api Unavailable service complaint",
+    "content": "A customer case noted a queue backlog was affecting the customer-facing experience while submitting requests from the customer-facing application. The customer requested an explanation after the issue recurred. The complaint was recorded for shipping-api on 2025-09-14 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10089",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-09-15",
+    "version": "v3.0.0",
+    "title": "user-api Intermittent timeout complaint",
+    "content": "A customer contacted support after increased request errors was affecting the customer-facing experience when accessing the affected workflow. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for user-api on 2025-09-15 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10133",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-09-16",
+    "version": "v2.4.0",
+    "title": "catalog-api Checkout issue reported",
+    "content": "Support received a report that memory pressure was affecting the customer-facing experience when accessing the affected workflow. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for catalog-api on 2025-09-16 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10049",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-09-18",
+    "version": "v2.5.1",
+    "title": "payments-api Delayed response complaint",
+    "content": "A customer case was opened when intermittent timeouts was affecting the customer-facing experience when accessing the affected workflow. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for payments-api on 2025-09-18 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10009",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-10-03",
+    "version": "v2.8.1",
+    "title": "catalog-api Unavailable service complaint",
+    "content": "A user reported that database connection saturation was affecting the customer-facing experience when accessing the affected workflow. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for catalog-api on 2025-10-03 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish cache exhaustion as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10115",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-10-06",
+    "version": "v2.4.0",
+    "title": "inventory-service Unavailable service complaint",
+    "content": "The support queue recorded a complaint about database connection saturation was affecting the customer-facing experience when accessing the affected workflow. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for inventory-service on 2025-10-06 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10148",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-10-08",
+    "version": "v2.8.1",
+    "title": "catalog-api Checkout issue reported",
+    "content": "A customer described memory pressure was affecting the customer-facing experience when accessing the affected workflow. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for catalog-api on 2025-10-08 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10149",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-10-15",
+    "version": "v2.8.1",
+    "title": "shipping-api Intermittent timeout complaint",
+    "content": "Customer support logged an issue in which cache misses was affecting the customer-facing experience when accessing the affected workflow. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for shipping-api on 2025-10-15 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10014",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-10-18",
+    "version": "v2.6.0",
+    "title": "user-api Checkout issue reported",
+    "content": "A customer reached out after database connection saturation was affecting the customer-facing experience when accessing the affected workflow. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for user-api on 2025-10-18 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10150",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-10-20",
+    "version": "v2.6.0",
+    "title": "shipping-api Intermittent timeout complaint",
+    "content": "The service desk received a report of CPU saturation was affecting the customer-facing experience when accessing the affected workflow. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for shipping-api on 2025-10-20 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish resource saturation as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10106",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-10-28",
+    "version": "v2.7.0",
+    "title": "inventory-service Unavailable service complaint",
+    "content": "A customer case noted CPU saturation was affecting the customer-facing experience when accessing the affected workflow. The customer requested an explanation after the issue recurred. The complaint was recorded for inventory-service on 2025-10-28 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10122",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-11-13",
+    "version": "v2.8.1",
+    "title": "catalog-api Delayed response complaint",
+    "content": "A customer contacted support after elevated P95 latency was affecting the customer-facing experience after several attempts to complete the same action. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for catalog-api on 2025-11-13 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish database connection saturation as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10044",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2025-11-14",
+    "version": "v3.0.0",
+    "title": "orders-api Delayed response complaint",
+    "content": "Support received a report that memory pressure was affecting the customer-facing experience after several attempts to complete the same action. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for orders-api on 2025-11-14 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10111",
+    "type": "customer_complaint",
+    "service": "notification-service",
+    "date": "2025-11-14",
+    "version": "v3.0.0",
+    "title": "notification-service Checkout issue reported",
+    "content": "A customer case was opened when dependency failures was affecting the customer-facing experience after several attempts to complete the same action. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for notification-service on 2025-11-14 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10053",
+    "type": "customer_complaint",
+    "service": "notification-service",
+    "date": "2025-11-16",
+    "version": "v2.7.0",
+    "title": "notification-service Unavailable service complaint",
+    "content": "A user reported that dependency failures was affecting the customer-facing experience after several attempts to complete the same action. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for notification-service on 2025-11-16 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10013",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-11-24",
+    "version": "v2.7.0",
+    "title": "catalog-api Checkout issue reported",
+    "content": "The support queue recorded a complaint about increased request errors was affecting the customer-facing experience after several attempts to complete the same action. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for catalog-api on 2025-11-24 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10113",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-11-24",
+    "version": "v2.5.1",
+    "title": "user-api Unavailable service complaint",
+    "content": "A customer described memory pressure was affecting the customer-facing experience after several attempts to complete the same action. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for user-api on 2025-11-24 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10147",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2025-11-24",
+    "version": "v2.7.0",
+    "title": "catalog-api Slow requests reported",
+    "content": "Customer support logged an issue in which elevated P95 latency was affecting the customer-facing experience after several attempts to complete the same action. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for catalog-api on 2025-11-24 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10103",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-11-29",
+    "version": "v2.4.0",
+    "title": "payments-api Unavailable service complaint",
+    "content": "A customer reached out after memory pressure was affecting the customer-facing experience after several attempts to complete the same action. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for payments-api on 2025-11-29 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10025",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2025-12-01",
+    "version": "v2.5.1",
+    "title": "inventory-service Intermittent timeout complaint",
+    "content": "The service desk received a report of cache misses was affecting the customer-facing experience after several attempts to complete the same action. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for inventory-service on 2025-12-01 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10048",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-12-10",
+    "version": "v3.0.0",
+    "title": "user-api Delayed response complaint",
+    "content": "A customer case noted database connection saturation was affecting the customer-facing experience after several attempts to complete the same action. The customer requested an explanation after the issue recurred. The complaint was recorded for user-api on 2025-12-10 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10016",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-12-14",
+    "version": "v3.0.0",
+    "title": "shipping-api Checkout issue reported",
+    "content": "A customer contacted support after cache misses was affecting the customer-facing experience while performing the usual customer workflow. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for shipping-api on 2025-12-14 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10074",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2025-12-14",
+    "version": "v2.5.1",
+    "title": "payments-api Delayed response complaint",
+    "content": "Support received a report that dependency failures was affecting the customer-facing experience while performing the usual customer workflow. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for payments-api on 2025-12-14 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10030",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-12-20",
+    "version": "v2.7.0",
+    "title": "user-api Checkout issue reported",
+    "content": "A customer case was opened when database connection saturation was affecting the customer-facing experience while performing the usual customer workflow. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for user-api on 2025-12-20 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10073",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-12-21",
+    "version": "v2.7.0",
+    "title": "auth-service Checkout issue reported",
+    "content": "A user reported that database connection saturation was affecting the customer-facing experience while performing the usual customer workflow. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for auth-service on 2025-12-21 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10085",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2025-12-24",
+    "version": "v3.0.0",
+    "title": "shipping-api Intermittent timeout complaint",
+    "content": "The support queue recorded a complaint about a queue backlog was affecting the customer-facing experience while performing the usual customer workflow. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for shipping-api on 2025-12-24 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10052",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2025-12-28",
+    "version": "v2.7.0",
+    "title": "auth-service Delayed response complaint",
+    "content": "A customer described database connection saturation was affecting the customer-facing experience while performing the usual customer workflow. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for auth-service on 2025-12-28 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an overloaded downstream dependency as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10130",
+    "type": "customer_complaint",
+    "service": "notification-service",
+    "date": "2025-12-29",
+    "version": "v2.4.0",
+    "title": "notification-service Failed requests reported",
+    "content": "Customer support logged an issue in which memory pressure was affecting the customer-facing experience while performing the usual customer workflow. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for notification-service on 2025-12-29 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish database connection saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10128",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2025-12-30",
+    "version": "v2.8.1",
+    "title": "user-api Unavailable service complaint",
+    "content": "A customer reached out after a queue backlog was affecting the customer-facing experience while performing the usual customer workflow. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for user-api on 2025-12-30 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10116",
+    "type": "customer_complaint",
+    "service": "notification-service",
+    "date": "2026-01-01",
+    "version": "v2.5.1",
+    "title": "notification-service Failed requests reported",
+    "content": "The service desk received a report of dependency failures was affecting the customer-facing experience while performing the usual customer workflow. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for notification-service on 2026-01-01 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10078",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2026-01-07",
+    "version": "v2.8.1",
+    "title": "orders-api Failed requests reported",
+    "content": "A customer case noted cache misses was affecting the customer-facing experience while performing the usual customer workflow. The customer requested an explanation after the issue recurred. The complaint was recorded for orders-api on 2026-01-07 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10136",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-01-09",
+    "version": "v2.7.0",
+    "title": "shipping-api Checkout issue reported",
+    "content": "A customer contacted support after intermittent timeouts was affecting the customer-facing experience during an otherwise routine interaction with the platform. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for shipping-api on 2026-01-09 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10121",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-01-10",
+    "version": "v2.5.1",
+    "title": "shipping-api Unavailable service complaint",
+    "content": "Support received a report that dependency failures was affecting the customer-facing experience during an otherwise routine interaction with the platform. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for shipping-api on 2026-01-10 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10098",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-01-11",
+    "version": "v2.5.1",
+    "title": "shipping-api Checkout issue reported",
+    "content": "A customer case was opened when CPU saturation was affecting the customer-facing experience during an otherwise routine interaction with the platform. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for shipping-api on 2026-01-11 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10119",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-01-12",
+    "version": "v2.8.1",
+    "title": "auth-service Delayed response complaint",
+    "content": "A user reported that cache misses was affecting the customer-facing experience during an otherwise routine interaction with the platform. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for auth-service on 2026-01-12 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10075",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-01-16",
+    "version": "v2.7.0",
+    "title": "payments-api Intermittent timeout complaint",
+    "content": "The support queue recorded a complaint about database connection saturation was affecting the customer-facing experience during an otherwise routine interaction with the platform. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for payments-api on 2026-01-16 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish database connection saturation as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10100",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2026-01-16",
+    "version": "v2.6.0",
+    "title": "orders-api Checkout issue reported",
+    "content": "A customer described CPU saturation was affecting the customer-facing experience during an otherwise routine interaction with the platform. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for orders-api on 2026-01-16 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an overloaded downstream dependency as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10109",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-01-20",
+    "version": "v2.5.1",
+    "title": "shipping-api Unavailable service complaint",
+    "content": "Customer support logged an issue in which increased request errors was affecting the customer-facing experience during an otherwise routine interaction with the platform. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for shipping-api on 2026-01-20 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish unexpected traffic growth as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10101",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-01-23",
+    "version": "v2.5.1",
+    "title": "shipping-api Slow requests reported",
+    "content": "A customer reached out after cache misses was affecting the customer-facing experience during an otherwise routine interaction with the platform. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for shipping-api on 2026-01-23 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10112",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-01-23",
+    "version": "v2.5.1",
+    "title": "shipping-api Intermittent timeout complaint",
+    "content": "The service desk received a report of dependency failures was affecting the customer-facing experience during an otherwise routine interaction with the platform. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for shipping-api on 2026-01-23 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10105",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-02-04",
+    "version": "v3.0.0",
+    "title": "inventory-service Failed requests reported",
+    "content": "A customer case noted increased request errors was affecting the customer-facing experience during an otherwise routine interaction with the platform. The customer requested an explanation after the issue recurred. The complaint was recorded for inventory-service on 2026-02-04 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10142",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-02-04",
+    "version": "v3.0.0",
+    "title": "payments-api Checkout issue reported",
+    "content": "A customer contacted support after CPU saturation was affecting the customer-facing experience during a normal checkout attempt. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for payments-api on 2026-02-04 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10010",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-02-17",
+    "version": "v2.8.1",
+    "title": "inventory-service Delayed response complaint",
+    "content": "Support received a report that dependency failures was affecting the customer-facing experience during a normal checkout attempt. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for inventory-service on 2026-02-17 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a configuration mismatch as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10126",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-02-17",
+    "version": "v2.5.1",
+    "title": "payments-api Delayed response complaint",
+    "content": "A customer case was opened when elevated P95 latency was affecting the customer-facing experience during a normal checkout attempt. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for payments-api on 2026-02-17 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish database connection saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10118",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2026-02-18",
+    "version": "v3.0.0",
+    "title": "orders-api Slow requests reported",
+    "content": "A user reported that increased request errors was affecting the customer-facing experience during a normal checkout attempt. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for orders-api on 2026-02-18 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish resource saturation as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10054",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-02-23",
+    "version": "v2.4.0",
+    "title": "inventory-service Slow requests reported",
+    "content": "The support queue recorded a complaint about CPU saturation was affecting the customer-facing experience during a normal checkout attempt. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for inventory-service on 2026-02-23 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10058",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-03-04",
+    "version": "v2.4.0",
+    "title": "payments-api Checkout issue reported",
+    "content": "A customer described database connection saturation was affecting the customer-facing experience during a normal checkout attempt. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for payments-api on 2026-03-04 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish cache exhaustion as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10023",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-03-07",
+    "version": "v3.0.0",
+    "title": "payments-api Slow requests reported",
+    "content": "Customer support logged an issue in which increased request errors was affecting the customer-facing experience during a normal checkout attempt. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for payments-api on 2026-03-07 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10033",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2026-03-12",
+    "version": "v2.6.0",
+    "title": "orders-api Delayed response complaint",
+    "content": "A customer reached out after database connection saturation was affecting the customer-facing experience during a normal checkout attempt. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for orders-api on 2026-03-12 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10039",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2026-03-13",
+    "version": "v2.6.0",
+    "title": "catalog-api Failed requests reported",
+    "content": "The service desk received a report of memory pressure was affecting the customer-facing experience during a normal checkout attempt. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for catalog-api on 2026-03-13 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10012",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-03-23",
+    "version": "v2.6.0",
+    "title": "shipping-api Delayed response complaint",
+    "content": "A customer case noted dependency failures was affecting the customer-facing experience during a normal checkout attempt. The customer requested an explanation after the issue recurred. The complaint was recorded for shipping-api on 2026-03-23 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10020",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-03-24",
+    "version": "v2.6.0",
+    "title": "inventory-service Failed requests reported",
+    "content": "A customer contacted support after dependency failures was affecting the customer-facing experience while completing a request through the service. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for inventory-service on 2026-03-24 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish unexpected traffic growth as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10066",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2026-03-27",
+    "version": "v2.7.0",
+    "title": "user-api Slow requests reported",
+    "content": "Support received a report that memory pressure was affecting the customer-facing experience while completing a request through the service. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for user-api on 2026-03-27 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10061",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-04-08",
+    "version": "v2.4.0",
+    "title": "auth-service Slow requests reported",
+    "content": "A customer case was opened when dependency failures was affecting the customer-facing experience while completing a request through the service. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for auth-service on 2026-04-08 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10028",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-04-12",
+    "version": "v3.0.0",
+    "title": "auth-service Delayed response complaint",
+    "content": "A user reported that database connection saturation was affecting the customer-facing experience while completing a request through the service. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for auth-service on 2026-04-12 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10096",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2026-04-15",
+    "version": "v3.0.0",
+    "title": "orders-api Delayed response complaint",
+    "content": "The support queue recorded a complaint about CPU saturation was affecting the customer-facing experience while completing a request through the service. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for orders-api on 2026-04-15 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish unexpected traffic growth as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10038",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-04-16",
+    "version": "v2.8.1",
+    "title": "payments-api Checkout issue reported",
+    "content": "A customer described a queue backlog was affecting the customer-facing experience while completing a request through the service. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for payments-api on 2026-04-16 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish cache exhaustion as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10125",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-04-19",
+    "version": "v3.0.0",
+    "title": "inventory-service Delayed response complaint",
+    "content": "Customer support logged an issue in which memory pressure was affecting the customer-facing experience while completing a request through the service. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for inventory-service on 2026-04-19 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10124",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2026-04-22",
+    "version": "v2.5.1",
+    "title": "user-api Unavailable service complaint",
+    "content": "A customer reached out after intermittent timeouts was affecting the customer-facing experience while completing a request through the service. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for user-api on 2026-04-22 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an overloaded downstream dependency as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10145",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-04-24",
+    "version": "v3.0.0",
+    "title": "auth-service Intermittent timeout complaint",
+    "content": "The service desk received a report of elevated P95 latency was affecting the customer-facing experience while completing a request through the service. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for auth-service on 2026-04-24 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish unexpected traffic growth as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10056",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-04-25",
+    "version": "v3.0.0",
+    "title": "inventory-service Failed requests reported",
+    "content": "A customer case noted elevated P95 latency was affecting the customer-facing experience while completing a request through the service. The customer requested an explanation after the issue recurred. The complaint was recorded for inventory-service on 2026-04-25 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10087",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-05-06",
+    "version": "v2.8.1",
+    "title": "inventory-service Slow requests reported",
+    "content": "A customer contacted support after a queue backlog was affecting the customer-facing experience when trying the affected operation repeatedly. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for inventory-service on 2026-05-06 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish unexpected traffic growth as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10097",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-05-12",
+    "version": "v3.0.0",
+    "title": "auth-service Checkout issue reported",
+    "content": "Support received a report that elevated P95 latency was affecting the customer-facing experience when trying the affected operation repeatedly. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for auth-service on 2026-05-12 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish resource saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10042",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-05-16",
+    "version": "v2.8.1",
+    "title": "inventory-service Delayed response complaint",
+    "content": "A customer case was opened when intermittent timeouts was affecting the customer-facing experience when trying the affected operation repeatedly. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for inventory-service on 2026-05-16 while the service was running v2.8.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an expired certificate as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10071",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-05-19",
+    "version": "v2.4.0",
+    "title": "inventory-service Checkout issue reported",
+    "content": "A user reported that database connection saturation was affecting the customer-facing experience when trying the affected operation repeatedly. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for inventory-service on 2026-05-19 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish cache exhaustion as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10095",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-05-20",
+    "version": "v2.6.0",
+    "title": "auth-service Checkout issue reported",
+    "content": "The support queue recorded a complaint about dependency failures was affecting the customer-facing experience when trying the affected operation repeatedly. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for auth-service on 2026-05-20 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10026",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2026-05-25",
+    "version": "v2.6.0",
+    "title": "catalog-api Intermittent timeout complaint",
+    "content": "A customer described intermittent timeouts was affecting the customer-facing experience when trying the affected operation repeatedly. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for catalog-api on 2026-05-25 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish cache exhaustion as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10027",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-05-31",
+    "version": "v3.0.0",
+    "title": "auth-service Delayed response complaint",
+    "content": "Customer support logged an issue in which elevated P95 latency was affecting the customer-facing experience when trying the affected operation repeatedly. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for auth-service on 2026-05-31 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10011",
+    "type": "customer_complaint",
+    "service": "notification-service",
+    "date": "2026-06-01",
+    "version": "v2.6.0",
+    "title": "notification-service Delayed response complaint",
+    "content": "A customer reached out after CPU saturation was affecting the customer-facing experience when trying the affected operation repeatedly. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for notification-service on 2026-06-01 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10137",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-06-07",
+    "version": "v2.7.0",
+    "title": "inventory-service Intermittent timeout complaint",
+    "content": "The service desk received a report of dependency failures was affecting the customer-facing experience when trying the affected operation repeatedly. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for inventory-service on 2026-06-07 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish resource saturation as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10139",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-06-07",
+    "version": "v2.5.1",
+    "title": "auth-service Intermittent timeout complaint",
+    "content": "A customer case noted elevated P95 latency was affecting the customer-facing experience when trying the affected operation repeatedly. The customer requested an explanation after the issue recurred. The complaint was recorded for auth-service on 2026-06-07 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10090",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-06-11",
+    "version": "v2.6.0",
+    "title": "payments-api Slow requests reported",
+    "content": "A customer contacted support after dependency failures was affecting the customer-facing experience while using the service from a production account. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for payments-api on 2026-06-11 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10040",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-06-20",
+    "version": "v2.5.1",
+    "title": "payments-api Unavailable service complaint",
+    "content": "Support received a report that memory pressure was affecting the customer-facing experience while using the service from a production account. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for payments-api on 2026-06-20 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10135",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2026-06-20",
+    "version": "v2.6.0",
+    "title": "catalog-api Checkout issue reported",
+    "content": "A customer case was opened when database connection saturation was affecting the customer-facing experience while using the service from a production account. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for catalog-api on 2026-06-20 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a failed deployment as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10127",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-06-22",
+    "version": "v3.0.0",
+    "title": "payments-api Checkout issue reported",
+    "content": "A user reported that cache misses was affecting the customer-facing experience while using the service from a production account. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for payments-api on 2026-06-22 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10051",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2026-07-03",
+    "version": "v2.4.0",
+    "title": "catalog-api Delayed response complaint",
+    "content": "The support queue recorded a complaint about CPU saturation was affecting the customer-facing experience while using the service from a production account. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for catalog-api on 2026-07-03 while the service was running v2.4.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10082",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-07-03",
+    "version": "v2.8.1",
+    "title": "payments-api Delayed response complaint",
+    "content": "A customer described a queue backlog was affecting the customer-facing experience while using the service from a production account. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for payments-api on 2026-07-03 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an expired certificate as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10062",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-07-09",
+    "version": "v3.0.0",
+    "title": "shipping-api Slow requests reported",
+    "content": "Customer support logged an issue in which elevated P95 latency was affecting the customer-facing experience while using the service from a production account. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for shipping-api on 2026-07-09 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish resource saturation as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10003",
+    "type": "customer_complaint",
+    "service": "shipping-api",
+    "date": "2026-07-12",
+    "version": "v2.6.0",
+    "title": "shipping-api Delayed response complaint",
+    "content": "A customer reached out after dependency failures was affecting the customer-facing experience while using the service from a production account. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for shipping-api on 2026-07-12 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish cache exhaustion as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10032",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-07-13",
+    "version": "v3.0.0",
+    "title": "payments-api Checkout issue reported",
+    "content": "The service desk received a report of database connection saturation was affecting the customer-facing experience while using the service from a production account. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for payments-api on 2026-07-13 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10035",
+    "type": "customer_complaint",
+    "service": "orders-api",
+    "date": "2026-07-23",
+    "version": "v2.6.0",
+    "title": "orders-api Slow requests reported",
+    "content": "A customer case noted memory pressure was affecting the customer-facing experience while using the service from a production account. The customer requested an explanation after the issue recurred. The complaint was recorded for orders-api on 2026-07-23 while the service was running v2.6.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10102",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2026-07-25",
+    "version": "v3.0.0",
+    "title": "user-api Intermittent timeout complaint",
+    "content": "A customer contacted support after a queue backlog was affecting the customer-facing experience during a period when the customer expected normal response times. The customer said the operation was slow or unreliable and retried it. The complaint was recorded for user-api on 2026-07-25 while the service was running v3.0.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish cache exhaustion as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10037",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-08-01",
+    "version": "v2.8.1",
+    "title": "inventory-service Unavailable service complaint",
+    "content": "Support received a report that dependency failures was affecting the customer-facing experience during a period when the customer expected normal response times. The complaint was escalated because the behavior could not be resolved through normal retrying. The complaint was recorded for inventory-service on 2026-08-01 while the service was running v2.8.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish a failed deployment as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10029",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-08-06",
+    "version": "v2.5.1",
+    "title": "inventory-service Slow requests reported",
+    "content": "A customer case was opened when increased request errors was affecting the customer-facing experience during a period when the customer expected normal response times. The case was treated as an engineering-investigation candidate because multiple attempts produced similar symptoms. The complaint was recorded for inventory-service on 2026-08-06 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish database connection saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10077",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-08-16",
+    "version": "v2.7.0",
+    "title": "inventory-service Checkout issue reported",
+    "content": "A user reported that database connection saturation was affecting the customer-facing experience during a period when the customer expected normal response times. The support team recorded the case without assigning a confirmed technical cause. The complaint was recorded for inventory-service on 2026-08-16 while the service was running v2.7.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish unexpected traffic growth as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10022",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2026-08-17",
+    "version": "v2.5.1",
+    "title": "catalog-api Delayed response complaint",
+    "content": "The support queue recorded a complaint about elevated P95 latency was affecting the customer-facing experience during a period when the customer expected normal response times. The customer experienced disruption to the workflow and asked support for assistance. The complaint was recorded for catalog-api on 2026-08-17 while the service was running v2.5.1. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish resource saturation as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  },
+  {
+    "document_id": "COMP-10086",
+    "type": "customer_complaint",
+    "service": "inventory-service",
+    "date": "2026-08-17",
+    "version": "v2.5.1",
+    "title": "inventory-service Failed requests reported",
+    "content": "A customer described CPU saturation was affecting the customer-facing experience during a period when the customer expected normal response times. The customer described the behavior as intermittent rather than continuously unavailable. The complaint was recorded for inventory-service on 2026-08-17 while the service was running v2.5.1. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish database connection saturation as the root cause. The report did not include enough evidence to determine whether the issue originated in the service or a dependency."
+  },
+  {
+    "document_id": "COMP-10093",
+    "type": "customer_complaint",
+    "service": "user-api",
+    "date": "2026-08-22",
+    "version": "v2.6.0",
+    "title": "user-api Slow requests reported",
+    "content": "Customer support logged an issue in which a queue backlog was affecting the customer-facing experience during a period when the customer expected normal response times. The complaint captured user-visible symptoms only; telemetry and logs were required for further diagnosis. The complaint was recorded for user-api on 2026-08-22 while the service was running v2.6.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish a configuration mismatch as the root cause. No causal conclusion was recorded from the customer statement alone."
+  },
+  {
+    "document_id": "COMP-10045",
+    "type": "customer_complaint",
+    "service": "catalog-api",
+    "date": "2026-09-03",
+    "version": "v3.0.0",
+    "title": "catalog-api Delayed response complaint",
+    "content": "A customer reached out after CPU saturation was affecting the customer-facing experience during a period when the customer expected normal response times. The report described degraded behavior from the customer's perspective, but contained no server-side diagnostic evidence. The complaint was recorded for catalog-api on 2026-09-03 while the service was running v3.0.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish resource saturation as the root cause. The customer observation was considered an input to, rather than a substitute for, technical investigation."
+  },
+  {
+    "document_id": "COMP-10123",
+    "type": "customer_complaint",
+    "service": "payments-api",
+    "date": "2026-09-11",
+    "version": "v2.7.0",
+    "title": "payments-api Intermittent timeout complaint",
+    "content": "The service desk received a report of a queue backlog was affecting the customer-facing experience during a period when the customer expected normal response times. The report indicated that the affected action did not consistently complete as expected. The complaint was recorded for payments-api on 2026-09-11 while the service was running v2.7.0. The case was forwarded for correlation with monitoring data before any root cause was assigned. The complaint itself does not establish an overloaded downstream dependency as the root cause. The case could be compared with contemporaneous incidents to determine whether symptoms were related."
+  },
+  {
+    "document_id": "COMP-10046",
+    "type": "customer_complaint",
+    "service": "auth-service",
+    "date": "2026-09-13",
+    "version": "v2.4.0",
+    "title": "auth-service Slow requests reported",
+    "content": "A customer case noted elevated P95 latency was affecting the customer-facing experience during a period when the customer expected normal response times. The customer requested an explanation after the issue recurred. The complaint was recorded for auth-service on 2026-09-13 while the service was running v2.4.0. The case was linked to the investigation queue for comparison with telemetry and operational records. The complaint itself does not establish an overloaded downstream dependency as the root cause. The reported behavior was preserved separately from engineering conclusions so later evidence could be evaluated."
+  }
+]

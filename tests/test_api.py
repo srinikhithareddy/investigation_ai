@@ -1,4 +1,5 @@
 import pytest
+from types import SimpleNamespace
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -10,10 +11,52 @@ def client():
     return TestClient(app)
 
 
-def test_health(client):
+def configure_healthy_backend(monkeypatch):
+    monkeypatch.setattr(routes, "get_store", lambda: SimpleNamespace(count=lambda: 10))
+    monkeypatch.setattr(routes, "get_collection", lambda: SimpleNamespace(count=lambda: 10))
+    monkeypatch.setattr(routes, "is_embedding_model_loaded", lambda: True)
+    monkeypatch.setattr(routes, "settings", SimpleNamespace(gemini_api_key="test-key"))
+
+
+def test_health_reports_backend_checks(client, monkeypatch):
+    configure_healthy_backend(monkeypatch)
+
     resp = client.get("/health")
     assert resp.status_code == 200
-    assert resp.json() == {"status": "ok"}
+    assert resp.json() == {
+        "status": "ok",
+        "checks": {
+            "database": "ok",
+            "vector_store": "ok",
+            "embedding_model": "ready",
+            "gemini": "configured",
+        },
+        "document_count": 10,
+        "chunk_count": 10,
+    }
+
+
+def test_health_returns_503_when_a_backend_component_is_unavailable(client, monkeypatch):
+    configure_healthy_backend(monkeypatch)
+    monkeypatch.setattr(routes, "get_collection", lambda: (_ for _ in ()).throw(RuntimeError()))
+
+    resp = client.get("/health")
+
+    assert resp.status_code == 503
+    assert resp.json()["status"] == "degraded"
+    assert resp.json()["checks"]["vector_store"] == "unavailable"
+    assert resp.json()["document_count"] == 10
+    assert resp.json()["chunk_count"] is None
+
+
+def test_health_returns_503_when_gemini_key_is_missing(client, monkeypatch):
+    configure_healthy_backend(monkeypatch)
+    monkeypatch.setattr(routes, "settings", SimpleNamespace(gemini_api_key=""))
+
+    resp = client.get("/health")
+
+    assert resp.status_code == 503
+    assert resp.json()["checks"]["gemini"] == "missing_api_key"
 
 
 def test_investigate_rejects_empty_question(client):
@@ -26,7 +69,13 @@ def test_investigate_rejects_missing_question(client):
     assert resp.status_code == 400
 
 
+def test_investigate_rejects_non_string_question(client):
+    resp = client.post("/investigate", json={"question": 42})
+    assert resp.status_code == 400
+
+
 def test_investigate_happy_path(client, monkeypatch):
+    configure_healthy_backend(monkeypatch)
     fake_state = {
         "final_answer": "The latency spike was associated with deployment v2.8.1 (INC-1042, DEP-882).",
         "confidence": "medium",
@@ -44,15 +93,28 @@ def test_investigate_happy_path(client, monkeypatch):
         "investigation_steps": ["Parsed question.", "Searched documents.", "Generated final answer."],
     }
 
-    monkeypatch.setattr(routes, "run_investigation", lambda question: fake_state)
+    called_with = []
+    monkeypatch.setattr(
+        routes,
+        "run_investigation",
+        lambda question: called_with.append(question) or fake_state,
+    )
 
-    resp = client.post("/investigate", json={"question": "Why did the Order API become slow?"})
+    resp = client.post(
+        "/investigate",
+        json={"question": "  Why did the Order API become slow?  "},
+    )
     assert resp.status_code == 200
+    assert called_with == ["Why did the Order API become slow?"]
     body = resp.json()
+    assert set(body) == {"answer", "confidence", "evidence", "contradictions", "trace"}
     assert body["answer"] == fake_state["final_answer"]
     assert body["confidence"] == "medium"
     assert len(body["evidence"]) == 1
     assert body["evidence"][0]["document_id"] == "INC-1042"
+    assert set(body["evidence"][0]) == {
+        "document_id", "title", "type", "date", "version", "content"
+    }
     assert body["trace"] == fake_state["investigation_steps"]
 
 

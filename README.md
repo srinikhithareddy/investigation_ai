@@ -51,7 +51,7 @@ never touches SQL or the vector store directly.
 ### Project layout
 
 ```
-backend/
+investigation_ai/
 ├── app/
 │   ├── main.py              FastAPI app + error handlers
 │   ├── api/routes.py        POST /investigate, GET /health
@@ -72,7 +72,7 @@ backend/
 │   │   ├── sqlite.py        document metadata/content store
 │   │   └── chroma.py        embeddings + vector store (sentence-transformers + Chroma)
 │   ├── ingestion/documents.py  loads documents.json, chunks, embeds, indexes
-│   ├── llm/client.py        Anthropic Claude wrapper (LLMClient abstraction)
+│   ├── llm/client.py        Google Gemini wrapper (LLMClient abstraction)
 │   ├── models/               Pydantic request/response schemas
 │   └── config.py             environment-driven settings
 ├── data/
@@ -82,7 +82,8 @@ backend/
 ├── tests/
 │   ├── test_retrieval.py     chunking, SQLite, ranking helpers
 │   ├── test_investigation.py graph node/decision logic (LLM calls stubbed)
-│   └── test_api.py           FastAPI endpoint tests (graph stubbed)
+│   ├── test_api.py           FastAPI endpoint tests (graph stubbed)
+│   └── test_llm_client.py    Gemini SDK request/configuration tests
 ├── requirements.txt
 ├── .env.example
 ├── Dockerfile
@@ -90,66 +91,65 @@ backend/
 └── README.md
 ```
 
-## Setup
+## Installation and Configuration
 
-Requires Python 3.11+ and network access to install dependencies and download
-the embedding model on first run.
+Requires Python 3.11+, network access to install dependencies, download the
+Sentence Transformers model on first use, and reach the Gemini API.
 
-```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-
-cp .env.example .env
-# edit .env and set ANTHROPIC_API_KEY=sk-ant-...
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+Copy-Item .env.example .env
 ```
+
+On macOS/Linux, use `python3.11 -m venv .venv`,
+`source .venv/bin/activate`, and `cp .env.example .env`.
+
+Set `GEMINI_API_KEY` in `.env` to a Google AI Studio API key. `GEMINI_MODEL`
+defaults to `gemini-2.5-flash`; set it to another model available to your key
+to change models. All supported variables and defaults are listed in
+`.env.example`. Do not commit `.env`; it is ignored by Git and Docker builds.
 
 ### Ingest the example documents
 
 ```bash
-python -m app.ingestion.documents --reset
+python -m app.ingestion.documents
 ```
 
 This loads `data/documents.json`, validates each record, stores metadata +
 content in SQLite (`data/app.db`), chunks each document, generates local
 embeddings (`BAAI/bge-small-en-v1.5`, via sentence-transformers — no external
-embedding API), and indexes the chunks in Chroma (`data/chroma/`). Re-running
-it is idempotent (SQLite upserts by `document_id`; Chroma chunk ids are
-deterministic).
+embedding API), and indexes the chunks in Chroma (`data/chroma/`). SQLite
+upserts by `document_id`; Chroma uses deterministic chunk IDs and prunes stale
+chunks when a document changes. Re-running ingestion is idempotent. Use
+`--reset` only when you intentionally want to discard and rebuild the Chroma
+collection; it does not clear SQLite.
 
-### Run the API
+### Start the Server
 
 ```bash
 uvicorn app.main:app --reload --port 8000
 ```
 
+Open the frontend at `http://localhost:8000/ui`. FastAPI also serves
+interactive API documentation at `http://localhost:8000/docs`.
+
 ```bash
 curl http://localhost:8000/health
-# {"status":"ok"}
+# health status and component checks
 ```
 
 ### Run tests
 
 ```bash
-pytest
+python -m pytest
 ```
 
-The test suite covers chunking, SQLite metadata filtering, hybrid-ranking
-helper functions, LangGraph node/decision logic, and the API layer. LLM calls
-are monkeypatched in `test_investigation.py` / `test_api.py` so the suite runs
-deterministically without a live `ANTHROPIC_API_KEY`; retrieval logic is
-exercised directly against a temporary SQLite database.
-
-> **Note on this delivery environment:** the sandbox this code was written in
-> has no network access, so dependencies could not actually be `pip install`ed
-> or executed here to run `pytest`/`uvicorn` live. The code was written
-> carefully against the documented APIs of FastAPI, LangGraph, the Anthropic
-> SDK, sentence-transformers, and ChromaDB, and checked with `python -m
-> py_compile` for syntax errors, but you should run `pytest` yourself after
-> `pip install -r requirements.txt` to confirm behavior in your environment,
-> and fix up any small API-version mismatches (e.g. if you pin different
-> `langgraph`/`chromadb` versions than `requirements.txt`).
+Tests stub the LangGraph/LLM boundaries and Chroma embedding calls; they do not
+require a Gemini API key, network access, or a Sentence Transformers model
+download. Coverage includes health and request validation, response mapping,
+retrieval, graph routing and iteration limits, and Gemini client error cases.
 
 ### Docker
 
@@ -158,8 +158,11 @@ docker build -t incident-agent .
 docker run --env-file .env -p 8000:8000 incident-agent
 ```
 
-The container runs ingestion on startup, then serves the API at
-`http://localhost:8000`. Or with compose:
+The image installs `requirements.txt`, excludes `.env` and local database/vector
+artifacts from its build context, ingests on startup, and only starts Uvicorn
+if ingestion succeeds. Credentials are runtime configuration, never build
+arguments. Compose reads the ignored local `.env` through `env_file` and
+persists data under `./data`:
 
 ```bash
 docker compose up --build
@@ -169,8 +172,23 @@ docker compose up --build
 
 ### `GET /health`
 
+Reports database, vector-store, embedding-model, and Gemini-key configuration
+status. It returns HTTP 200 with `status: "ok"` when ready, or HTTP 503 with
+`status: "degraded"` when a required component is unavailable. It does not
+make a Gemini API request.
+
 ```json
-{"status": "ok"}
+{
+  "status": "ok",
+  "checks": {
+    "database": "ok",
+    "vector_store": "ok",
+    "embedding_model": "ready",
+    "gemini": "configured"
+  },
+  "document_count": 10,
+  "chunk_count": 10
+}
 ```
 
 ### `POST /investigate`
@@ -180,6 +198,11 @@ Request:
 ```json
 {"question": "Why did the Order API become slow on September 16? Check whether the deployment was related and whether we have seen this before."}
 ```
+
+The response contains `answer`, `confidence`, `evidence`, `contradictions`,
+and `trace`. Evidence fields are `document_id`, `title`, `type`, `date`,
+`version`, and `content`. Empty/whitespace or invalid requests return HTTP 400;
+unexpected investigation failures return HTTP 500.
 
 Example `curl`:
 
@@ -218,6 +241,29 @@ Example response (shape; exact wording depends on the live LLM):
   ]
 }
 ```
+
+## Frontend and Troubleshooting
+
+Open `http://localhost:8000/ui`. The status indicator polls `/health`; the
+question form posts to `/investigate` on the same origin and renders the
+answer, confidence, evidence, contradictions, and investigation trace. It
+distinguishes backend errors, unavailable connections, invalid/empty responses,
+and requests that exceed its 120-second timeout. POST requests are not
+automatically retried, avoiding duplicate investigations.
+
+- **Health is degraded: `gemini: missing_api_key`**: set `GEMINI_API_KEY` in
+  `.env` and restart the server or container.
+- **The embedding model is not ready**: wait for startup model loading; first
+  use requires network access to download the configured model.
+- **Database or vector store is unavailable**: check `DATABASE_PATH`,
+  `CHROMA_PATH`, filesystem permissions, and the Compose `./data` mount.
+- **The frontend cannot reach the backend**: confirm the server is running and
+  open `/ui` from that same server origin. Check the browser network panel for
+  `/health` and `/investigate` responses.
+- **An investigation times out**: inspect server logs and Gemini availability
+  before retrying; the browser stops waiting after 120 seconds.
+- **Compose cannot find `.env`**: copy `.env.example` to `.env` first. The
+  file is supplied at runtime and is excluded from the image build context.
 
 ## The three required test scenarios
 

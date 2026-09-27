@@ -19,8 +19,8 @@ class LLMClient:
         api_key: Optional[str] = None,
         model: Optional[str] = None,
     ):
-        self.api_key = api_key or settings.gemini_api_key
-        self.model = model or settings.gemini_model
+        self.api_key = (settings.gemini_api_key if api_key is None else api_key).strip()
+        self.model = (model or settings.gemini_model).strip() or settings.gemini_model
         self._client = None
 
     def _get_client(self):
@@ -31,9 +31,18 @@ class LLMClient:
                     "Set it in your environment or .env file."
                 )
 
-            from google import genai
+            try:
+                from google import genai
 
-            self._client = genai.Client(api_key=self.api_key)
+                self._client = genai.Client(api_key=self.api_key)
+            except ImportError:
+                raise LLMError(
+                    "The google-genai SDK is not installed. Install project requirements."
+                ) from None
+            except Exception:
+                raise LLMError(
+                    "Could not initialize Gemini. Check GEMINI_API_KEY and try again."
+                ) from None
 
         return self._client
 
@@ -48,37 +57,28 @@ class LLMClient:
 
         client = self._get_client()
 
-        prompt = f"""
-System instructions:
-
-{system}
-
-User request:
-
-{user}
-""".strip()
-
         try:
             response = client.models.generate_content(
                 model=self.model,
-                contents=prompt,
+                contents=user,
                 config={
+                    "system_instruction": system,
                     "temperature": temperature,
                     "max_output_tokens": max_tokens,
                 },
             )
-
-        except Exception as exc:
-            raise LLMError(f"LLM request failed: {exc}") from exc
+        except Exception:
+            raise LLMError(
+                "Gemini request failed. Check GEMINI_MODEL, GEMINI_API_KEY, "
+                "and network connectivity."
+            ) from None
 
         text = getattr(response, "text", None)
 
         if text:
             return text.strip()
 
-        raise LLMError(
-            "Gemini returned no text output."
-        )
+        raise LLMError("Gemini returned no text output.")
 
     def complete_json(
         self,
@@ -120,9 +120,7 @@ Do not wrap the JSON in ``` or any other code fence.
                 except json.JSONDecodeError:
                     pass
 
-            raise LLMError(
-                f"Could not parse JSON from Gemini response: {raw[:500]}"
-            )
+            raise LLMError("Gemini returned a response that was not valid JSON.") from None
 
 
 _default_client: Optional[LLMClient] = None

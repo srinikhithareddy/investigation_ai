@@ -1,0 +1,1352 @@
+[
+  {
+    "document_id": "PM-10080",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-01-16",
+    "version": "v2.7.0",
+    "title": "orders-api Deployment postmortem",
+    "content": "Post-incident review for orders-api on 2025-01-16 at version v2.7.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was configuration mismatch. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10026",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-01-17",
+    "version": "v2.5.1",
+    "title": "auth-service Latency postmortem",
+    "content": "Post-incident review for auth-service on 2025-01-17 at version v2.5.1. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was expired certificate. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10018",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-01-19",
+    "version": "v2.7.0",
+    "title": "shipping-api Latency postmortem",
+    "content": "Post-incident review for shipping-api on 2025-01-19 at version v2.7.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was cache exhaustion. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10112",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-01-24",
+    "version": "v3.0.0",
+    "title": "orders-api Deployment postmortem",
+    "content": "Post-incident review for orders-api on 2025-01-24 at version v3.0.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was unexpected traffic growth. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10042",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-01-26",
+    "version": "v2.8.1",
+    "title": "shipping-api Latency postmortem",
+    "content": "Post-incident review for shipping-api on 2025-01-26 at version v2.8.1. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was database connection saturation. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10055",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-01-30",
+    "version": "v2.4.0",
+    "title": "orders-api Reliability postmortem",
+    "content": "Post-incident review for orders-api on 2025-01-30 at version v2.4.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was resource saturation. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10014",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2025-02-01",
+    "version": "v2.5.1",
+    "title": "inventory-service Latency postmortem",
+    "content": "Post-incident review for inventory-service on 2025-02-01 at version v2.5.1. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was failed deployment. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10072",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-02-02",
+    "version": "v2.6.0",
+    "title": "payments-api Latency postmortem",
+    "content": "Post-incident review for payments-api on 2025-02-02 at version v2.6.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was overloaded downstream dependency. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10143",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2025-02-03",
+    "version": "v2.5.1",
+    "title": "inventory-service Dependency failure review",
+    "content": "Post-incident review for inventory-service on 2025-02-03 at version v2.5.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was configuration mismatch. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10020",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2025-02-11",
+    "version": "v3.0.0",
+    "title": "user-api Deployment postmortem",
+    "content": "Post-incident review for user-api on 2025-02-11 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was expired certificate. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10036",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-02-12",
+    "version": "v2.4.0",
+    "title": "orders-api Dependency failure review",
+    "content": "Post-incident review for orders-api on 2025-02-12 at version v2.4.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was cache exhaustion. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10120",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-02-12",
+    "version": "v2.6.0",
+    "title": "auth-service Reliability postmortem",
+    "content": "Post-incident review for auth-service on 2025-02-12 at version v2.6.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was unexpected traffic growth. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10027",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-02-13",
+    "version": "v2.7.0",
+    "title": "orders-api Reliability postmortem",
+    "content": "Post-incident review for orders-api on 2025-02-13 at version v2.7.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was database connection saturation. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10009",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-02-17",
+    "version": "v2.6.0",
+    "title": "auth-service Previous incident review",
+    "content": "Post-incident review for auth-service on 2025-02-17 at version v2.6.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was resource saturation. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10044",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-02-22",
+    "version": "v2.5.1",
+    "title": "payments-api Deployment postmortem",
+    "content": "Post-incident review for payments-api on 2025-02-22 at version v2.5.1. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was failed deployment. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10092",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-02-22",
+    "version": "v3.0.0",
+    "title": "payments-api Deployment postmortem",
+    "content": "Post-incident review for payments-api on 2025-02-22 at version v3.0.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was overloaded downstream dependency. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10019",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-03-03",
+    "version": "v2.5.1",
+    "title": "notification-service Deployment postmortem",
+    "content": "Post-incident review for notification-service on 2025-03-03 at version v2.5.1. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was configuration mismatch. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10094",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-03-07",
+    "version": "v3.0.0",
+    "title": "payments-api Latency postmortem",
+    "content": "Post-incident review for payments-api on 2025-03-07 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was expired certificate. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10116",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-03-15",
+    "version": "v3.0.0",
+    "title": "shipping-api Previous incident review",
+    "content": "Post-incident review for shipping-api on 2025-03-15 at version v3.0.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was cache exhaustion. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10106",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-03-16",
+    "version": "v3.0.0",
+    "title": "notification-service Previous incident review",
+    "content": "Post-incident review for notification-service on 2025-03-16 at version v3.0.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was unexpected traffic growth. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10107",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-03-18",
+    "version": "v2.6.0",
+    "title": "payments-api Latency postmortem",
+    "content": "Post-incident review for payments-api on 2025-03-18 at version v2.6.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was database connection saturation. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10113",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-03-18",
+    "version": "v2.6.0",
+    "title": "orders-api Dependency failure review",
+    "content": "Post-incident review for orders-api on 2025-03-18 at version v2.6.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was resource saturation. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10127",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-03-20",
+    "version": "v2.4.0",
+    "title": "payments-api Deployment postmortem",
+    "content": "Post-incident review for payments-api on 2025-03-20 at version v2.4.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was failed deployment. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10024",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-03-24",
+    "version": "v2.4.0",
+    "title": "orders-api Dependency failure review",
+    "content": "Post-incident review for orders-api on 2025-03-24 at version v2.4.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was overloaded downstream dependency. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10115",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2025-03-24",
+    "version": "v2.6.0",
+    "title": "inventory-service Latency postmortem",
+    "content": "Post-incident review for inventory-service on 2025-03-24 at version v2.6.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was configuration mismatch. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10021",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-03-26",
+    "version": "v3.0.0",
+    "title": "notification-service Previous incident review",
+    "content": "Post-incident review for notification-service on 2025-03-26 at version v3.0.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was expired certificate. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10041",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-03-28",
+    "version": "v2.6.0",
+    "title": "shipping-api Incident review",
+    "content": "Post-incident review for shipping-api on 2025-03-28 at version v2.6.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was cache exhaustion. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10054",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-04-08",
+    "version": "v2.6.0",
+    "title": "payments-api Latency postmortem",
+    "content": "Post-incident review for payments-api on 2025-04-08 at version v2.6.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was unexpected traffic growth. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10052",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-04-11",
+    "version": "v2.6.0",
+    "title": "catalog-api Deployment postmortem",
+    "content": "Post-incident review for catalog-api on 2025-04-11 at version v2.6.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was database connection saturation. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10111",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-04-11",
+    "version": "v3.0.0",
+    "title": "shipping-api Latency postmortem",
+    "content": "Post-incident review for shipping-api on 2025-04-11 at version v3.0.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was resource saturation. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10068",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-04-12",
+    "version": "v2.4.0",
+    "title": "shipping-api Previous incident review",
+    "content": "Post-incident review for shipping-api on 2025-04-12 at version v2.4.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was failed deployment. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10056",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-04-15",
+    "version": "v2.8.1",
+    "title": "payments-api Previous incident review",
+    "content": "Post-incident review for payments-api on 2025-04-15 at version v2.8.1. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was overloaded downstream dependency. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10070",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-04-20",
+    "version": "v3.0.0",
+    "title": "catalog-api Incident review",
+    "content": "Post-incident review for catalog-api on 2025-04-20 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was configuration mismatch. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10091",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-04-20",
+    "version": "v3.0.0",
+    "title": "payments-api Latency postmortem",
+    "content": "Post-incident review for payments-api on 2025-04-20 at version v3.0.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was expired certificate. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10136",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-04-23",
+    "version": "v2.8.1",
+    "title": "notification-service Dependency failure review",
+    "content": "Post-incident review for notification-service on 2025-04-23 at version v2.8.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was cache exhaustion. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10047",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-04-26",
+    "version": "v2.6.0",
+    "title": "notification-service Reliability postmortem",
+    "content": "Post-incident review for notification-service on 2025-04-26 at version v2.6.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was unexpected traffic growth. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10110",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-04-30",
+    "version": "v3.0.0",
+    "title": "auth-service Incident review",
+    "content": "Post-incident review for auth-service on 2025-04-30 at version v3.0.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was database connection saturation. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10063",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-05-03",
+    "version": "v3.0.0",
+    "title": "shipping-api Deployment postmortem",
+    "content": "Post-incident review for shipping-api on 2025-05-03 at version v3.0.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was resource saturation. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10007",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2025-05-04",
+    "version": "v2.7.0",
+    "title": "inventory-service Reliability postmortem",
+    "content": "Post-incident review for inventory-service on 2025-05-04 at version v2.7.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was failed deployment. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10002",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-05-13",
+    "version": "v2.4.0",
+    "title": "shipping-api Reliability postmortem",
+    "content": "Post-incident review for shipping-api on 2025-05-13 at version v2.4.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was overloaded downstream dependency. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10104",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2025-05-17",
+    "version": "v2.4.0",
+    "title": "inventory-service Incident review",
+    "content": "Post-incident review for inventory-service on 2025-05-17 at version v2.4.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was configuration mismatch. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10117",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-05-20",
+    "version": "v3.0.0",
+    "title": "shipping-api Deployment postmortem",
+    "content": "Post-incident review for shipping-api on 2025-05-20 at version v3.0.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was expired certificate. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10146",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-05-23",
+    "version": "v2.7.0",
+    "title": "notification-service Dependency failure review",
+    "content": "Post-incident review for notification-service on 2025-05-23 at version v2.7.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was cache exhaustion. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10079",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-05-26",
+    "version": "v2.5.1",
+    "title": "payments-api Previous incident review",
+    "content": "Post-incident review for payments-api on 2025-05-26 at version v2.5.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was unexpected traffic growth. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10003",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-05-27",
+    "version": "v2.8.1",
+    "title": "shipping-api Latency postmortem",
+    "content": "Post-incident review for shipping-api on 2025-05-27 at version v2.8.1. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was database connection saturation. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10085",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-05-28",
+    "version": "v2.6.0",
+    "title": "catalog-api Incident review",
+    "content": "Post-incident review for catalog-api on 2025-05-28 at version v2.6.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was resource saturation. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10006",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2025-05-31",
+    "version": "v2.4.0",
+    "title": "user-api Incident review",
+    "content": "Post-incident review for user-api on 2025-05-31 at version v2.4.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was failed deployment. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10062",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-06-02",
+    "version": "v2.4.0",
+    "title": "auth-service Previous incident review",
+    "content": "Post-incident review for auth-service on 2025-06-02 at version v2.4.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was overloaded downstream dependency. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10051",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-06-25",
+    "version": "v2.8.1",
+    "title": "notification-service Deployment postmortem",
+    "content": "Post-incident review for notification-service on 2025-06-25 at version v2.8.1. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was configuration mismatch. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10140",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-06-30",
+    "version": "v2.4.0",
+    "title": "orders-api Dependency failure review",
+    "content": "Post-incident review for orders-api on 2025-06-30 at version v2.4.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was expired certificate. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10004",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-07-02",
+    "version": "v2.7.0",
+    "title": "notification-service Incident review",
+    "content": "Post-incident review for notification-service on 2025-07-02 at version v2.7.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was cache exhaustion. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10088",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-07-14",
+    "version": "v2.6.0",
+    "title": "catalog-api Deployment postmortem",
+    "content": "Post-incident review for catalog-api on 2025-07-14 at version v2.6.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was unexpected traffic growth. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10129",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-07-15",
+    "version": "v2.7.0",
+    "title": "notification-service Latency postmortem",
+    "content": "Post-incident review for notification-service on 2025-07-15 at version v2.7.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was database connection saturation. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10096",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2025-07-22",
+    "version": "v2.6.0",
+    "title": "user-api Previous incident review",
+    "content": "Post-incident review for user-api on 2025-07-22 at version v2.6.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was resource saturation. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10134",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-07-28",
+    "version": "v3.0.0",
+    "title": "catalog-api Deployment postmortem",
+    "content": "Post-incident review for catalog-api on 2025-07-28 at version v3.0.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was failed deployment. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10109",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2025-08-06",
+    "version": "v2.8.1",
+    "title": "user-api Dependency failure review",
+    "content": "Post-incident review for user-api on 2025-08-06 at version v2.8.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was overloaded downstream dependency. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10148",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-08-09",
+    "version": "v2.4.0",
+    "title": "payments-api Incident review",
+    "content": "Post-incident review for payments-api on 2025-08-09 at version v2.4.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was configuration mismatch. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10126",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-08-11",
+    "version": "v3.0.0",
+    "title": "catalog-api Incident review",
+    "content": "Post-incident review for catalog-api on 2025-08-11 at version v3.0.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was expired certificate. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10114",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-08-20",
+    "version": "v2.4.0",
+    "title": "shipping-api Dependency failure review",
+    "content": "Post-incident review for shipping-api on 2025-08-20 at version v2.4.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was cache exhaustion. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10081",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-08-22",
+    "version": "v2.7.0",
+    "title": "orders-api Previous incident review",
+    "content": "Post-incident review for orders-api on 2025-08-22 at version v2.7.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was unexpected traffic growth. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10040",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-08-30",
+    "version": "v2.6.0",
+    "title": "orders-api Previous incident review",
+    "content": "Post-incident review for orders-api on 2025-08-30 at version v2.6.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was database connection saturation. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10045",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-09-06",
+    "version": "v2.4.0",
+    "title": "shipping-api Dependency failure review",
+    "content": "Post-incident review for shipping-api on 2025-09-06 at version v2.4.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was resource saturation. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10008",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-09-20",
+    "version": "v2.6.0",
+    "title": "catalog-api Incident review",
+    "content": "Post-incident review for catalog-api on 2025-09-20 at version v2.6.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was failed deployment. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10074",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2025-09-21",
+    "version": "v2.7.0",
+    "title": "user-api Previous incident review",
+    "content": "Post-incident review for user-api on 2025-09-21 at version v2.7.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was overloaded downstream dependency. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10031",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-09-24",
+    "version": "v2.5.1",
+    "title": "payments-api Incident review",
+    "content": "Post-incident review for payments-api on 2025-09-24 at version v2.5.1. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was configuration mismatch. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10105",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-09-27",
+    "version": "v2.6.0",
+    "title": "auth-service Previous incident review",
+    "content": "Post-incident review for auth-service on 2025-09-27 at version v2.6.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was expired certificate. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10139",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-10-02",
+    "version": "v3.0.0",
+    "title": "orders-api Incident review",
+    "content": "Post-incident review for orders-api on 2025-10-02 at version v3.0.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was cache exhaustion. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10023",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-10-03",
+    "version": "v2.5.1",
+    "title": "notification-service Reliability postmortem",
+    "content": "Post-incident review for notification-service on 2025-10-03 at version v2.5.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was unexpected traffic growth. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10001",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-10-11",
+    "version": "v2.8.1",
+    "title": "notification-service Incident review",
+    "content": "Post-incident review for notification-service on 2025-10-11 at version v2.8.1. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was database connection saturation. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10013",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-10-26",
+    "version": "v2.6.0",
+    "title": "notification-service Previous incident review",
+    "content": "Post-incident review for notification-service on 2025-10-26 at version v2.6.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was resource saturation. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10060",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-10-27",
+    "version": "v2.8.1",
+    "title": "auth-service Incident review",
+    "content": "Post-incident review for auth-service on 2025-10-27 at version v2.8.1. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was failed deployment. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10064",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-10-27",
+    "version": "v2.6.0",
+    "title": "orders-api Latency postmortem",
+    "content": "Post-incident review for orders-api on 2025-10-27 at version v2.6.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was overloaded downstream dependency. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10075",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-10-28",
+    "version": "v2.7.0",
+    "title": "catalog-api Reliability postmortem",
+    "content": "Post-incident review for catalog-api on 2025-10-28 at version v2.7.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was configuration mismatch. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10119",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2025-10-29",
+    "version": "v3.0.0",
+    "title": "shipping-api Deployment postmortem",
+    "content": "Post-incident review for shipping-api on 2025-10-29 at version v3.0.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was expired certificate. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10010",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2025-11-04",
+    "version": "v2.7.0",
+    "title": "auth-service Incident review",
+    "content": "Post-incident review for auth-service on 2025-11-04 at version v2.7.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was cache exhaustion. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10089",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-11-05",
+    "version": "v2.5.1",
+    "title": "catalog-api Previous incident review",
+    "content": "Post-incident review for catalog-api on 2025-11-05 at version v2.5.1. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was unexpected traffic growth. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10125",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2025-11-12",
+    "version": "v2.6.0",
+    "title": "user-api Dependency failure review",
+    "content": "Post-incident review for user-api on 2025-11-12 at version v2.6.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was database connection saturation. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10046",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-11-27",
+    "version": "v2.8.1",
+    "title": "orders-api Reliability postmortem",
+    "content": "Post-incident review for orders-api on 2025-11-27 at version v2.8.1. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was resource saturation. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10029",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2025-12-01",
+    "version": "v2.8.1",
+    "title": "orders-api Previous incident review",
+    "content": "Post-incident review for orders-api on 2025-12-01 at version v2.8.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was failed deployment. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10142",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2025-12-13",
+    "version": "v2.8.1",
+    "title": "payments-api Dependency failure review",
+    "content": "Post-incident review for payments-api on 2025-12-13 at version v2.8.1. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was overloaded downstream dependency. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10073",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-12-19",
+    "version": "v2.4.0",
+    "title": "notification-service Previous incident review",
+    "content": "Post-incident review for notification-service on 2025-12-19 at version v2.4.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was configuration mismatch. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10049",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-12-27",
+    "version": "v2.7.0",
+    "title": "notification-service Dependency failure review",
+    "content": "Post-incident review for notification-service on 2025-12-27 at version v2.7.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was expired certificate. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10084",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2025-12-27",
+    "version": "v2.5.1",
+    "title": "catalog-api Previous incident review",
+    "content": "Post-incident review for catalog-api on 2025-12-27 at version v2.5.1. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was cache exhaustion. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10131",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2025-12-29",
+    "version": "v2.7.0",
+    "title": "inventory-service Dependency failure review",
+    "content": "Post-incident review for inventory-service on 2025-12-29 at version v2.7.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was unexpected traffic growth. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10099",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2025-12-30",
+    "version": "v3.0.0",
+    "title": "notification-service Previous incident review",
+    "content": "Post-incident review for notification-service on 2025-12-30 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was database connection saturation. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10078",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2026-01-07",
+    "version": "v2.6.0",
+    "title": "payments-api Incident review",
+    "content": "Post-incident review for payments-api on 2026-01-07 at version v2.6.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was resource saturation. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10058",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-01-23",
+    "version": "v2.5.1",
+    "title": "catalog-api Previous incident review",
+    "content": "Post-incident review for catalog-api on 2026-01-23 at version v2.5.1. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was failed deployment. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10083",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2026-01-27",
+    "version": "v3.0.0",
+    "title": "auth-service Reliability postmortem",
+    "content": "Post-incident review for auth-service on 2026-01-27 at version v3.0.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was overloaded downstream dependency. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10095",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2026-01-27",
+    "version": "v2.6.0",
+    "title": "shipping-api Previous incident review",
+    "content": "Post-incident review for shipping-api on 2026-01-27 at version v2.6.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was configuration mismatch. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10135",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-01-31",
+    "version": "v3.0.0",
+    "title": "orders-api Incident review",
+    "content": "Post-incident review for orders-api on 2026-01-31 at version v3.0.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was expired certificate. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10093",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-02-01",
+    "version": "v3.0.0",
+    "title": "orders-api Incident review",
+    "content": "Post-incident review for orders-api on 2026-02-01 at version v3.0.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was cache exhaustion. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10123",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2026-02-05",
+    "version": "v2.6.0",
+    "title": "payments-api Reliability postmortem",
+    "content": "Post-incident review for payments-api on 2026-02-05 at version v2.6.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was unexpected traffic growth. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10082",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-02-12",
+    "version": "v3.0.0",
+    "title": "orders-api Previous incident review",
+    "content": "Post-incident review for orders-api on 2026-02-12 at version v3.0.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was database connection saturation. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10098",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2026-02-23",
+    "version": "v2.7.0",
+    "title": "payments-api Reliability postmortem",
+    "content": "Post-incident review for payments-api on 2026-02-23 at version v2.7.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was resource saturation. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10065",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2026-02-24",
+    "version": "v2.7.0",
+    "title": "inventory-service Latency postmortem",
+    "content": "Post-incident review for inventory-service on 2026-02-24 at version v2.7.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was failed deployment. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10100",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2026-02-24",
+    "version": "v2.6.0",
+    "title": "notification-service Reliability postmortem",
+    "content": "Post-incident review for notification-service on 2026-02-24 at version v2.6.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was overloaded downstream dependency. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10050",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2026-02-26",
+    "version": "v2.4.0",
+    "title": "shipping-api Previous incident review",
+    "content": "Post-incident review for shipping-api on 2026-02-26 at version v2.4.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was configuration mismatch. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10030",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2026-02-27",
+    "version": "v2.7.0",
+    "title": "inventory-service Reliability postmortem",
+    "content": "Post-incident review for inventory-service on 2026-02-27 at version v2.7.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was expired certificate. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10071",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2026-03-03",
+    "version": "v2.5.1",
+    "title": "inventory-service Reliability postmortem",
+    "content": "Post-incident review for inventory-service on 2026-03-03 at version v2.5.1. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was cache exhaustion. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10039",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-03-06",
+    "version": "v2.7.0",
+    "title": "catalog-api Deployment postmortem",
+    "content": "Post-incident review for catalog-api on 2026-03-06 at version v2.7.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was unexpected traffic growth. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10012",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-03-10",
+    "version": "v3.0.0",
+    "title": "user-api Incident review",
+    "content": "Post-incident review for user-api on 2026-03-10 at version v3.0.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was database connection saturation. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10069",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2026-03-10",
+    "version": "v2.7.0",
+    "title": "notification-service Deployment postmortem",
+    "content": "Post-incident review for notification-service on 2026-03-10 at version v2.7.0. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was resource saturation. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10144",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-03-13",
+    "version": "v2.7.0",
+    "title": "catalog-api Previous incident review",
+    "content": "Post-incident review for catalog-api on 2026-03-13 at version v2.7.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was failed deployment. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10022",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-03-27",
+    "version": "v2.5.1",
+    "title": "catalog-api Deployment postmortem",
+    "content": "Post-incident review for catalog-api on 2026-03-27 at version v2.5.1. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was overloaded downstream dependency. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10097",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2026-03-30",
+    "version": "v2.7.0",
+    "title": "notification-service Previous incident review",
+    "content": "Post-incident review for notification-service on 2026-03-30 at version v2.7.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was configuration mismatch. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10025",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-04-01",
+    "version": "v2.4.0",
+    "title": "user-api Latency postmortem",
+    "content": "Post-incident review for user-api on 2026-04-01 at version v2.4.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was expired certificate. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10137",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-04-01",
+    "version": "v2.5.1",
+    "title": "catalog-api Latency postmortem",
+    "content": "Post-incident review for catalog-api on 2026-04-01 at version v2.5.1. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was cache exhaustion. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10059",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-04-13",
+    "version": "v3.0.0",
+    "title": "orders-api Latency postmortem",
+    "content": "Post-incident review for orders-api on 2026-04-13 at version v3.0.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was unexpected traffic growth. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10061",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-04-15",
+    "version": "v2.5.1",
+    "title": "catalog-api Dependency failure review",
+    "content": "Post-incident review for catalog-api on 2026-04-15 at version v2.5.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was database connection saturation. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10067",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2026-04-17",
+    "version": "v2.4.0",
+    "title": "payments-api Previous incident review",
+    "content": "Post-incident review for payments-api on 2026-04-17 at version v2.4.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was resource saturation. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10103",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2026-04-21",
+    "version": "v2.4.0",
+    "title": "inventory-service Reliability postmortem",
+    "content": "Post-incident review for inventory-service on 2026-04-21 at version v2.4.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was failed deployment. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10017",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2026-04-23",
+    "version": "v2.6.0",
+    "title": "notification-service Reliability postmortem",
+    "content": "Post-incident review for notification-service on 2026-04-23 at version v2.6.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was overloaded downstream dependency. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10037",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-04-23",
+    "version": "v2.8.1",
+    "title": "user-api Reliability postmortem",
+    "content": "Post-incident review for user-api on 2026-04-23 at version v2.8.1. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was configuration mismatch. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10015",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2026-04-27",
+    "version": "v3.0.0",
+    "title": "notification-service Incident review",
+    "content": "Post-incident review for notification-service on 2026-04-27 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was expired certificate. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10043",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-04-29",
+    "version": "v2.4.0",
+    "title": "catalog-api Deployment postmortem",
+    "content": "Post-incident review for catalog-api on 2026-04-29 at version v2.4.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was cache exhaustion. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-211",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-05-03",
+    "version": "v2.6.0",
+    "title": "Previous latency incident",
+    "content": "Post-incident review for orders-api on 2026-05-03 at version v2.6.0. The incident manifested as A previous latency incident was caused by database connection saturation during a schema migration.. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was unexpected traffic growth. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10132",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2026-05-05",
+    "version": "v2.7.0",
+    "title": "payments-api Dependency failure review",
+    "content": "Post-incident review for payments-api on 2026-05-05 at version v2.7.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was database connection saturation. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10118",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-05-07",
+    "version": "v3.0.0",
+    "title": "catalog-api Deployment postmortem",
+    "content": "Post-incident review for catalog-api on 2026-05-07 at version v3.0.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was resource saturation. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10032",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2026-05-09",
+    "version": "v2.8.1",
+    "title": "auth-service Previous incident review",
+    "content": "Post-incident review for auth-service on 2026-05-09 at version v2.8.1. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was failed deployment. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10122",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2026-05-10",
+    "version": "v2.8.1",
+    "title": "shipping-api Deployment postmortem",
+    "content": "Post-incident review for shipping-api on 2026-05-10 at version v2.8.1. The incident manifested as memory pressure. Memory usage climbed gradually during the incident and several instances approached their configured limits. The review associated the increase with retained response data in a long-running processing path. The documented contributing cause was overloaded downstream dependency. The retention path was corrected and memory-pressure monitoring was added to the service dashboard. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10124",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2026-05-15",
+    "version": "v2.7.0",
+    "title": "payments-api Incident review",
+    "content": "Post-incident review for payments-api on 2026-05-15 at version v2.7.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was configuration mismatch. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10149",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-05-17",
+    "version": "v2.8.1",
+    "title": "catalog-api Latency postmortem",
+    "content": "Post-incident review for catalog-api on 2026-05-17 at version v2.8.1. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was expired certificate. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10101",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-05-24",
+    "version": "v2.5.1",
+    "title": "catalog-api Dependency failure review",
+    "content": "Post-incident review for catalog-api on 2026-05-24 at version v2.5.1. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was cache exhaustion. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10108",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-05-25",
+    "version": "v2.7.0",
+    "title": "user-api Latency postmortem",
+    "content": "Post-incident review for user-api on 2026-05-25 at version v2.7.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was unexpected traffic growth. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10133",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2026-05-25",
+    "version": "v2.5.1",
+    "title": "shipping-api Reliability postmortem",
+    "content": "Post-incident review for shipping-api on 2026-05-25 at version v2.5.1. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was database connection saturation. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10035",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2026-05-27",
+    "version": "v2.4.0",
+    "title": "shipping-api Incident review",
+    "content": "Post-incident review for shipping-api on 2026-05-27 at version v2.4.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was resource saturation. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10147",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-05-28",
+    "version": "v2.7.0",
+    "title": "catalog-api Previous incident review",
+    "content": "Post-incident review for catalog-api on 2026-05-28 at version v2.7.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was failed deployment. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10141",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-06-02",
+    "version": "v2.4.0",
+    "title": "orders-api Latency postmortem",
+    "content": "Post-incident review for orders-api on 2026-06-02 at version v2.4.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was overloaded downstream dependency. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10077",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-06-06",
+    "version": "v2.8.1",
+    "title": "orders-api Deployment postmortem",
+    "content": "Post-incident review for orders-api on 2026-06-06 at version v2.8.1. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was configuration mismatch. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10076",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2026-06-15",
+    "version": "v2.7.0",
+    "title": "auth-service Latency postmortem",
+    "content": "Post-incident review for auth-service on 2026-06-15 at version v2.7.0. The incident manifested as intermittent timeouts. The service experienced sporadic request timeouts rather than a complete outage. The timeline showed that slow downstream calls consumed request capacity until a portion of requests exceeded their deadline. The documented contributing cause was expired certificate. Downstream deadlines were made explicit and slow dependency calls were given separate capacity limits. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10121",
+    "type": "postmortem",
+    "service": "payments-api",
+    "date": "2026-06-15",
+    "version": "v2.6.0",
+    "title": "payments-api Incident review",
+    "content": "Post-incident review for payments-api on 2026-06-15 at version v2.6.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was cache exhaustion. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10053",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-06-18",
+    "version": "v2.7.0",
+    "title": "orders-api Previous incident review",
+    "content": "Post-incident review for orders-api on 2026-06-18 at version v2.7.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was unexpected traffic growth. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10102",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2026-07-13",
+    "version": "v2.5.1",
+    "title": "auth-service Reliability postmortem",
+    "content": "Post-incident review for auth-service on 2026-07-13 at version v2.5.1. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was database connection saturation. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10086",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-07-15",
+    "version": "v2.7.0",
+    "title": "catalog-api Dependency failure review",
+    "content": "Post-incident review for catalog-api on 2026-07-15 at version v2.7.0. The incident manifested as queue backlog. A burst of asynchronous work exceeded the normal consumer rate. The review traced the buildup to worker concurrency limits and confirmed that the API itself remained available while background processing fell behind. The documented contributing cause was resource saturation. Worker concurrency was increased and queue-depth alerting was tightened. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10016",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-07-18",
+    "version": "v2.8.1",
+    "title": "user-api Reliability postmortem",
+    "content": "Post-incident review for user-api on 2026-07-18 at version v2.8.1. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was failed deployment. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10033",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2026-07-18",
+    "version": "v2.6.0",
+    "title": "shipping-api Latency postmortem",
+    "content": "Post-incident review for shipping-api on 2026-07-18 at version v2.6.0. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was overloaded downstream dependency. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10138",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2026-07-20",
+    "version": "v2.8.1",
+    "title": "inventory-service Latency postmortem",
+    "content": "Post-incident review for inventory-service on 2026-07-20 at version v2.8.1. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was configuration mismatch. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10090",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2026-07-23",
+    "version": "v2.8.1",
+    "title": "auth-service Latency postmortem",
+    "content": "Post-incident review for auth-service on 2026-07-23 at version v2.8.1. The incident manifested as cache misses. Cache hit rate dropped during the incident, causing more requests to reach the backing store. The review found that cache entries were not being repopulated consistently after a configuration change. The documented contributing cause was expired certificate. Cache warm-up and invalidation behavior were corrected and hit-rate monitoring was added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10028",
+    "type": "postmortem",
+    "service": "notification-service",
+    "date": "2026-07-26",
+    "version": "v3.0.0",
+    "title": "notification-service Incident review",
+    "content": "Post-incident review for notification-service on 2026-07-26 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was cache exhaustion. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10038",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-07-30",
+    "version": "v3.0.0",
+    "title": "catalog-api Previous incident review",
+    "content": "Post-incident review for catalog-api on 2026-07-30 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was unexpected traffic growth. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10130",
+    "type": "postmortem",
+    "service": "inventory-service",
+    "date": "2026-08-09",
+    "version": "v2.6.0",
+    "title": "inventory-service Previous incident review",
+    "content": "Post-incident review for inventory-service on 2026-08-09 at version v2.6.0. The incident manifested as dependency failures. Requests began failing when a downstream dependency returned errors above its normal baseline. The review correlated the dependency error window with application failures and found that retries increased pressure on the same dependency. The documented contributing cause was database connection saturation. Retry attempts were bounded and dependency failures were isolated with a circuit-breaker policy. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10066",
+    "type": "postmortem",
+    "service": "shipping-api",
+    "date": "2026-08-12",
+    "version": "v2.4.0",
+    "title": "shipping-api Deployment postmortem",
+    "content": "Post-incident review for shipping-api on 2026-08-12 at version v2.4.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was resource saturation. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10128",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-08-16",
+    "version": "v2.7.0",
+    "title": "orders-api Previous incident review",
+    "content": "Post-incident review for orders-api on 2026-08-16 at version v2.7.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was failed deployment. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10057",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-08-17",
+    "version": "v3.0.0",
+    "title": "catalog-api Reliability postmortem",
+    "content": "Post-incident review for catalog-api on 2026-08-17 at version v3.0.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was overloaded downstream dependency. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10145",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-08-20",
+    "version": "v3.0.0",
+    "title": "user-api Dependency failure review",
+    "content": "Post-incident review for user-api on 2026-08-20 at version v3.0.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was configuration mismatch. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10011",
+    "type": "postmortem",
+    "service": "orders-api",
+    "date": "2026-08-26",
+    "version": "v2.7.0",
+    "title": "orders-api Deployment postmortem",
+    "content": "Post-incident review for orders-api on 2026-08-26 at version v2.7.0. The incident manifested as elevated P95 latency. Tail latency increased while median latency changed less significantly. The review found that a small group of slow dependency calls was creating queueing at the service boundary. The documented contributing cause was expired certificate. Dependency latency was instrumented separately and the affected path received bounded timeouts. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10087",
+    "type": "postmortem",
+    "service": "catalog-api",
+    "date": "2026-08-29",
+    "version": "v3.0.0",
+    "title": "catalog-api Latency postmortem",
+    "content": "Post-incident review for catalog-api on 2026-08-29 at version v3.0.0. The incident manifested as database connection saturation. Database connection usage reached the configured ceiling and new requests waited for an available connection. The review found that a migration-related operation held connections longer than the normal transaction path. The documented contributing cause was cache exhaustion. The migration procedure was isolated from normal traffic and connection-pool utilization was monitored explicitly. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10005",
+    "type": "postmortem",
+    "service": "auth-service",
+    "date": "2026-08-31",
+    "version": "v2.8.1",
+    "title": "auth-service Reliability postmortem",
+    "content": "Post-incident review for auth-service on 2026-08-31 at version v2.8.1. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was unexpected traffic growth. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10034",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-09-08",
+    "version": "v3.0.0",
+    "title": "user-api Latency postmortem",
+    "content": "Post-incident review for user-api on 2026-09-08 at version v3.0.0. The incident manifested as increased request errors. The service returned an elevated number of application errors during the incident window. Analysis separated the errors by endpoint and showed that failures were concentrated on a dependency-backed operation. The documented contributing cause was database connection saturation. The affected dependency path was isolated and endpoint-level error alerts were added. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  },
+  {
+    "document_id": "PM-10048",
+    "type": "postmortem",
+    "service": "user-api",
+    "date": "2026-09-08",
+    "version": "v2.4.0",
+    "title": "user-api Deployment postmortem",
+    "content": "Post-incident review for user-api on 2026-09-08 at version v2.4.0. The incident manifested as CPU saturation. Application CPU rose after a change increased the amount of synchronous processing performed per request. Profiling showed the expensive path concentrated in request validation and transformation rather than the downstream database. The documented contributing cause was resource saturation. The expensive operation was moved off the hot path and CPU utilization thresholds were adjusted. The review also recorded the incident timeline, affected service boundary, dependency behavior, and follow-up actions so that this event can be distinguished from other incidents with similar symptoms."
+  }
+]

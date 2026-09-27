@@ -16,6 +16,17 @@ _chroma_client = None
 _collection = None
 
 
+def _new_chroma_client():
+    import chromadb
+    from chromadb.config import Settings as ChromaSettings
+
+    Path(settings.chroma_path).mkdir(parents=True, exist_ok=True)
+    return chromadb.PersistentClient(
+        path=settings.chroma_path,
+        settings=ChromaSettings(anonymized_telemetry=False),
+    )
+
+
 def get_embedder():
     """Load the sentence-transformers embedding model once per process."""
     global _embedder
@@ -24,6 +35,10 @@ def get_embedder():
 
         _embedder = SentenceTransformer(settings.embedding_model)
     return _embedder
+
+
+def is_embedding_model_loaded() -> bool:
+    return _embedder is not None
 
 
 def warm_up() -> None:
@@ -41,10 +56,7 @@ def get_collection():
     """Lazily initialize the persistent Chroma client/collection."""
     global _chroma_client, _collection
     if _collection is None:
-        import chromadb
-
-        Path(settings.chroma_path).mkdir(parents=True, exist_ok=True)
-        _chroma_client = chromadb.PersistentClient(path=settings.chroma_path)
+        _chroma_client = _new_chroma_client()
         _collection = _chroma_client.get_or_create_collection(
             name=settings.chroma_collection_name,
             metadata={"hnsw:space": "cosine"},
@@ -55,10 +67,7 @@ def get_collection():
 def reset_collection():
     """Used by tests / re-ingestion to start from a clean collection."""
     global _chroma_client, _collection
-    import chromadb
-
-    Path(settings.chroma_path).mkdir(parents=True, exist_ok=True)
-    _chroma_client = chromadb.PersistentClient(path=settings.chroma_path)
+    _chroma_client = _new_chroma_client()
     try:
         _chroma_client.delete_collection(settings.chroma_collection_name)
     except Exception:
@@ -77,8 +86,12 @@ def upsert_chunks(chunks: list[dict]) -> None:
     """
     if not chunks:
         return
+
+    chunks_by_id = {chunk["chunk_id"]: chunk for chunk in chunks}
+    chunks = list(chunks_by_id.values())
     collection = get_collection()
     ids = [c["chunk_id"] for c in chunks]
+    active_ids = set(ids)
     documents = [c["content"] for c in chunks]
     metadatas = [
         {
@@ -93,6 +106,17 @@ def upsert_chunks(chunks: list[dict]) -> None:
     ]
     embeddings = embed_texts(documents)
     collection.upsert(ids=ids, documents=documents, metadatas=metadatas, embeddings=embeddings)
+
+    stale_ids = []
+    for document_id in {chunk["document_id"] for chunk in chunks}:
+        existing = collection.get(where={"document_id": document_id}, include=[])
+        stale_ids.extend(
+            chunk_id
+            for chunk_id in existing.get("ids", [])
+            if chunk_id not in active_ids
+        )
+    if stale_ids:
+        collection.delete(ids=stale_ids)
 
 
 def semantic_search(query: str, top_k: int = 10, where: Optional[dict] = None) -> list[dict]:

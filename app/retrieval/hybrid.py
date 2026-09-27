@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import Optional
 
 from app.retrieval.metadata import metadata_retrieve
-from app.retrieval.semantic import semantic_retrieve
+from app.retrieval.semantic import distance_to_score, semantic_retrieve
 from app.storage.sqlite import get_store
 
 
@@ -60,10 +60,7 @@ def _recency_score(doc_date: Optional[str]) -> float:
 
 
 def _semantic_score(distance: Optional[float]) -> float:
-    if distance is None:
-        return 0.0
-    # cosine distance in [0, 2]; convert to a similarity-ish score in [0, 1]
-    return max(0.0, 1.0 - distance)
+    return distance_to_score(distance)
 
 def _normalize_service(service: Optional[str]) -> str:
     if not service:
@@ -143,7 +140,8 @@ def search_documents(
         if not doc:
             continue
 
-        sem_score = _semantic_score(semantic_best_distance.get(doc_id))
+        distance = semantic_best_distance.get(doc_id)
+        sem_score = _semantic_score(distance)
         normalized_query_service = _normalize_service(service)
         normalized_doc_service = _normalize_service(doc.get("service"))
 
@@ -173,6 +171,8 @@ def search_documents(
         ranked.append(
             {
                 **doc,
+                "distance": distance,
+                "score": round(total, 4),
                 "_score": round(total, 4),
                 "_score_breakdown": {
                     "semantic": round(sem_score, 3),

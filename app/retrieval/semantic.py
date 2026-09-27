@@ -5,6 +5,22 @@ from typing import Optional
 from app.storage.chroma import semantic_search as _semantic_search
 
 
+def distance_to_score(distance: Optional[float]) -> float:
+    """Convert Chroma cosine distance to a bounded higher-is-better score."""
+    if distance is None:
+        return 0.0
+    try:
+        return max(0.0, min(1.0, 1.0 - float(distance)))
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _normalize_service(service: Optional[str]) -> str:
+    if not service:
+        return ""
+    return service.lower().strip().replace("_", "-").replace(" ", "-")
+
+
 def semantic_retrieve(
     query: str,
     top_k: int = 10,
@@ -25,38 +41,22 @@ def semantic_retrieve(
         where=None
     )
 
+    for result in results:
+        result["score"] = distance_to_score(result.get("distance"))
+
     # No service specified → return normal semantic results
     if not service:
         return results
 
-    # Normalize the requested service
-    requested_service = (
-        service.lower()
-        .strip()
-        .replace("_", "-")
-        .replace(" ", "-")
-    )
+    requested_service = _normalize_service(service)
 
-    # Give matching services a ranking boost
-    for result in results:
-        metadata = result.get("metadata", {})
-        doc_service = metadata.get("service", "")
-
-        normalized_doc_service = (
-            str(doc_service)
-            .lower()
-            .strip()
-            .replace("_", "-")
-            .replace(" ", "-")
-        )
-
-        if requested_service == normalized_doc_service:
-            result["score"] = result.get("score", 0) + 0.2
-
-    # Re-sort after applying service relevance
     results.sort(
-        key=lambda x: x.get("score", 0),
-        reverse=True
+        key=lambda result: (
+            result["score"]
+            + (0.2 if _normalize_service(result.get("service")) == requested_service else 0.0),
+            result["score"],
+        ),
+        reverse=True,
     )
 
     return results

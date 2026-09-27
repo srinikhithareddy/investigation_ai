@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class EvidenceItem(BaseModel):
@@ -27,3 +27,6 @@ class InvestigateResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str
+    checks: dict[str, str] = Field(default_factory=dict)
+    document_count: Optional[int] = None
+    chunk_count: Optional[int] = None

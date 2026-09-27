@@ -1,0 +1,1352 @@
+[
+  {
+    "document_id": "ARCH-10061",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-01-11",
+    "version": "v2.7.0",
+    "title": "payments-api Failure isolation design",
+    "content": "Architecture focus 1: request routing and service boundaries. payments-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10066",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-01-13",
+    "version": "v2.8.1",
+    "title": "auth-service Failure isolation design",
+    "content": "Architecture focus 2: database read/write paths. auth-service uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10054",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-01-16",
+    "version": "v2.4.0",
+    "title": "notification-service Service architecture",
+    "content": "Architecture focus 3: cache topology and invalidation. notification-service validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10114",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-01-17",
+    "version": "v2.7.0",
+    "title": "catalog-api Data flow design",
+    "content": "Architecture focus 4: authentication and authorization flow. catalog-api uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10110",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-01-20",
+    "version": "v2.4.0",
+    "title": "user-api Database connectivity design",
+    "content": "Architecture focus 5: message queues and asynchronous processing. user-api controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10080",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-01-23",
+    "version": "v2.6.0",
+    "title": "orders-api Service architecture",
+    "content": "Architecture focus 6: connection pooling and resource limits. orders-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10092",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-01-27",
+    "version": "v2.6.0",
+    "title": "notification-service Database connectivity design",
+    "content": "Architecture focus 7: timeout, retry, and circuit-breaker behavior. notification-service runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10030",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-01-30",
+    "version": "v2.8.1",
+    "title": "notification-service Data flow design",
+    "content": "Architecture focus 8: horizontal scaling and load distribution. notification-service exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10077",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-02-07",
+    "version": "v3.0.0",
+    "title": "shipping-api Service architecture",
+    "content": "Architecture focus 9: observability and dependency health checks. shipping-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10125",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-02-08",
+    "version": "v3.0.0",
+    "title": "catalog-api Caching architecture",
+    "content": "Architecture focus 10: data consistency and transaction boundaries. catalog-api receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10120",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-02-09",
+    "version": "v2.5.1",
+    "title": "shipping-api Data flow design",
+    "content": "Architecture focus 11: API gateway and ingress behavior. shipping-api isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10016",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-02-26",
+    "version": "v2.4.0",
+    "title": "auth-service Service architecture",
+    "content": "Architecture focus 12: failure isolation and graceful degradation. auth-service moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10070",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-02-26",
+    "version": "v2.4.0",
+    "title": "payments-api Data flow design",
+    "content": "Architecture focus 13: background workers and job scheduling. payments-api separates operational configuration from application logic and versions configuration changes. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10031",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-03-02",
+    "version": "v2.6.0",
+    "title": "notification-service Dependency architecture",
+    "content": "Architecture focus 14: configuration and feature-flag management. notification-service separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10104",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-03-08",
+    "version": "v2.6.0",
+    "title": "notification-service Caching architecture",
+    "content": "Architecture focus 15: storage capacity and retention boundaries. notification-service separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10075",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-03-10",
+    "version": "v3.0.0",
+    "title": "orders-api Failure isolation design",
+    "content": "Architecture focus 16: request routing and service boundaries. orders-api uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10024",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-03-17",
+    "version": "v3.0.0",
+    "title": "orders-api Dependency architecture",
+    "content": "Architecture focus 17: database read/write paths. orders-api validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10034",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-03-18",
+    "version": "v2.4.0",
+    "title": "shipping-api Failure isolation design",
+    "content": "Architecture focus 18: cache topology and invalidation. shipping-api uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10086",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-04-07",
+    "version": "v2.8.1",
+    "title": "notification-service Dependency architecture",
+    "content": "Architecture focus 19: authentication and authorization flow. notification-service controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10048",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-04-11",
+    "version": "v2.4.0",
+    "title": "user-api Database connectivity design",
+    "content": "Architecture focus 20: message queues and asynchronous processing. user-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10085",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-04-11",
+    "version": "v2.5.1",
+    "title": "user-api Service architecture",
+    "content": "Architecture focus 21: connection pooling and resource limits. user-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10079",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2025-04-15",
+    "version": "v2.4.0",
+    "title": "inventory-service Caching architecture",
+    "content": "Architecture focus 22: timeout, retry, and circuit-breaker behavior. inventory-service exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10089",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-04-29",
+    "version": "v3.0.0",
+    "title": "user-api Dependency architecture",
+    "content": "Architecture focus 23: horizontal scaling and load distribution. user-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10026",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-05-02",
+    "version": "v2.4.0",
+    "title": "user-api Dependency architecture",
+    "content": "Architecture focus 24: observability and dependency health checks. user-api receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10053",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-05-09",
+    "version": "v3.0.0",
+    "title": "catalog-api Data flow design",
+    "content": "Architecture focus 25: data consistency and transaction boundaries. catalog-api isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10056",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-05-15",
+    "version": "v3.0.0",
+    "title": "auth-service Database connectivity design",
+    "content": "Architecture focus 26: API gateway and ingress behavior. auth-service moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10065",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-05-22",
+    "version": "v2.6.0",
+    "title": "orders-api Service architecture",
+    "content": "Architecture focus 27: failure isolation and graceful degradation. orders-api separates operational configuration from application logic and versions configuration changes. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10111",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-06-04",
+    "version": "v2.5.1",
+    "title": "auth-service Service architecture",
+    "content": "Architecture focus 28: background workers and job scheduling. auth-service separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10029",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2025-06-13",
+    "version": "v2.4.0",
+    "title": "inventory-service Data flow design",
+    "content": "Architecture focus 29: configuration and feature-flag management. inventory-service separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10113",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-06-15",
+    "version": "v2.8.1",
+    "title": "shipping-api Service architecture",
+    "content": "Architecture focus 30: storage capacity and retention boundaries. shipping-api uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10135",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-06-20",
+    "version": "v2.5.1",
+    "title": "notification-service Failure isolation design",
+    "content": "Architecture focus 31: request routing and service boundaries. notification-service validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10022",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2025-06-23",
+    "version": "v2.5.1",
+    "title": "inventory-service Dependency architecture",
+    "content": "Architecture focus 32: database read/write paths. inventory-service uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10134",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-06-23",
+    "version": "v2.4.0",
+    "title": "catalog-api Failure isolation design",
+    "content": "Architecture focus 33: cache topology and invalidation. catalog-api controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10044",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-06-26",
+    "version": "v2.7.0",
+    "title": "catalog-api Caching architecture",
+    "content": "Architecture focus 34: authentication and authorization flow. catalog-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10141",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-06-26",
+    "version": "v3.0.0",
+    "title": "shipping-api Caching architecture",
+    "content": "Architecture focus 35: message queues and asynchronous processing. shipping-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10127",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-06-27",
+    "version": "v2.4.0",
+    "title": "catalog-api Data flow design",
+    "content": "Architecture focus 36: connection pooling and resource limits. catalog-api exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10081",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-06-28",
+    "version": "v2.4.0",
+    "title": "auth-service Data flow design",
+    "content": "Architecture focus 37: timeout, retry, and circuit-breaker behavior. auth-service defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10150",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-07-07",
+    "version": "v2.8.1",
+    "title": "shipping-api Caching architecture",
+    "content": "Architecture focus 38: horizontal scaling and load distribution. shipping-api receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10064",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-07-12",
+    "version": "v2.5.1",
+    "title": "notification-service Caching architecture",
+    "content": "Architecture focus 39: observability and dependency health checks. notification-service isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10088",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-07-12",
+    "version": "v2.5.1",
+    "title": "orders-api Database connectivity design",
+    "content": "Architecture focus 40: data consistency and transaction boundaries. orders-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10139",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-07-12",
+    "version": "v2.8.1",
+    "title": "shipping-api Dependency architecture",
+    "content": "Architecture focus 41: API gateway and ingress behavior. shipping-api separates operational configuration from application logic and versions configuration changes. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10107",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-07-14",
+    "version": "v2.4.0",
+    "title": "orders-api Caching architecture",
+    "content": "Architecture focus 42: failure isolation and graceful degradation. orders-api separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10045",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-07-19",
+    "version": "v3.0.0",
+    "title": "payments-api Database connectivity design",
+    "content": "Architecture focus 43: background workers and job scheduling. payments-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10146",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-07-22",
+    "version": "v2.6.0",
+    "title": "notification-service Database connectivity design",
+    "content": "Architecture focus 44: configuration and feature-flag management. notification-service uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10020",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-07-26",
+    "version": "v3.0.0",
+    "title": "payments-api Dependency architecture",
+    "content": "Architecture focus 45: storage capacity and retention boundaries. payments-api validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10067",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-08-01",
+    "version": "v2.4.0",
+    "title": "user-api Failure isolation design",
+    "content": "Architecture focus 46: request routing and service boundaries. user-api uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10049",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-08-09",
+    "version": "v3.0.0",
+    "title": "shipping-api Caching architecture",
+    "content": "Architecture focus 47: database read/write paths. shipping-api controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10091",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2025-08-09",
+    "version": "v2.6.0",
+    "title": "inventory-service Data flow design",
+    "content": "Architecture focus 48: cache topology and invalidation. inventory-service applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10137",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-08-10",
+    "version": "v2.6.0",
+    "title": "user-api Failure isolation design",
+    "content": "Architecture focus 49: authentication and authorization flow. user-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10037",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-08-12",
+    "version": "v3.0.0",
+    "title": "notification-service Failure isolation design",
+    "content": "Architecture focus 50: message queues and asynchronous processing. notification-service exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10072",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-08-14",
+    "version": "v3.0.0",
+    "title": "orders-api Dependency architecture",
+    "content": "Architecture focus 51: connection pooling and resource limits. orders-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10028",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-08-26",
+    "version": "v2.4.0",
+    "title": "user-api Service architecture",
+    "content": "Architecture focus 52: timeout, retry, and circuit-breaker behavior. user-api receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10143",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-08-28",
+    "version": "v2.7.0",
+    "title": "notification-service Data flow design",
+    "content": "Architecture focus 53: horizontal scaling and load distribution. notification-service isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10117",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-09-01",
+    "version": "v2.8.1",
+    "title": "orders-api Data flow design",
+    "content": "Architecture focus 54: observability and dependency health checks. orders-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10074",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-09-03",
+    "version": "v2.5.1",
+    "title": "user-api Data flow design",
+    "content": "Architecture focus 55: data consistency and transaction boundaries. user-api separates operational configuration from application logic and versions configuration changes. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10019",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-09-07",
+    "version": "v2.8.1",
+    "title": "catalog-api Service architecture",
+    "content": "Architecture focus 56: API gateway and ingress behavior. catalog-api separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10095",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-09-12",
+    "version": "v3.0.0",
+    "title": "orders-api Data flow design",
+    "content": "Architecture focus 57: failure isolation and graceful degradation. orders-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10119",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-09-12",
+    "version": "v3.0.0",
+    "title": "notification-service Dependency architecture",
+    "content": "Architecture focus 58: background workers and job scheduling. notification-service uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10058",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-09-13",
+    "version": "v2.6.0",
+    "title": "payments-api Service architecture",
+    "content": "Architecture focus 59: configuration and feature-flag management. payments-api validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10004",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-09-14",
+    "version": "v2.7.0",
+    "title": "notification-service Data flow design",
+    "content": "Architecture focus 60: storage capacity and retention boundaries. notification-service uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10040",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-09-20",
+    "version": "v2.8.1",
+    "title": "user-api Caching architecture",
+    "content": "Architecture focus 61: request routing and service boundaries. user-api controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10128",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-09-25",
+    "version": "v2.7.0",
+    "title": "orders-api Data flow design",
+    "content": "Architecture focus 62: database read/write paths. orders-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10059",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2025-09-28",
+    "version": "v2.6.0",
+    "title": "inventory-service Data flow design",
+    "content": "Architecture focus 63: cache topology and invalidation. inventory-service runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10006",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-10-04",
+    "version": "v2.5.1",
+    "title": "shipping-api Service architecture",
+    "content": "Architecture focus 64: authentication and authorization flow. shipping-api exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10023",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-10-04",
+    "version": "v2.6.0",
+    "title": "payments-api Service architecture",
+    "content": "Architecture focus 65: message queues and asynchronous processing. payments-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10041",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-10-05",
+    "version": "v2.6.0",
+    "title": "notification-service Dependency architecture",
+    "content": "Architecture focus 66: connection pooling and resource limits. notification-service receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10060",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-10-07",
+    "version": "v2.4.0",
+    "title": "catalog-api Service architecture",
+    "content": "Architecture focus 67: timeout, retry, and circuit-breaker behavior. catalog-api isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10008",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-10-14",
+    "version": "v3.0.0",
+    "title": "user-api Dependency architecture",
+    "content": "Architecture focus 68: horizontal scaling and load distribution. user-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10101",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-10-19",
+    "version": "v2.7.0",
+    "title": "user-api Dependency architecture",
+    "content": "Architecture focus 69: observability and dependency health checks. user-api separates operational configuration from application logic and versions configuration changes. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10005",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-10-20",
+    "version": "v3.0.0",
+    "title": "notification-service Dependency architecture",
+    "content": "Architecture focus 70: data consistency and transaction boundaries. notification-service separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10105",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-10-27",
+    "version": "v2.7.0",
+    "title": "shipping-api Service architecture",
+    "content": "Architecture focus 71: API gateway and ingress behavior. shipping-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10010",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-11-02",
+    "version": "v2.5.1",
+    "title": "catalog-api Data flow design",
+    "content": "Architecture focus 72: failure isolation and graceful degradation. catalog-api uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10042",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-11-04",
+    "version": "v2.6.0",
+    "title": "user-api Caching architecture",
+    "content": "Architecture focus 73: background workers and job scheduling. user-api validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10087",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-11-04",
+    "version": "v2.4.0",
+    "title": "payments-api Dependency architecture",
+    "content": "Architecture focus 74: configuration and feature-flag management. payments-api uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10129",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-11-07",
+    "version": "v2.7.0",
+    "title": "orders-api Failure isolation design",
+    "content": "Architecture focus 75: storage capacity and retention boundaries. orders-api controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10050",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-11-12",
+    "version": "v2.7.0",
+    "title": "shipping-api Dependency architecture",
+    "content": "Architecture focus 76: request routing and service boundaries. shipping-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10078",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-11-12",
+    "version": "v2.6.0",
+    "title": "orders-api Failure isolation design",
+    "content": "Architecture focus 77: database read/write paths. orders-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10102",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2025-11-15",
+    "version": "v2.4.0",
+    "title": "shipping-api Caching architecture",
+    "content": "Architecture focus 78: cache topology and invalidation. shipping-api exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10145",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2025-11-19",
+    "version": "v2.7.0",
+    "title": "user-api Service architecture",
+    "content": "Architecture focus 79: authentication and authorization flow. user-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10038",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-11-22",
+    "version": "v2.7.0",
+    "title": "catalog-api Data flow design",
+    "content": "Architecture focus 80: message queues and asynchronous processing. catalog-api receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10002",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2025-11-23",
+    "version": "v2.8.1",
+    "title": "inventory-service Database connectivity design",
+    "content": "Architecture focus 81: connection pooling and resource limits. inventory-service isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10018",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2025-11-24",
+    "version": "v2.8.1",
+    "title": "payments-api Data flow design",
+    "content": "Architecture focus 82: timeout, retry, and circuit-breaker behavior. payments-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10057",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2025-12-03",
+    "version": "v2.7.0",
+    "title": "notification-service Service architecture",
+    "content": "Architecture focus 83: horizontal scaling and load distribution. notification-service separates operational configuration from application logic and versions configuration changes. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10013",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2025-12-04",
+    "version": "v2.8.1",
+    "title": "orders-api Failure isolation design",
+    "content": "Architecture focus 84: observability and dependency health checks. orders-api separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10051",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2025-12-09",
+    "version": "v2.6.0",
+    "title": "inventory-service Data flow design",
+    "content": "Architecture focus 85: data consistency and transaction boundaries. inventory-service separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10068",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2025-12-15",
+    "version": "v2.6.0",
+    "title": "catalog-api Data flow design",
+    "content": "Architecture focus 86: API gateway and ingress behavior. catalog-api uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10014",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-12-22",
+    "version": "v2.7.0",
+    "title": "auth-service Service architecture",
+    "content": "Architecture focus 87: failure isolation and graceful degradation. auth-service validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10017",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-12-22",
+    "version": "v2.7.0",
+    "title": "auth-service Service architecture",
+    "content": "Architecture focus 88: background workers and job scheduling. auth-service uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10130",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2025-12-27",
+    "version": "v2.5.1",
+    "title": "auth-service Caching architecture",
+    "content": "Architecture focus 89: configuration and feature-flag management. auth-service controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10012",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-01-01",
+    "version": "v2.6.0",
+    "title": "inventory-service Data flow design",
+    "content": "Architecture focus 90: storage capacity and retention boundaries. inventory-service applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10118",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2026-01-02",
+    "version": "v2.4.0",
+    "title": "payments-api Service architecture",
+    "content": "Architecture focus 91: request routing and service boundaries. payments-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10027",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-01-04",
+    "version": "v2.4.0",
+    "title": "orders-api Service architecture",
+    "content": "Architecture focus 92: database read/write paths. orders-api exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10099",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2026-01-05",
+    "version": "v2.8.1",
+    "title": "user-api Caching architecture",
+    "content": "Architecture focus 93: cache topology and invalidation. user-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10138",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-01-05",
+    "version": "v2.6.0",
+    "title": "inventory-service Caching architecture",
+    "content": "Architecture focus 94: authentication and authorization flow. inventory-service receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10132",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-01-10",
+    "version": "v3.0.0",
+    "title": "orders-api Data flow design",
+    "content": "Architecture focus 95: message queues and asynchronous processing. orders-api isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10062",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2026-01-31",
+    "version": "v2.7.0",
+    "title": "payments-api Dependency architecture",
+    "content": "Architecture focus 96: connection pooling and resource limits. payments-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10003",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-02-05",
+    "version": "v2.5.1",
+    "title": "shipping-api Database connectivity design",
+    "content": "Architecture focus 97: timeout, retry, and circuit-breaker behavior. shipping-api separates operational configuration from application logic and versions configuration changes. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10039",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-02-09",
+    "version": "v2.6.0",
+    "title": "shipping-api Dependency architecture",
+    "content": "Architecture focus 98: horizontal scaling and load distribution. shipping-api separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10055",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2026-02-09",
+    "version": "v2.7.0",
+    "title": "payments-api Service architecture",
+    "content": "Architecture focus 99: observability and dependency health checks. payments-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10115",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2026-02-15",
+    "version": "v2.7.0",
+    "title": "auth-service Dependency architecture",
+    "content": "Architecture focus 100: data consistency and transaction boundaries. auth-service uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10147",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2026-02-17",
+    "version": "v2.8.1",
+    "title": "notification-service Dependency architecture",
+    "content": "Architecture focus 101: API gateway and ingress behavior. notification-service validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10084",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2026-02-21",
+    "version": "v2.7.0",
+    "title": "notification-service Service architecture",
+    "content": "Architecture focus 102: failure isolation and graceful degradation. notification-service uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10009",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2026-02-28",
+    "version": "v2.8.1",
+    "title": "notification-service Failure isolation design",
+    "content": "Architecture focus 103: background workers and job scheduling. notification-service controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10094",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-03-06",
+    "version": "v3.0.0",
+    "title": "inventory-service Failure isolation design",
+    "content": "Architecture focus 104: configuration and feature-flag management. inventory-service applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10144",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-03-11",
+    "version": "v2.5.1",
+    "title": "catalog-api Dependency architecture",
+    "content": "Architecture focus 105: storage capacity and retention boundaries. catalog-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10140",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-03-19",
+    "version": "v2.7.0",
+    "title": "orders-api Database connectivity design",
+    "content": "Architecture focus 106: request routing and service boundaries. orders-api exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10035",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-03-22",
+    "version": "v3.0.0",
+    "title": "shipping-api Database connectivity design",
+    "content": "Architecture focus 107: database read/write paths. shipping-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10069",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-03-22",
+    "version": "v2.4.0",
+    "title": "catalog-api Dependency architecture",
+    "content": "Architecture focus 108: cache topology and invalidation. catalog-api receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10073",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2026-03-22",
+    "version": "v2.5.1",
+    "title": "payments-api Database connectivity design",
+    "content": "Architecture focus 109: authentication and authorization flow. payments-api isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10148",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2026-03-24",
+    "version": "v2.7.0",
+    "title": "payments-api Caching architecture",
+    "content": "Architecture focus 110: message queues and asynchronous processing. payments-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10124",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2026-03-25",
+    "version": "v2.5.1",
+    "title": "notification-service Caching architecture",
+    "content": "Architecture focus 111: connection pooling and resource limits. notification-service separates operational configuration from application logic and versions configuration changes. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10133",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-03-25",
+    "version": "v2.5.1",
+    "title": "catalog-api Database connectivity design",
+    "content": "Architecture focus 112: timeout, retry, and circuit-breaker behavior. catalog-api separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10083",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-04-04",
+    "version": "v2.5.1",
+    "title": "orders-api Service architecture",
+    "content": "Architecture focus 113: horizontal scaling and load distribution. orders-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10121",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2026-04-06",
+    "version": "v2.4.0",
+    "title": "payments-api Service architecture",
+    "content": "Architecture focus 114: observability and dependency health checks. payments-api uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10032",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-04-07",
+    "version": "v3.0.0",
+    "title": "shipping-api Service architecture",
+    "content": "Architecture focus 115: data consistency and transaction boundaries. shipping-api validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10036",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-04-14",
+    "version": "v3.0.0",
+    "title": "orders-api Service architecture",
+    "content": "Architecture focus 116: API gateway and ingress behavior. orders-api uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10001",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2026-04-15",
+    "version": "v3.0.0",
+    "title": "notification-service Database connectivity design",
+    "content": "Architecture focus 117: failure isolation and graceful degradation. notification-service controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10043",
+    "type": "architecture",
+    "service": "payments-api",
+    "date": "2026-04-24",
+    "version": "v2.4.0",
+    "title": "payments-api Dependency architecture",
+    "content": "Architecture focus 118: background workers and job scheduling. payments-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for payments-api."
+  },
+  {
+    "document_id": "ARCH-10142",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-05-11",
+    "version": "v2.8.1",
+    "title": "shipping-api Dependency architecture",
+    "content": "Architecture focus 119: configuration and feature-flag management. shipping-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10033",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-05-18",
+    "version": "v2.8.1",
+    "title": "orders-api Dependency architecture",
+    "content": "Architecture focus 120: storage capacity and retention boundaries. orders-api exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10131",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-06-01",
+    "version": "v3.0.0",
+    "title": "orders-api Caching architecture",
+    "content": "Architecture focus 121: request routing and service boundaries. orders-api defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10097",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-06-05",
+    "version": "v2.5.1",
+    "title": "catalog-api Dependency architecture",
+    "content": "Architecture focus 122: database read/write paths. catalog-api receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10082",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-06-06",
+    "version": "v3.0.0",
+    "title": "inventory-service Dependency architecture",
+    "content": "Architecture focus 123: cache topology and invalidation. inventory-service isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10093",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-06-10",
+    "version": "v2.4.0",
+    "title": "catalog-api Caching architecture",
+    "content": "Architecture focus 124: authentication and authorization flow. catalog-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10116",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-06-10",
+    "version": "v2.6.0",
+    "title": "catalog-api Failure isolation design",
+    "content": "Architecture focus 125: message queues and asynchronous processing. catalog-api separates operational configuration from application logic and versions configuration changes. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10052",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-06-12",
+    "version": "v2.5.1",
+    "title": "catalog-api Dependency architecture",
+    "content": "Architecture focus 126: connection pooling and resource limits. catalog-api separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10090",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-06-21",
+    "version": "v2.7.0",
+    "title": "shipping-api Service architecture",
+    "content": "Architecture focus 127: timeout, retry, and circuit-breaker behavior. shipping-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10108",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-06-22",
+    "version": "v2.7.0",
+    "title": "inventory-service Caching architecture",
+    "content": "Architecture focus 128: horizontal scaling and load distribution. inventory-service uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10109",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-06-25",
+    "version": "v3.0.0",
+    "title": "shipping-api Database connectivity design",
+    "content": "Architecture focus 129: observability and dependency health checks. shipping-api validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10096",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2026-06-28",
+    "version": "v2.6.0",
+    "title": "auth-service Service architecture",
+    "content": "Architecture focus 130: data consistency and transaction boundaries. auth-service uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10122",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-06-28",
+    "version": "v2.8.1",
+    "title": "catalog-api Dependency architecture",
+    "content": "Architecture focus 131: API gateway and ingress behavior. catalog-api controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10047",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2026-07-03",
+    "version": "v2.6.0",
+    "title": "user-api Caching architecture",
+    "content": "Architecture focus 132: failure isolation and graceful degradation. user-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10046",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-07-06",
+    "version": "v3.0.0",
+    "title": "orders-api Database connectivity design",
+    "content": "Architecture focus 133: background workers and job scheduling. orders-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v3.0.0 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10100",
+    "type": "architecture",
+    "service": "auth-service",
+    "date": "2026-07-06",
+    "version": "v2.8.1",
+    "title": "auth-service Dependency architecture",
+    "content": "Architecture focus 134: configuration and feature-flag management. auth-service exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for auth-service."
+  },
+  {
+    "document_id": "ARCH-10126",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-07-06",
+    "version": "v2.8.1",
+    "title": "inventory-service Database connectivity design",
+    "content": "Architecture focus 135: storage capacity and retention boundaries. inventory-service defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10076",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-07-09",
+    "version": "v2.5.1",
+    "title": "inventory-service Database connectivity design",
+    "content": "Architecture focus 136: request routing and service boundaries. inventory-service receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10149",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-07-11",
+    "version": "v2.7.0",
+    "title": "inventory-service Dependency architecture",
+    "content": "Architecture focus 137: database read/write paths. inventory-service isolates non-critical dependencies from the primary path so optional functionality can degrade independently. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10015",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2026-07-26",
+    "version": "v2.4.0",
+    "title": "user-api Dependency architecture",
+    "content": "Architecture focus 138: cache topology and invalidation. user-api moves scheduled work into bounded background workers rather than latency-sensitive request handlers. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.4.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10011",
+    "type": "architecture",
+    "service": "shipping-api",
+    "date": "2026-08-08",
+    "version": "v2.6.0",
+    "title": "shipping-api Database connectivity design",
+    "content": "Architecture focus 139: authentication and authorization flow. shipping-api separates operational configuration from application logic and versions configuration changes. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for shipping-api."
+  },
+  {
+    "document_id": "ARCH-10103",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-08-11",
+    "version": "v2.7.0",
+    "title": "inventory-service Service architecture",
+    "content": "Architecture focus 140: message queues and asynchronous processing. inventory-service separates persistent storage concerns from request handling and tracks capacity and retention independently. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10123",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-08-15",
+    "version": "v2.5.1",
+    "title": "orders-api Service architecture",
+    "content": "Architecture focus 141: connection pooling and resource limits. orders-api separates transactional writes from read-heavy access where applicable, with bounded database connections. The design considers higher request latency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10112",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2026-08-16",
+    "version": "v2.6.0",
+    "title": "notification-service Dependency architecture",
+    "content": "Architecture focus 142: timeout, retry, and circuit-breaker behavior. notification-service uses cache layers to reduce repeated dependency reads; cache keys, expiry, and invalidation are part of the contract. The design considers queue growth as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  },
+  {
+    "document_id": "ARCH-10136",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-08-17",
+    "version": "v2.8.1",
+    "title": "inventory-service Data flow design",
+    "content": "Architecture focus 143: horizontal scaling and load distribution. inventory-service validates protected requests at the authorization boundary and isolates authentication dependencies from business operations. The design considers retry amplification as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10098",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-08-24",
+    "version": "v2.6.0",
+    "title": "inventory-service Data flow design",
+    "content": "Architecture focus 144: observability and dependency health checks. inventory-service uses asynchronous processing for work that does not need to block the request path; producers and consumers scale independently. The design considers resource contention as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10025",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2026-08-25",
+    "version": "v2.7.0",
+    "title": "user-api Failure isolation design",
+    "content": "Architecture focus 145: data consistency and transaction boundaries. user-api controls database and downstream connection pools separately so one dependency cannot consume all instance resources. The design considers connection exhaustion as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.7.0 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10071",
+    "type": "architecture",
+    "service": "catalog-api",
+    "date": "2026-09-03",
+    "version": "v2.6.0",
+    "title": "catalog-api Service architecture",
+    "content": "Architecture focus 146: API gateway and ingress behavior. catalog-api applies bounded downstream timeouts and limits retries to prevent dependency failures from being amplified. The design considers uneven load across instances as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.6.0 and emphasizes isolation, bounded resources, and observable dependency behavior for catalog-api."
+  },
+  {
+    "document_id": "ARCH-10021",
+    "type": "architecture",
+    "service": "user-api",
+    "date": "2026-09-05",
+    "version": "v2.8.1",
+    "title": "user-api Failure isolation design",
+    "content": "Architecture focus 147: failure isolation and graceful degradation. user-api runs across multiple instances behind load balancing, with instance health considered during capacity changes. The design considers slow dependency recovery as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for user-api."
+  },
+  {
+    "document_id": "ARCH-10007",
+    "type": "architecture",
+    "service": "orders-api",
+    "date": "2026-09-06",
+    "version": "v2.8.1",
+    "title": "orders-api Failure isolation design",
+    "content": "Architecture focus 148: background workers and job scheduling. orders-api exposes health indicators and dependency-level telemetry covering latency, errors, and saturation. The design considers increased error responses as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.8.1 and emphasizes isolation, bounded resources, and observable dependency behavior for orders-api."
+  },
+  {
+    "document_id": "ARCH-10106",
+    "type": "architecture",
+    "service": "inventory-service",
+    "date": "2026-09-08",
+    "version": "v2.5.1",
+    "title": "inventory-service Failure isolation design",
+    "content": "Architecture focus 149: configuration and feature-flag management. inventory-service defines transaction boundaries around state-changing operations and keeps unrelated writes independently consistent. The design considers cache inconsistency as an operational signal and documents how the service boundary should respond. Timeouts are bounded at each downstream call. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for inventory-service."
+  },
+  {
+    "document_id": "ARCH-10063",
+    "type": "architecture",
+    "service": "notification-service",
+    "date": "2026-09-09",
+    "version": "v2.5.1",
+    "title": "notification-service Failure isolation design",
+    "content": "Architecture focus 150: storage capacity and retention boundaries. notification-service receives traffic through the ingress layer, where routing and request limits are applied before service instances. The design considers stale reads as an operational signal and documents how the service boundary should respond. Queue consumers can scale independently from api instances. This architecture record covers version v2.5.1 and emphasizes isolation, bounded resources, and observable dependency behavior for notification-service."
+  }
+]

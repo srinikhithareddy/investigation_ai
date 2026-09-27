@@ -1,0 +1,1352 @@
+[
+  {
+    "document_id": "DEP-10057",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-01-06",
+    "version": "v2.4.0",
+    "title": "notification-service Configuration release",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for notification-service, version v2.4.0, on 2025-01-06. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10038",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-01-08",
+    "version": "v2.7.0",
+    "title": "notification-service Configuration release",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for notification-service, version v2.7.0, on 2025-01-08. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10022",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-01-09",
+    "version": "v2.4.0",
+    "title": "catalog-api Hotfix deployment",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for catalog-api, version v2.4.0, on 2025-01-09. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10010",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-01-12",
+    "version": "v2.7.0",
+    "title": "notification-service Hotfix deployment",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for notification-service, version v2.7.0, on 2025-01-12. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10130",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-01-12",
+    "version": "v2.7.0",
+    "title": "orders-api Service version rollout",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for orders-api, version v2.7.0, on 2025-01-12. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10092",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-01-15",
+    "version": "v2.4.0",
+    "title": "shipping-api Rollback record",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for shipping-api, version v2.4.0, on 2025-01-15. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10059",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-01-17",
+    "version": "v3.0.0",
+    "title": "payments-api Production deployment",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for payments-api, version v3.0.0, on 2025-01-17. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10074",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-01-19",
+    "version": "v3.0.0",
+    "title": "inventory-service Rollback record",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for inventory-service, version v3.0.0, on 2025-01-19. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10080",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-01-21",
+    "version": "v2.6.0",
+    "title": "catalog-api Staged rollout",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for catalog-api, version v2.6.0, on 2025-01-21. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10045",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-01-27",
+    "version": "v2.8.1",
+    "title": "catalog-api Configuration release",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for catalog-api, version v2.8.1, on 2025-01-27. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10019",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-02-06",
+    "version": "v2.4.0",
+    "title": "auth-service Staged rollout",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for auth-service, version v2.4.0, on 2025-02-06. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10053",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-02-08",
+    "version": "v2.5.1",
+    "title": "payments-api Service version rollout",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for payments-api, version v2.5.1, on 2025-02-08. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10077",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-02-13",
+    "version": "v2.5.1",
+    "title": "user-api Production deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for user-api, version v2.5.1, on 2025-02-13. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10103",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-02-16",
+    "version": "v3.0.0",
+    "title": "catalog-api Staged rollout",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for catalog-api, version v3.0.0, on 2025-02-16. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10101",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-02-17",
+    "version": "v2.6.0",
+    "title": "payments-api Staged rollout",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for payments-api, version v2.6.0, on 2025-02-17. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10119",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-02-20",
+    "version": "v3.0.0",
+    "title": "inventory-service Service version rollout",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for inventory-service, version v3.0.0, on 2025-02-20. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10121",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-02-22",
+    "version": "v2.4.0",
+    "title": "catalog-api Rollback record",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for catalog-api, version v2.4.0, on 2025-02-22. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10078",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-02-28",
+    "version": "v2.7.0",
+    "title": "orders-api Production deployment",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for orders-api, version v2.7.0, on 2025-02-28. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10102",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-02-28",
+    "version": "v2.8.1",
+    "title": "orders-api Rollback record",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for orders-api, version v2.8.1, on 2025-02-28. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10058",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-03-01",
+    "version": "v2.7.0",
+    "title": "inventory-service Service version rollout",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for inventory-service, version v2.7.0, on 2025-03-01. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10060",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-03-01",
+    "version": "v2.6.0",
+    "title": "catalog-api Configuration release",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for catalog-api, version v2.6.0, on 2025-03-01. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10011",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-03-05",
+    "version": "v2.7.0",
+    "title": "auth-service Configuration release",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for auth-service, version v2.7.0, on 2025-03-05. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10145",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-03-07",
+    "version": "v2.7.0",
+    "title": "catalog-api Configuration release",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for catalog-api, version v2.7.0, on 2025-03-07. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10018",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-03-11",
+    "version": "v2.4.0",
+    "title": "orders-api Rollback record",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for orders-api, version v2.4.0, on 2025-03-11. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10043",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-03-11",
+    "version": "v2.7.0",
+    "title": "user-api Hotfix deployment",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for user-api, version v2.7.0, on 2025-03-11. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10050",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-03-18",
+    "version": "v2.6.0",
+    "title": "user-api Rollback record",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for user-api, version v2.6.0, on 2025-03-18. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10084",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-03-18",
+    "version": "v2.6.0",
+    "title": "catalog-api Hotfix deployment",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for catalog-api, version v2.6.0, on 2025-03-18. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10133",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-03-20",
+    "version": "v2.5.1",
+    "title": "catalog-api Hotfix deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for catalog-api, version v2.5.1, on 2025-03-20. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10061",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-03-23",
+    "version": "v2.6.0",
+    "title": "orders-api Configuration release",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for orders-api, version v2.6.0, on 2025-03-23. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10110",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-03-24",
+    "version": "v2.7.0",
+    "title": "inventory-service Service version rollout",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for inventory-service, version v2.7.0, on 2025-03-24. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10009",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-03-26",
+    "version": "v2.4.0",
+    "title": "payments-api Hotfix deployment",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for payments-api, version v2.4.0, on 2025-03-26. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10097",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-03-30",
+    "version": "v2.6.0",
+    "title": "orders-api Service version rollout",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for orders-api, version v2.6.0, on 2025-03-30. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10021",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-04-02",
+    "version": "v2.6.0",
+    "title": "notification-service Production deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for notification-service, version v2.6.0, on 2025-04-02. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10005",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-04-03",
+    "version": "v2.8.1",
+    "title": "catalog-api Rollback record",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for catalog-api, version v2.8.1, on 2025-04-03. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10030",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-04-04",
+    "version": "v2.8.1",
+    "title": "shipping-api Rollback record",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for shipping-api, version v2.8.1, on 2025-04-04. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10109",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-04-04",
+    "version": "v2.6.0",
+    "title": "inventory-service Rollback record",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for inventory-service, version v2.6.0, on 2025-04-04. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10063",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-04-06",
+    "version": "v3.0.0",
+    "title": "catalog-api Production deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for catalog-api, version v3.0.0, on 2025-04-06. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10046",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-04-07",
+    "version": "v2.5.1",
+    "title": "inventory-service Configuration release",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for inventory-service, version v2.5.1, on 2025-04-07. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10082",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-04-07",
+    "version": "v2.6.0",
+    "title": "shipping-api Hotfix deployment",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for shipping-api, version v2.6.0, on 2025-04-07. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10071",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-04-11",
+    "version": "v2.5.1",
+    "title": "shipping-api Production deployment",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for shipping-api, version v2.5.1, on 2025-04-11. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10139",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-04-22",
+    "version": "v2.7.0",
+    "title": "notification-service Hotfix deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for notification-service, version v2.7.0, on 2025-04-22. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10138",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-04-23",
+    "version": "v2.7.0",
+    "title": "notification-service Hotfix deployment",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for notification-service, version v2.7.0, on 2025-04-23. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10040",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-04-24",
+    "version": "v2.8.1",
+    "title": "user-api Hotfix deployment",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for user-api, version v2.8.1, on 2025-04-24. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10090",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-04-24",
+    "version": "v2.8.1",
+    "title": "user-api Hotfix deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for user-api, version v2.8.1, on 2025-04-24. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10125",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-04-24",
+    "version": "v2.8.1",
+    "title": "notification-service Configuration release",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for notification-service, version v2.8.1, on 2025-04-24. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10079",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-04-26",
+    "version": "v2.7.0",
+    "title": "payments-api Hotfix deployment",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for payments-api, version v2.7.0, on 2025-04-26. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10094",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-04-28",
+    "version": "v2.4.0",
+    "title": "user-api Rollback record",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for user-api, version v2.4.0, on 2025-04-28. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10091",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-05-02",
+    "version": "v2.4.0",
+    "title": "notification-service Hotfix deployment",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for notification-service, version v2.4.0, on 2025-05-02. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10128",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-05-05",
+    "version": "v2.5.1",
+    "title": "inventory-service Configuration release",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for inventory-service, version v2.5.1, on 2025-05-05. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10029",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-05-08",
+    "version": "v2.6.0",
+    "title": "auth-service Service version rollout",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for auth-service, version v2.6.0, on 2025-05-08. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10001",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-05-16",
+    "version": "v2.7.0",
+    "title": "catalog-api Service version rollout",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for catalog-api, version v2.7.0, on 2025-05-16. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10012",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-05-17",
+    "version": "v2.5.1",
+    "title": "inventory-service Staged rollout",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for inventory-service, version v2.5.1, on 2025-05-17. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10024",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-05-17",
+    "version": "v3.0.0",
+    "title": "auth-service Configuration release",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for auth-service, version v3.0.0, on 2025-05-17. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10120",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-06-03",
+    "version": "v2.5.1",
+    "title": "inventory-service Rollback record",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for inventory-service, version v2.5.1, on 2025-06-03. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10002",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-06-10",
+    "version": "v2.4.0",
+    "title": "shipping-api Service version rollout",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for shipping-api, version v2.4.0, on 2025-06-10. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10026",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-06-10",
+    "version": "v3.0.0",
+    "title": "orders-api Rollback record",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for orders-api, version v3.0.0, on 2025-06-10. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10007",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-06-27",
+    "version": "v2.4.0",
+    "title": "auth-service Configuration release",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for auth-service, version v2.4.0, on 2025-06-27. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10006",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-07-02",
+    "version": "v2.5.1",
+    "title": "inventory-service Hotfix deployment",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for inventory-service, version v2.5.1, on 2025-07-02. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10037",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-07-06",
+    "version": "v2.4.0",
+    "title": "auth-service Staged rollout",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for auth-service, version v2.4.0, on 2025-07-06. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10142",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-07-08",
+    "version": "v2.5.1",
+    "title": "shipping-api Configuration release",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for shipping-api, version v2.5.1, on 2025-07-08. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10123",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-07-12",
+    "version": "v2.5.1",
+    "title": "orders-api Rollback record",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for orders-api, version v2.5.1, on 2025-07-12. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10105",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-07-26",
+    "version": "v2.8.1",
+    "title": "notification-service Rollback record",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for notification-service, version v2.8.1, on 2025-07-26. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10028",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-07-31",
+    "version": "v2.6.0",
+    "title": "notification-service Rollback record",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for notification-service, version v2.6.0, on 2025-07-31. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10117",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-08-03",
+    "version": "v2.5.1",
+    "title": "payments-api Configuration release",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for payments-api, version v2.5.1, on 2025-08-03. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10049",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-08-14",
+    "version": "v2.8.1",
+    "title": "shipping-api Hotfix deployment",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for shipping-api, version v2.8.1, on 2025-08-14. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10014",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-08-25",
+    "version": "v2.5.1",
+    "title": "inventory-service Rollback record",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for inventory-service, version v2.5.1, on 2025-08-25. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10107",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-08-27",
+    "version": "v3.0.0",
+    "title": "auth-service Production deployment",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for auth-service, version v3.0.0, on 2025-08-27. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10020",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-09-02",
+    "version": "v2.6.0",
+    "title": "inventory-service Hotfix deployment",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for inventory-service, version v2.6.0, on 2025-09-02. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10023",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-09-06",
+    "version": "v2.6.0",
+    "title": "orders-api Configuration release",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for orders-api, version v2.6.0, on 2025-09-06. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10003",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-09-19",
+    "version": "v2.8.1",
+    "title": "auth-service Rollback record",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for auth-service, version v2.8.1, on 2025-09-19. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10093",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-09-26",
+    "version": "v2.5.1",
+    "title": "orders-api Configuration release",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for orders-api, version v2.5.1, on 2025-09-26. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10126",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-10-01",
+    "version": "v3.0.0",
+    "title": "catalog-api Service version rollout",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for catalog-api, version v3.0.0, on 2025-10-01. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10140",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-10-02",
+    "version": "v2.4.0",
+    "title": "catalog-api Hotfix deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for catalog-api, version v2.4.0, on 2025-10-02. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10068",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-10-03",
+    "version": "v2.7.0",
+    "title": "payments-api Service version rollout",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for payments-api, version v2.7.0, on 2025-10-03. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10004",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-10-04",
+    "version": "v2.4.0",
+    "title": "payments-api Production deployment",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for payments-api, version v2.4.0, on 2025-10-04. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10072",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-10-08",
+    "version": "v3.0.0",
+    "title": "orders-api Hotfix deployment",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for orders-api, version v3.0.0, on 2025-10-08. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10083",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-10-13",
+    "version": "v2.7.0",
+    "title": "inventory-service Production deployment",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for inventory-service, version v2.7.0, on 2025-10-13. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10025",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-10-16",
+    "version": "v2.8.1",
+    "title": "catalog-api Service version rollout",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for catalog-api, version v2.8.1, on 2025-10-16. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10113",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-10-22",
+    "version": "v2.8.1",
+    "title": "user-api Staged rollout",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for user-api, version v2.8.1, on 2025-10-22. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10016",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-10-26",
+    "version": "v2.8.1",
+    "title": "payments-api Service version rollout",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for payments-api, version v2.8.1, on 2025-10-26. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10127",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-10-26",
+    "version": "v2.6.0",
+    "title": "notification-service Hotfix deployment",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for notification-service, version v2.6.0, on 2025-10-26. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10136",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-10-26",
+    "version": "v2.5.1",
+    "title": "shipping-api Hotfix deployment",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for shipping-api, version v2.5.1, on 2025-10-26. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10114",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-10-31",
+    "version": "v2.7.0",
+    "title": "user-api Staged rollout",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for user-api, version v2.7.0, on 2025-10-31. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10122",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-10-31",
+    "version": "v2.4.0",
+    "title": "user-api Configuration release",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for user-api, version v2.4.0, on 2025-10-31. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10106",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2025-11-10",
+    "version": "v2.8.1",
+    "title": "inventory-service Rollback record",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for inventory-service, version v2.8.1, on 2025-11-10. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10008",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-11-21",
+    "version": "v2.4.0",
+    "title": "auth-service Production deployment",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for auth-service, version v2.4.0, on 2025-11-21. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10111",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-11-30",
+    "version": "v3.0.0",
+    "title": "shipping-api Hotfix deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for shipping-api, version v3.0.0, on 2025-11-30. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10073",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-12-08",
+    "version": "v2.5.1",
+    "title": "payments-api Hotfix deployment",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for payments-api, version v2.5.1, on 2025-12-08. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10076",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-12-09",
+    "version": "v3.0.0",
+    "title": "orders-api Hotfix deployment",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for orders-api, version v3.0.0, on 2025-12-09. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10033",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-12-12",
+    "version": "v2.5.1",
+    "title": "user-api Staged rollout",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for user-api, version v2.5.1, on 2025-12-12. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10041",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-12-13",
+    "version": "v2.7.0",
+    "title": "notification-service Hotfix deployment",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for notification-service, version v2.7.0, on 2025-12-13. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10129",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2025-12-14",
+    "version": "v2.6.0",
+    "title": "payments-api Staged rollout",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for payments-api, version v2.6.0, on 2025-12-14. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10015",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2025-12-20",
+    "version": "v2.8.1",
+    "title": "auth-service Service version rollout",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for auth-service, version v2.8.1, on 2025-12-20. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10147",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2025-12-21",
+    "version": "v2.7.0",
+    "title": "shipping-api Production deployment",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for shipping-api, version v2.7.0, on 2025-12-21. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10054",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2025-12-22",
+    "version": "v3.0.0",
+    "title": "catalog-api Service version rollout",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for catalog-api, version v3.0.0, on 2025-12-22. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10069",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2025-12-24",
+    "version": "v2.6.0",
+    "title": "orders-api Configuration release",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for orders-api, version v2.6.0, on 2025-12-24. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10115",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2025-12-28",
+    "version": "v2.8.1",
+    "title": "notification-service Production deployment",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for notification-service, version v2.8.1, on 2025-12-28. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10088",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2025-12-29",
+    "version": "v2.8.1",
+    "title": "user-api Service version rollout",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for user-api, version v2.8.1, on 2025-12-29. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10087",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2026-01-01",
+    "version": "v2.6.0",
+    "title": "orders-api Staged rollout",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for orders-api, version v2.6.0, on 2026-01-01. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10148",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2026-01-10",
+    "version": "v2.7.0",
+    "title": "orders-api Rollback record",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for orders-api, version v2.7.0, on 2026-01-10. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10062",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2026-01-30",
+    "version": "v2.4.0",
+    "title": "shipping-api Rollback record",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for shipping-api, version v2.4.0, on 2026-01-30. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10036",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2026-02-02",
+    "version": "v3.0.0",
+    "title": "payments-api Production deployment",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for payments-api, version v3.0.0, on 2026-02-02. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10089",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-02-11",
+    "version": "v2.7.0",
+    "title": "catalog-api Service version rollout",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for catalog-api, version v2.7.0, on 2026-02-11. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10116",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-02-17",
+    "version": "v2.5.1",
+    "title": "auth-service Service version rollout",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for auth-service, version v2.5.1, on 2026-02-17. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10143",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2026-02-19",
+    "version": "v2.7.0",
+    "title": "user-api Configuration release",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for user-api, version v2.7.0, on 2026-02-19. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10042",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2026-02-23",
+    "version": "v2.8.1",
+    "title": "shipping-api Hotfix deployment",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for shipping-api, version v2.8.1, on 2026-02-23. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10086",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2026-03-07",
+    "version": "v2.8.1",
+    "title": "shipping-api Service version rollout",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for shipping-api, version v2.8.1, on 2026-03-07. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10118",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2026-03-07",
+    "version": "v2.7.0",
+    "title": "orders-api Hotfix deployment",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for orders-api, version v2.7.0, on 2026-03-07. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10141",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2026-03-08",
+    "version": "v2.6.0",
+    "title": "inventory-service Service version rollout",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for inventory-service, version v2.6.0, on 2026-03-08. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10104",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-03-11",
+    "version": "v2.8.1",
+    "title": "auth-service Hotfix deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for auth-service, version v2.8.1, on 2026-03-11. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10144",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2026-03-23",
+    "version": "v2.8.1",
+    "title": "orders-api Hotfix deployment",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for orders-api, version v2.8.1, on 2026-03-23. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10099",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2026-03-24",
+    "version": "v2.6.0",
+    "title": "user-api Hotfix deployment",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for user-api, version v2.6.0, on 2026-03-24. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10146",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2026-03-25",
+    "version": "v2.6.0",
+    "title": "user-api Rollback record",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for user-api, version v2.6.0, on 2026-03-25. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10134",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2026-03-28",
+    "version": "v2.6.0",
+    "title": "notification-service Rollback record",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for notification-service, version v2.6.0, on 2026-03-28. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10032",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-03-30",
+    "version": "v2.8.1",
+    "title": "catalog-api Service version rollout",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for catalog-api, version v2.8.1, on 2026-03-30. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10070",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2026-03-30",
+    "version": "v2.8.1",
+    "title": "payments-api Service version rollout",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for payments-api, version v2.8.1, on 2026-03-30. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10095",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2026-04-01",
+    "version": "v2.6.0",
+    "title": "shipping-api Production deployment",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for shipping-api, version v2.6.0, on 2026-04-01. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10064",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2026-04-15",
+    "version": "v2.7.0",
+    "title": "payments-api Hotfix deployment",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for payments-api, version v2.7.0, on 2026-04-15. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10034",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-04-17",
+    "version": "v2.8.1",
+    "title": "auth-service Service version rollout",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for auth-service, version v2.8.1, on 2026-04-17. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10132",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2026-04-19",
+    "version": "v2.8.1",
+    "title": "shipping-api Staged rollout",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for shipping-api, version v2.8.1, on 2026-04-19. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10048",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2026-04-21",
+    "version": "v2.7.0",
+    "title": "user-api Hotfix deployment",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for user-api, version v2.7.0, on 2026-04-21. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10100",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-04-26",
+    "version": "v2.7.0",
+    "title": "catalog-api Service version rollout",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for catalog-api, version v2.7.0, on 2026-04-26. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10065",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2026-04-28",
+    "version": "v2.5.1",
+    "title": "inventory-service Service version rollout",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for inventory-service, version v2.5.1, on 2026-04-28. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10052",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2026-05-01",
+    "version": "v2.6.0",
+    "title": "payments-api Staged rollout",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for payments-api, version v2.6.0, on 2026-05-01. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10027",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2026-05-07",
+    "version": "v2.7.0",
+    "title": "payments-api Configuration release",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for payments-api, version v2.7.0, on 2026-05-07. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10124",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-05-09",
+    "version": "v2.4.0",
+    "title": "auth-service Rollback record",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for auth-service, version v2.4.0, on 2026-05-09. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10017",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-05-12",
+    "version": "v2.8.1",
+    "title": "auth-service Service version rollout",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for auth-service, version v2.8.1, on 2026-05-12. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10047",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-05-20",
+    "version": "v2.4.0",
+    "title": "catalog-api Rollback record",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for catalog-api, version v2.4.0, on 2026-05-20. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10055",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-05-22",
+    "version": "v3.0.0",
+    "title": "auth-service Rollback record",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for auth-service, version v3.0.0, on 2026-05-22. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10112",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2026-05-25",
+    "version": "v2.8.1",
+    "title": "user-api Production deployment",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for user-api, version v2.8.1, on 2026-05-25. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10066",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2026-06-10",
+    "version": "v3.0.0",
+    "title": "payments-api Configuration release",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for payments-api, version v3.0.0, on 2026-06-10. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10039",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2026-06-13",
+    "version": "v3.0.0",
+    "title": "notification-service Production deployment",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for notification-service, version v3.0.0, on 2026-06-13. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10085",
+    "type": "deployment_note",
+    "service": "user-api",
+    "date": "2026-06-18",
+    "version": "v3.0.0",
+    "title": "user-api Configuration release",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for user-api, version v3.0.0, on 2026-06-18. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10056",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-06-21",
+    "version": "v2.7.0",
+    "title": "auth-service Configuration release",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for auth-service, version v2.7.0, on 2026-06-21. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10081",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2026-06-26",
+    "version": "v2.7.0",
+    "title": "inventory-service Configuration release",
+    "content": "The deployment included application and runtime configuration updates. The team monitored the service for regressions while the rollout progressed. The recorded deployment was for inventory-service, version v2.7.0, on 2026-06-26. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10035",
+    "type": "deployment_note",
+    "service": "notification-service",
+    "date": "2026-06-28",
+    "version": "v3.0.0",
+    "title": "notification-service Configuration release",
+    "content": "Engineers compared key service metrics before and after the change, including latency, error rate, dependency response time, and resource usage. The recorded deployment was for notification-service, version v3.0.0, on 2026-06-28. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10044",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-06-29",
+    "version": "v3.0.0",
+    "title": "auth-service Hotfix deployment",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for auth-service, version v3.0.0, on 2026-06-29. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10031",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2026-06-30",
+    "version": "v2.7.0",
+    "title": "orders-api Configuration release",
+    "content": "The release was promoted after deployment checks completed; engineers continued observing service-level metrics and downstream calls. The recorded deployment was for orders-api, version v2.7.0, on 2026-06-30. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10013",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2026-07-04",
+    "version": "v2.8.1",
+    "title": "inventory-service Production deployment",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for inventory-service, version v2.8.1, on 2026-07-04. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10051",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2026-07-13",
+    "version": "v2.8.1",
+    "title": "orders-api Production deployment",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for orders-api, version v2.8.1, on 2026-07-13. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10135",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-07-15",
+    "version": "v2.6.0",
+    "title": "catalog-api Configuration release",
+    "content": "Smoke tests were run after deployment, followed by observation of request latency, failures, dependency health, and capacity indicators. The recorded deployment was for catalog-api, version v2.6.0, on 2026-07-15. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10131",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-07-17",
+    "version": "v2.7.0",
+    "title": "catalog-api Production deployment",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for catalog-api, version v2.7.0, on 2026-07-17. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10067",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2026-07-19",
+    "version": "v2.4.0",
+    "title": "inventory-service Rollback record",
+    "content": "Application changes were rolled out with updated request handling, followed by checks of error rate and latency. The recorded deployment was for inventory-service, version v2.4.0, on 2026-07-19. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10098",
+    "type": "deployment_note",
+    "service": "payments-api",
+    "date": "2026-08-08",
+    "version": "v2.8.1",
+    "title": "payments-api Rollback record",
+    "content": "Configuration changes were applied during the release, with engineers watching dependency health and resource utilization during the rollout. The recorded deployment was for payments-api, version v2.8.1, on 2026-08-08. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-10108",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-08-08",
+    "version": "v2.7.0",
+    "title": "catalog-api Hotfix deployment",
+    "content": "The new version was introduced through a controlled rollout. Post-deployment checks covered request errors, latency, and instance health. The recorded deployment was for catalog-api, version v2.7.0, on 2026-08-08. Investigators can use the deployment date and version to narrow related logs, incidents, and post-incident reviews."
+  },
+  {
+    "document_id": "DEP-10137",
+    "type": "deployment_note",
+    "service": "catalog-api",
+    "date": "2026-08-14",
+    "version": "v3.0.0",
+    "title": "catalog-api Staged rollout",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for catalog-api, version v3.0.0, on 2026-08-14. The deployment record should be correlated with incidents by timestamp and version when investigating regressions."
+  },
+  {
+    "document_id": "DEP-10096",
+    "type": "deployment_note",
+    "service": "inventory-service",
+    "date": "2026-08-15",
+    "version": "v3.0.0",
+    "title": "inventory-service Rollback record",
+    "content": "The version was released with validation focused on normal request flow and signs of saturation in the service or its dependencies. The recorded deployment was for inventory-service, version v3.0.0, on 2026-08-15. The release should be compared with nearby incident and complaint timestamps when establishing temporal relationships."
+  },
+  {
+    "document_id": "DEP-10149",
+    "type": "deployment_note",
+    "service": "shipping-api",
+    "date": "2026-08-16",
+    "version": "v2.4.0",
+    "title": "shipping-api Staged rollout",
+    "content": "Operational checks after the rollout included logs, request failures, latency percentiles, dependency status, and resource utilization. The recorded deployment was for shipping-api, version v2.4.0, on 2026-08-16. Version-level correlation was retained so investigators can distinguish this rollout from other releases of the same service."
+  },
+  {
+    "document_id": "DEP-10075",
+    "type": "deployment_note",
+    "service": "auth-service",
+    "date": "2026-08-29",
+    "version": "v2.7.0",
+    "title": "auth-service Hotfix deployment",
+    "content": "Release validation focused on successful requests, downstream dependency behavior, and CPU and memory utilization after the version became active. The recorded deployment was for auth-service, version v2.7.0, on 2026-08-29. The deployment timeline provides evidence for checking whether the symptom began before or after this release."
+  },
+  {
+    "document_id": "DEP-882",
+    "type": "deployment_note",
+    "service": "orders-api",
+    "date": "2026-09-15",
+    "version": "v2.8.1",
+    "title": "Orders deployment",
+    "content": "Version v2.8.1 was deployed to production at 18:10 UTC."
+  }
+]

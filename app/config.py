@@ -30,11 +30,14 @@ def _get_int(name: str, default: int) -> int:
 
 @dataclass(frozen=True)
 class Settings:
-    gemini_api_key: str = field(default_factory=lambda: os.getenv("GEMINI_API_KEY", ""))
-    gemini_model: str = field(
-        default_factory=lambda: os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    gemini_api_key: str = field(
+        default_factory=lambda: os.getenv("GEMINI_API_KEY", "").strip()
     )
-    
+    gemini_model: str = field(
+        default_factory=lambda: os.getenv("GEMINI_MODEL", "").strip()
+        or "gemini-2.5-flash"
+    )
+
     database_path: str = field(default_factory=lambda: os.getenv("DATABASE_PATH", "./data/app.db"))
     chroma_path: str = field(default_factory=lambda: os.getenv("CHROMA_PATH", "./data/chroma"))
     documents_path: str = field(

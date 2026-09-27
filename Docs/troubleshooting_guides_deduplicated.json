@@ -1,0 +1,1352 @@
+[
+  {
+    "document_id": "GUIDE-12",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2024-02-01",
+    "version": "v1",
+    "title": "auth-service Incident response procedure",
+    "content": "Use this guide for auth-service when operators observe queue backlog. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v1."
+  },
+  {
+    "document_id": "GUIDE-10103",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-01-08",
+    "version": "v2.5.1",
+    "title": "user-api Database troubleshooting",
+    "content": "This runbook applies to user-api when queue backlog is reported. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10096",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-01-10",
+    "version": "v2.6.0",
+    "title": "payments-api Dependency failure guide",
+    "content": "For payments-api, begin investigation when monitoring or users indicate elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10130",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-01-13",
+    "version": "v2.4.0",
+    "title": "auth-service Latency troubleshooting",
+    "content": "When auth-service shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10050",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-01-14",
+    "version": "v3.0.0",
+    "title": "catalog-api Timeout investigation guide",
+    "content": "Use this guide for catalog-api when operators observe elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10138",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-01-19",
+    "version": "v2.6.0",
+    "title": "user-api Deployment rollback procedure",
+    "content": "This runbook applies to user-api when intermittent timeouts is reported. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10117",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-01-25",
+    "version": "v2.4.0",
+    "title": "user-api Cache recovery procedure",
+    "content": "For user-api, begin investigation when monitoring or users indicate increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10003",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2025-01-31",
+    "version": "v2.5.1",
+    "title": "notification-service Resource saturation guide",
+    "content": "When notification-service shows intermittent timeouts, follow the evidence-first checks below. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10126",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-02-11",
+    "version": "v2.5.1",
+    "title": "user-api Queue backlog investigation",
+    "content": "Use this guide for user-api when operators observe elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10048",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-02-20",
+    "version": "v2.5.1",
+    "title": "auth-service Incident response procedure",
+    "content": "This runbook applies to auth-service when increased request errors is reported. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10094",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-02-26",
+    "version": "v2.6.0",
+    "title": "orders-api Database troubleshooting",
+    "content": "For orders-api, begin investigation when monitoring or users indicate intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10045",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-03-02",
+    "version": "v2.7.0",
+    "title": "user-api Dependency failure guide",
+    "content": "When user-api shows increased request errors, follow the evidence-first checks below. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10067",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-03-02",
+    "version": "v2.4.0",
+    "title": "orders-api Latency troubleshooting",
+    "content": "Use this guide for orders-api when operators observe dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10118",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-03-07",
+    "version": "v2.7.0",
+    "title": "shipping-api Timeout investigation guide",
+    "content": "This runbook applies to shipping-api when increased request errors is reported. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10002",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-03-09",
+    "version": "v2.5.1",
+    "title": "inventory-service Deployment rollback procedure",
+    "content": "For inventory-service, begin investigation when monitoring or users indicate dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10023",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-03-11",
+    "version": "v3.0.0",
+    "title": "shipping-api Cache recovery procedure",
+    "content": "When shipping-api shows queue backlog, follow the evidence-first checks below. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10054",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-03-24",
+    "version": "v2.6.0",
+    "title": "auth-service Resource saturation guide",
+    "content": "Use this guide for auth-service when operators observe cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10120",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-04-01",
+    "version": "v2.6.0",
+    "title": "inventory-service Queue backlog investigation",
+    "content": "This runbook applies to inventory-service when queue backlog is reported. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10133",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-04-03",
+    "version": "v2.4.0",
+    "title": "auth-service Incident response procedure",
+    "content": "For auth-service, begin investigation when monitoring or users indicate database connection saturation. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10141",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-04-08",
+    "version": "v2.4.0",
+    "title": "user-api Database troubleshooting",
+    "content": "When user-api shows CPU saturation, follow the evidence-first checks below. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10009",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-04-15",
+    "version": "v2.4.0",
+    "title": "inventory-service Dependency failure guide",
+    "content": "Use this guide for inventory-service when operators observe intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10145",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-04-21",
+    "version": "v3.0.0",
+    "title": "payments-api Latency troubleshooting",
+    "content": "This runbook applies to payments-api when CPU saturation is reported. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10109",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-04-27",
+    "version": "v2.4.0",
+    "title": "user-api Timeout investigation guide",
+    "content": "For user-api, begin investigation when monitoring or users indicate dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10123",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-04-30",
+    "version": "v2.6.0",
+    "title": "payments-api Deployment rollback procedure",
+    "content": "When payments-api shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10043",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-05-09",
+    "version": "v2.8.1",
+    "title": "shipping-api Cache recovery procedure",
+    "content": "Use this guide for shipping-api when operators observe queue backlog. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10066",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-05-17",
+    "version": "v2.6.0",
+    "title": "inventory-service Resource saturation guide",
+    "content": "This runbook applies to inventory-service when intermittent timeouts is reported. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10058",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2025-05-22",
+    "version": "v2.8.1",
+    "title": "notification-service Queue backlog investigation",
+    "content": "For notification-service, begin investigation when monitoring or users indicate increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10099",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-05-30",
+    "version": "v3.0.0",
+    "title": "catalog-api Incident response procedure",
+    "content": "When catalog-api shows queue backlog, follow the evidence-first checks below. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10053",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-05-31",
+    "version": "v3.0.0",
+    "title": "payments-api Database troubleshooting",
+    "content": "Use this guide for payments-api when operators observe elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10055",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-06-02",
+    "version": "v3.0.0",
+    "title": "payments-api Dependency failure guide",
+    "content": "This runbook applies to payments-api when intermittent timeouts is reported. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10027",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-06-07",
+    "version": "v2.6.0",
+    "title": "payments-api Latency troubleshooting",
+    "content": "For payments-api, begin investigation when monitoring or users indicate CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10042",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-06-08",
+    "version": "v2.8.1",
+    "title": "orders-api Timeout investigation guide",
+    "content": "When orders-api shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10102",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-06-11",
+    "version": "v2.4.0",
+    "title": "orders-api Deployment rollback procedure",
+    "content": "Use this guide for orders-api when operators observe increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10031",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-06-15",
+    "version": "v2.5.1",
+    "title": "inventory-service Cache recovery procedure",
+    "content": "This runbook applies to inventory-service when memory pressure is reported. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10077",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-06-19",
+    "version": "v2.4.0",
+    "title": "orders-api Resource saturation guide",
+    "content": "For orders-api, begin investigation when monitoring or users indicate intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10010",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-06-23",
+    "version": "v2.6.0",
+    "title": "catalog-api Queue backlog investigation",
+    "content": "When catalog-api shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10024",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2025-06-23",
+    "version": "v2.5.1",
+    "title": "notification-service Incident response procedure",
+    "content": "Use this guide for notification-service when operators observe elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10090",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-06-28",
+    "version": "v2.5.1",
+    "title": "user-api Database troubleshooting",
+    "content": "This runbook applies to user-api when database connection saturation is reported. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10106",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-06-29",
+    "version": "v2.4.0",
+    "title": "user-api Dependency failure guide",
+    "content": "For user-api, begin investigation when monitoring or users indicate database connection saturation. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10022",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-07-16",
+    "version": "v2.6.0",
+    "title": "auth-service Latency troubleshooting",
+    "content": "When auth-service shows elevated P95 latency, follow the evidence-first checks below. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10073",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-07-18",
+    "version": "v2.6.0",
+    "title": "catalog-api Timeout investigation guide",
+    "content": "Use this guide for catalog-api when operators observe intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10052",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-07-26",
+    "version": "v2.7.0",
+    "title": "shipping-api Deployment rollback procedure",
+    "content": "This runbook applies to shipping-api when intermittent timeouts is reported. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10074",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-08-05",
+    "version": "v2.6.0",
+    "title": "inventory-service Cache recovery procedure",
+    "content": "For inventory-service, begin investigation when monitoring or users indicate intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10028",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-08-11",
+    "version": "v3.0.0",
+    "title": "shipping-api Resource saturation guide",
+    "content": "When shipping-api shows CPU saturation, follow the evidence-first checks below. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10107",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-08-12",
+    "version": "v2.8.1",
+    "title": "orders-api Queue backlog investigation",
+    "content": "Use this guide for orders-api when operators observe queue backlog. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10018",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-08-17",
+    "version": "v2.8.1",
+    "title": "auth-service Incident response procedure",
+    "content": "This runbook applies to auth-service when increased request errors is reported. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10146",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-08-20",
+    "version": "v2.7.0",
+    "title": "inventory-service Database troubleshooting",
+    "content": "For inventory-service, begin investigation when monitoring or users indicate CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10062",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-08-24",
+    "version": "v3.0.0",
+    "title": "orders-api Dependency failure guide",
+    "content": "When orders-api shows CPU saturation, follow the evidence-first checks below. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10001",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-08-25",
+    "version": "v2.8.1",
+    "title": "auth-service Latency troubleshooting",
+    "content": "Use this guide for auth-service when operators observe cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10113",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-09-01",
+    "version": "v2.5.1",
+    "title": "user-api Timeout investigation guide",
+    "content": "This runbook applies to user-api when CPU saturation is reported. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10061",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-09-11",
+    "version": "v2.4.0",
+    "title": "catalog-api Deployment rollback procedure",
+    "content": "For catalog-api, begin investigation when monitoring or users indicate cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10114",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-09-14",
+    "version": "v2.8.1",
+    "title": "user-api Cache recovery procedure",
+    "content": "When user-api shows CPU saturation, follow the evidence-first checks below. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10032",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-09-20",
+    "version": "v2.6.0",
+    "title": "catalog-api Resource saturation guide",
+    "content": "Use this guide for catalog-api when operators observe dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10143",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-09-26",
+    "version": "v2.7.0",
+    "title": "payments-api Queue backlog investigation",
+    "content": "This runbook applies to payments-api when dependency failures is reported. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10080",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-09-29",
+    "version": "v2.5.1",
+    "title": "auth-service Incident response procedure",
+    "content": "For auth-service, begin investigation when monitoring or users indicate increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10039",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-10-02",
+    "version": "v2.8.1",
+    "title": "payments-api Database troubleshooting",
+    "content": "When payments-api shows database connection saturation, follow the evidence-first checks below. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10016",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-10-03",
+    "version": "v2.6.0",
+    "title": "user-api Dependency failure guide",
+    "content": "Use this guide for user-api when operators observe elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10142",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-10-03",
+    "version": "v2.8.1",
+    "title": "user-api Latency troubleshooting",
+    "content": "This runbook applies to user-api when dependency failures is reported. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10011",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2025-10-04",
+    "version": "v2.5.1",
+    "title": "notification-service Timeout investigation guide",
+    "content": "For notification-service, begin investigation when monitoring or users indicate intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10084",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2025-10-04",
+    "version": "v2.7.0",
+    "title": "notification-service Deployment rollback procedure",
+    "content": "When notification-service shows queue backlog, follow the evidence-first checks below. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10115",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-10-08",
+    "version": "v2.4.0",
+    "title": "inventory-service Cache recovery procedure",
+    "content": "Use this guide for inventory-service when operators observe CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10034",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-10-09",
+    "version": "v2.8.1",
+    "title": "auth-service Resource saturation guide",
+    "content": "This runbook applies to auth-service when dependency failures is reported. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10119",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-10-09",
+    "version": "v3.0.0",
+    "title": "auth-service Queue backlog investigation",
+    "content": "For auth-service, begin investigation when monitoring or users indicate memory pressure. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10047",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-10-17",
+    "version": "v3.0.0",
+    "title": "inventory-service Incident response procedure",
+    "content": "When inventory-service shows cache misses, follow the evidence-first checks below. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10020",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-10-21",
+    "version": "v3.0.0",
+    "title": "catalog-api Database troubleshooting",
+    "content": "Use this guide for catalog-api when operators observe increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10051",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2025-10-23",
+    "version": "v3.0.0",
+    "title": "user-api Dependency failure guide",
+    "content": "This runbook applies to user-api when dependency failures is reported. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10124",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-10-28",
+    "version": "v3.0.0",
+    "title": "shipping-api Latency troubleshooting",
+    "content": "For shipping-api, begin investigation when monitoring or users indicate cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10068",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-10-30",
+    "version": "v2.6.0",
+    "title": "inventory-service Timeout investigation guide",
+    "content": "When inventory-service shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10148",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-10-31",
+    "version": "v2.7.0",
+    "title": "inventory-service Deployment rollback procedure",
+    "content": "Use this guide for inventory-service when operators observe increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10127",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-11-08",
+    "version": "v2.5.1",
+    "title": "inventory-service Cache recovery procedure",
+    "content": "This runbook applies to inventory-service when queue backlog is reported. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10085",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2025-11-13",
+    "version": "v2.7.0",
+    "title": "orders-api Resource saturation guide",
+    "content": "For orders-api, begin investigation when monitoring or users indicate elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10029",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-11-16",
+    "version": "v3.0.0",
+    "title": "auth-service Queue backlog investigation",
+    "content": "When auth-service shows memory pressure, follow the evidence-first checks below. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10004",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-11-17",
+    "version": "v2.8.1",
+    "title": "auth-service Incident response procedure",
+    "content": "Use this guide for auth-service when operators observe dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10019",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-11-18",
+    "version": "v2.5.1",
+    "title": "payments-api Database troubleshooting",
+    "content": "This runbook applies to payments-api when increased request errors is reported. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10012",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-11-25",
+    "version": "v2.4.0",
+    "title": "payments-api Dependency failure guide",
+    "content": "For payments-api, begin investigation when monitoring or users indicate increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10044",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2025-11-25",
+    "version": "v2.8.1",
+    "title": "auth-service Latency troubleshooting",
+    "content": "When auth-service shows cache misses, follow the evidence-first checks below. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10087",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2025-11-25",
+    "version": "v2.4.0",
+    "title": "notification-service Timeout investigation guide",
+    "content": "Use this guide for notification-service when operators observe database connection saturation. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10006",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-11-29",
+    "version": "v2.7.0",
+    "title": "payments-api Deployment rollback procedure",
+    "content": "This runbook applies to payments-api when queue backlog is reported. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10098",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2025-12-02",
+    "version": "v2.4.0",
+    "title": "inventory-service Cache recovery procedure",
+    "content": "For inventory-service, begin investigation when monitoring or users indicate intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10083",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2025-12-05",
+    "version": "v2.4.0",
+    "title": "notification-service Resource saturation guide",
+    "content": "When notification-service shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10111",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-12-08",
+    "version": "v2.7.0",
+    "title": "catalog-api Queue backlog investigation",
+    "content": "Use this guide for catalog-api when operators observe CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10063",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-12-13",
+    "version": "v2.6.0",
+    "title": "payments-api Incident response procedure",
+    "content": "This runbook applies to payments-api when cache misses is reported. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10025",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2025-12-21",
+    "version": "v2.8.1",
+    "title": "catalog-api Database troubleshooting",
+    "content": "For catalog-api, begin investigation when monitoring or users indicate elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10097",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-12-22",
+    "version": "v3.0.0",
+    "title": "shipping-api Dependency failure guide",
+    "content": "When shipping-api shows CPU saturation, follow the evidence-first checks below. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0. Investigation note 84: correlate the finding with the incident timestamp before closing the case."
+  },
+  {
+    "document_id": "GUIDE-10036",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2025-12-25",
+    "version": "v2.4.0",
+    "title": "shipping-api Latency troubleshooting",
+    "content": "Use this guide for shipping-api when operators observe database connection saturation. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10100",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2025-12-28",
+    "version": "v3.0.0",
+    "title": "payments-api Timeout investigation guide",
+    "content": "This runbook applies to payments-api when dependency failures is reported. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10108",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-01-04",
+    "version": "v2.8.1",
+    "title": "shipping-api Deployment rollback procedure",
+    "content": "For shipping-api, begin investigation when monitoring or users indicate increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10105",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2026-01-05",
+    "version": "v2.8.1",
+    "title": "catalog-api Cache recovery procedure",
+    "content": "When catalog-api shows CPU saturation, follow the evidence-first checks below. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10139",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-01-10",
+    "version": "v2.6.0",
+    "title": "auth-service Resource saturation guide",
+    "content": "Use this guide for auth-service when operators observe elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10007",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-01-14",
+    "version": "v2.4.0",
+    "title": "payments-api Queue backlog investigation",
+    "content": "This runbook applies to payments-api when dependency failures is reported. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10014",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2026-01-15",
+    "version": "v2.5.1",
+    "title": "orders-api Incident response procedure",
+    "content": "For orders-api, begin investigation when monitoring or users indicate database connection saturation. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10128",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2026-01-18",
+    "version": "v2.4.0",
+    "title": "inventory-service Database troubleshooting",
+    "content": "When inventory-service shows database connection saturation, follow the evidence-first checks below. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10046",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2026-01-24",
+    "version": "v2.4.0",
+    "title": "catalog-api Dependency failure guide",
+    "content": "Use this guide for catalog-api when operators observe CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10076",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-01-29",
+    "version": "v2.6.0",
+    "title": "auth-service Latency troubleshooting",
+    "content": "This runbook applies to auth-service when queue backlog is reported. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10060",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-02-04",
+    "version": "v2.8.1",
+    "title": "payments-api Timeout investigation guide",
+    "content": "For payments-api, begin investigation when monitoring or users indicate elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10093",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-02-08",
+    "version": "v2.8.1",
+    "title": "shipping-api Deployment rollback procedure",
+    "content": "When shipping-api shows elevated P95 latency, follow the evidence-first checks below. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10038",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-02-12",
+    "version": "v3.0.0",
+    "title": "shipping-api Cache recovery procedure",
+    "content": "Use this guide for shipping-api when operators observe cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10122",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-02-13",
+    "version": "v2.4.0",
+    "title": "shipping-api Resource saturation guide",
+    "content": "This runbook applies to shipping-api when dependency failures is reported. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10065",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-02-21",
+    "version": "v3.0.0",
+    "title": "user-api Queue backlog investigation",
+    "content": "For user-api, begin investigation when monitoring or users indicate dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10059",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-02-24",
+    "version": "v3.0.0",
+    "title": "payments-api Incident response procedure",
+    "content": "When payments-api shows increased request errors, follow the evidence-first checks below. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10144",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-02-28",
+    "version": "v2.5.1",
+    "title": "shipping-api Database troubleshooting",
+    "content": "Use this guide for shipping-api when operators observe elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10035",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-03-01",
+    "version": "v2.4.0",
+    "title": "shipping-api Dependency failure guide",
+    "content": "This runbook applies to shipping-api when CPU saturation is reported. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10125",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-03-02",
+    "version": "v2.5.1",
+    "title": "user-api Latency troubleshooting",
+    "content": "For user-api, begin investigation when monitoring or users indicate cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10071",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2026-03-05",
+    "version": "v2.8.1",
+    "title": "inventory-service Timeout investigation guide",
+    "content": "When inventory-service shows elevated P95 latency, follow the evidence-first checks below. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10078",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2026-03-10",
+    "version": "v3.0.0",
+    "title": "inventory-service Deployment rollback procedure",
+    "content": "Use this guide for inventory-service when operators observe CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10070",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-03-11",
+    "version": "v2.7.0",
+    "title": "payments-api Cache recovery procedure",
+    "content": "This runbook applies to payments-api when increased request errors is reported. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10129",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2026-03-11",
+    "version": "v2.6.0",
+    "title": "catalog-api Resource saturation guide",
+    "content": "For catalog-api, begin investigation when monitoring or users indicate intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10137",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2026-03-23",
+    "version": "v2.6.0",
+    "title": "inventory-service Queue backlog investigation",
+    "content": "When inventory-service shows queue backlog, follow the evidence-first checks below. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10086",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-03-24",
+    "version": "v2.8.1",
+    "title": "auth-service Incident response procedure",
+    "content": "Use this guide for auth-service when operators observe CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10072",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-03-29",
+    "version": "v3.0.0",
+    "title": "shipping-api Database troubleshooting",
+    "content": "This runbook applies to shipping-api when intermittent timeouts is reported. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10082",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-04-07",
+    "version": "v2.8.1",
+    "title": "auth-service Dependency failure guide",
+    "content": "For auth-service, begin investigation when monitoring or users indicate dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10057",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2026-04-08",
+    "version": "v2.7.0",
+    "title": "catalog-api Latency troubleshooting",
+    "content": "When catalog-api shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10088",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-04-09",
+    "version": "v2.5.1",
+    "title": "user-api Timeout investigation guide",
+    "content": "Use this guide for user-api when operators observe database connection saturation. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10075",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-04-15",
+    "version": "v2.7.0",
+    "title": "auth-service Deployment rollback procedure",
+    "content": "This runbook applies to auth-service when database connection saturation is reported. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.7.0."
+  },
+  {
+    "document_id": "GUIDE-10079",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-04-16",
+    "version": "v2.4.0",
+    "title": "shipping-api Cache recovery procedure",
+    "content": "For shipping-api, begin investigation when monitoring or users indicate increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10112",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-04-17",
+    "version": "v2.5.1",
+    "title": "shipping-api Resource saturation guide",
+    "content": "When shipping-api shows cache misses, follow the evidence-first checks below. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10030",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-05-01",
+    "version": "v2.8.1",
+    "title": "user-api Queue backlog investigation",
+    "content": "Use this guide for user-api when operators observe CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10037",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2026-05-04",
+    "version": "v2.5.1",
+    "title": "orders-api Incident response procedure",
+    "content": "This runbook applies to orders-api when cache misses is reported. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10121",
+    "type": "troubleshooting",
+    "service": "orders-api",
+    "date": "2026-05-05",
+    "version": "v2.4.0",
+    "title": "orders-api Database troubleshooting",
+    "content": "For orders-api, begin investigation when monitoring or users indicate elevated P95 latency. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10147",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2026-05-09",
+    "version": "v2.6.0",
+    "title": "notification-service Dependency failure guide",
+    "content": "When notification-service shows increased request errors, follow the evidence-first checks below. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10116",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-05-16",
+    "version": "v2.8.1",
+    "title": "user-api Latency troubleshooting",
+    "content": "Use this guide for user-api when operators observe queue backlog. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10136",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-05-16",
+    "version": "v2.4.0",
+    "title": "payments-api Timeout investigation guide",
+    "content": "This runbook applies to payments-api when elevated P95 latency is reported. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10101",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2026-05-25",
+    "version": "v2.8.1",
+    "title": "notification-service Deployment rollback procedure",
+    "content": "For notification-service, begin investigation when monitoring or users indicate cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10021",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-05-29",
+    "version": "v2.4.0",
+    "title": "payments-api Cache recovery procedure",
+    "content": "When payments-api shows memory pressure, follow the evidence-first checks below. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10110",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2026-06-05",
+    "version": "v2.8.1",
+    "title": "catalog-api Resource saturation guide",
+    "content": "Use this guide for catalog-api when operators observe cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10013",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-06-06",
+    "version": "v2.5.1",
+    "title": "user-api Queue backlog investigation",
+    "content": "This runbook applies to user-api when memory pressure is reported. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10095",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-06-11",
+    "version": "v2.8.1",
+    "title": "payments-api Incident response procedure",
+    "content": "For payments-api, begin investigation when monitoring or users indicate cache misses. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10015",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2026-06-21",
+    "version": "v2.4.0",
+    "title": "inventory-service Database troubleshooting",
+    "content": "When inventory-service shows queue backlog, follow the evidence-first checks below. Inspect consumer lag and queue depth first, then compare producer rate with worker throughput. Check worker concurrency, recent releases, dependency latency, and error logs before changing capacity. Capture queue age and the affected version. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10005",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2026-06-22",
+    "version": "v2.6.0",
+    "title": "inventory-service Dependency failure guide",
+    "content": "Use this guide for inventory-service when operators observe dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10069",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-06-28",
+    "version": "v2.4.0",
+    "title": "payments-api Latency troubleshooting",
+    "content": "This runbook applies to payments-api when cache misses is reported. Check cache hit ratio, eviction rate, key distribution, TTL changes, and cache-node health. Compare the timing with configuration or deployment changes. Warm only the affected keys after confirming the cache layer is healthy. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10091",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-06-28",
+    "version": "v2.4.0",
+    "title": "auth-service Timeout investigation guide",
+    "content": "For auth-service, begin investigation when monitoring or users indicate intermittent timeouts. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10049",
+    "type": "troubleshooting",
+    "service": "inventory-service",
+    "date": "2026-06-30",
+    "version": "v3.0.0",
+    "title": "inventory-service Deployment rollback procedure",
+    "content": "When inventory-service shows elevated P95 latency, follow the evidence-first checks below. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10131",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-07-03",
+    "version": "v2.6.0",
+    "title": "shipping-api Cache recovery procedure",
+    "content": "Use this guide for shipping-api when operators observe memory pressure. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10064",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2026-07-12",
+    "version": "v2.5.1",
+    "title": "notification-service Resource saturation guide",
+    "content": "This runbook applies to notification-service when elevated P95 latency is reported. Break latency down by endpoint and downstream call. Compare P50/P95/P99, inspect traces for slow dependencies, review recent deployments, database pool usage, and resource saturation. Record the slow path before applying a mitigation. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10008",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-07-18",
+    "version": "v2.4.0",
+    "title": "user-api Queue backlog investigation",
+    "content": "For user-api, begin investigation when monitoring or users indicate memory pressure. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10135",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-07-24",
+    "version": "v3.0.0",
+    "title": "payments-api Incident response procedure",
+    "content": "When payments-api shows intermittent timeouts, follow the evidence-first checks below. Correlate timeout requests with trace spans, downstream latency, connection-pool wait time, and instance load. Check whether retries are extending request duration. Use bounded deadlines and verify behavior across healthy and affected instances. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10017",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-07-28",
+    "version": "v2.5.1",
+    "title": "user-api Database troubleshooting",
+    "content": "Use this guide for user-api when operators observe increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10056",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-07-29",
+    "version": "v2.7.0",
+    "title": "payments-api Dependency failure guide",
+    "content": "This runbook applies to payments-api when increased request errors is reported. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.7.0. Investigation note 138: correlate the finding with the incident timestamp before closing the case."
+  },
+  {
+    "document_id": "GUIDE-10132",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2026-08-03",
+    "version": "v2.4.0",
+    "title": "catalog-api Latency troubleshooting",
+    "content": "For catalog-api, begin investigation when monitoring or users indicate CPU saturation. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10104",
+    "type": "troubleshooting",
+    "service": "shipping-api",
+    "date": "2026-08-07",
+    "version": "v3.0.0",
+    "title": "shipping-api Timeout investigation guide",
+    "content": "When shipping-api shows increased request errors, follow the evidence-first checks below. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10040",
+    "type": "troubleshooting",
+    "service": "payments-api",
+    "date": "2026-08-08",
+    "version": "v3.0.0",
+    "title": "payments-api Deployment rollback procedure",
+    "content": "Use this guide for payments-api when operators observe database connection saturation. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v3.0.0."
+  },
+  {
+    "document_id": "GUIDE-10140",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-08-09",
+    "version": "v2.4.0",
+    "title": "user-api Cache recovery procedure",
+    "content": "This runbook applies to user-api when memory pressure is reported. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-41",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-08-10",
+    "version": "v3",
+    "title": "auth-service Resource saturation guide",
+    "content": "For auth-service, begin investigation when monitoring or users indicate dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v3."
+  },
+  {
+    "document_id": "GUIDE-10033",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-08-12",
+    "version": "v2.8.1",
+    "title": "user-api Queue backlog investigation",
+    "content": "When user-api shows dependency failures, follow the evidence-first checks below. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10092",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-08-27",
+    "version": "v2.4.0",
+    "title": "auth-service Incident response procedure",
+    "content": "Use this guide for auth-service when operators observe memory pressure. Check heap growth, allocation rate, process restarts, and retained objects. Compare memory behavior across instances and versions, and inspect large responses or caches. Capture a memory profile before restarting repeatedly. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.4.0."
+  },
+  {
+    "document_id": "GUIDE-10081",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-09-02",
+    "version": "v2.5.1",
+    "title": "auth-service Database troubleshooting",
+    "content": "This runbook applies to auth-service when CPU saturation is reported. Identify the busiest endpoints and processes, then inspect CPU by instance and request path. Compare utilization with traffic and deployment timing. Profile hot paths before scaling or moving expensive work off the synchronous request path. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10089",
+    "type": "troubleshooting",
+    "service": "notification-service",
+    "date": "2026-09-02",
+    "version": "v2.5.1",
+    "title": "notification-service Dependency failure guide",
+    "content": "For notification-service, begin investigation when monitoring or users indicate increased request errors. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. If the signal is isolated to one instance or endpoint, preserve that scope before making a fleet-wide change. Affected version: v2.5.1."
+  },
+  {
+    "document_id": "GUIDE-10134",
+    "type": "troubleshooting",
+    "service": "user-api",
+    "date": "2026-09-03",
+    "version": "v2.6.0",
+    "title": "user-api Latency troubleshooting",
+    "content": "When user-api shows increased request errors, follow the evidence-first checks below. Group errors by endpoint, status code, instance, and version. Compare the error spike with deployment events and dependency health, then inspect application logs for the first failure rather than downstream retries. Document each observation and remediation step so the resulting evidence can be compared with related incidents. Affected version: v2.6.0."
+  },
+  {
+    "document_id": "GUIDE-10041",
+    "type": "troubleshooting",
+    "service": "catalog-api",
+    "date": "2026-09-11",
+    "version": "v2.8.1",
+    "title": "catalog-api Timeout investigation guide",
+    "content": "Use this guide for catalog-api when operators observe dependency failures. Identify the failing downstream dependency and inspect its error rate, latency, connection limits, and recent changes. Check retry volume and circuit-breaker state before restarting the caller. Preserve request IDs and timestamps for correlation. Start by establishing the incident window and affected version, then compare healthy and unhealthy instances. Affected version: v2.8.1."
+  },
+  {
+    "document_id": "GUIDE-10026",
+    "type": "troubleshooting",
+    "service": "auth-service",
+    "date": "2026-09-13",
+    "version": "v2.5.1",
+    "title": "auth-service Deployment rollback procedure",
+    "content": "This runbook applies to auth-service when database connection saturation is reported. Inspect active connections, pool wait time, query duration, and connection leaks. Compare application demand with database limits and recent schema or deployment changes. Avoid increasing pool size until database capacity is confirmed. Do not treat the symptom as proof of a root cause; correlate it with logs, metrics, traces, and recent changes. Affected version: v2.5.1."
+  }
+]

@@ -2,11 +2,14 @@ from __future__ import annotations
 
 import logging
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Response
 
+from app.config import settings
 from app.graph.workflow import run_investigation
 from app.models.request import InvestigateRequest
 from app.models.response import ContradictionItem, EvidenceItem, HealthResponse, InvestigateResponse
+from app.storage.chroma import get_collection, is_embedding_model_loaded
+from app.storage.sqlite import get_store
 
 logger = logging.getLogger("investigation")
 
@@ -14,8 +17,45 @@ router = APIRouter()
 
 
 @router.get("/health", response_model=HealthResponse)
-def health() -> HealthResponse:
-    return HealthResponse(status="ok")
+def health(response: Response) -> HealthResponse:
+    document_count = None
+    chunk_count = None
+
+    try:
+        document_count = get_store().count()
+        database_status = "ok"
+    except Exception:
+        database_status = "unavailable"
+
+    try:
+        chunk_count = get_collection().count()
+        vector_store_status = "ok"
+    except Exception:
+        vector_store_status = "unavailable"
+
+    checks = {
+        "database": database_status,
+        "vector_store": vector_store_status,
+        "embedding_model": "ready" if is_embedding_model_loaded() else "not_loaded",
+        "gemini": "configured" if settings.gemini_api_key else "missing_api_key",
+    }
+    healthy = all(
+        checks[name] == expected
+        for name, expected in (
+            ("database", "ok"),
+            ("vector_store", "ok"),
+            ("embedding_model", "ready"),
+            ("gemini", "configured"),
+        )
+    )
+
+    response.status_code = 200 if healthy else 503
+    return HealthResponse(
+        status="ok" if healthy else "degraded",
+        checks=checks,
+        document_count=document_count,
+        chunk_count=chunk_count,
+    )
 
 
 @router.post("/investigate", response_model=InvestigateResponse)

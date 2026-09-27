@@ -23,4 +23,4 @@ ENV PYTHONUNBUFFERED=1 \
 EXPOSE 8000
 
 # Ingest the bundled documents.json at container start (idempotent), then serve.
-CMD ["sh", "-c", "python -m app.ingestion.documents; uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+CMD ["sh", "-c", "python -m app.ingestion.documents && exec uvicorn app.main:app --host 0.0.0.0 --port 8000"]

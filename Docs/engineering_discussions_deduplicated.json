@@ -1,0 +1,1352 @@
+[
+  {
+    "document_id": "DISC-10104",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-01-09",
+    "version": "v3.0.0",
+    "title": "payments-api Investigation discussion",
+    "content": "During the initial triage, engineers reviewed the queue backlog observed in payments-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 1 also tracked the investigation state for the service and version on 2025-01-09."
+  },
+  {
+    "document_id": "DISC-10052",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2025-01-13",
+    "version": "v2.7.0",
+    "title": "notification-service Performance discussion",
+    "content": "During the root-cause review, engineers reviewed the elevated P95 latency observed in notification-service. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 2 also tracked the investigation state for the service and version on 2025-01-13."
+  },
+  {
+    "document_id": "DISC-10094",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-01-16",
+    "version": "v2.6.0",
+    "title": "inventory-service Investigation discussion",
+    "content": "During the follow-up analysis, engineers reviewed the intermittent timeouts observed in inventory-service. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 3 also tracked the investigation state for the service and version on 2025-01-16."
+  },
+  {
+    "document_id": "DISC-10111",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-01-17",
+    "version": "v2.8.1",
+    "title": "inventory-service Deployment analysis",
+    "content": "During the evidence review, engineers reviewed the increased request errors observed in inventory-service. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 4 also tracked the investigation state for the service and version on 2025-01-17."
+  },
+  {
+    "document_id": "DISC-10032",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-01-24",
+    "version": "v3.0.0",
+    "title": "orders-api Root cause discussion",
+    "content": "During the initial triage, engineers reviewed the dependency failures observed in orders-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 5 also tracked the investigation state for the service and version on 2025-01-24."
+  },
+  {
+    "document_id": "DISC-10038",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-01-27",
+    "version": "v2.7.0",
+    "title": "shipping-api Reliability discussion",
+    "content": "During the root-cause review, engineers reviewed the cache misses observed in shipping-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 6 also tracked the investigation state for the service and version on 2025-01-27."
+  },
+  {
+    "document_id": "DISC-10050",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-01-31",
+    "version": "v2.6.0",
+    "title": "user-api Reliability discussion",
+    "content": "During the follow-up analysis, engineers reviewed the database connection saturation observed in user-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 7 also tracked the investigation state for the service and version on 2025-01-31."
+  },
+  {
+    "document_id": "DISC-10077",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-02-01",
+    "version": "v3.0.0",
+    "title": "orders-api Reliability discussion",
+    "content": "During the evidence review, engineers reviewed the CPU saturation observed in orders-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 8 also tracked the investigation state for the service and version on 2025-02-01."
+  },
+  {
+    "document_id": "DISC-10011",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-02-05",
+    "version": "v2.4.0",
+    "title": "orders-api Root cause discussion",
+    "content": "During the initial triage, engineers reviewed the memory pressure observed in orders-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 9 also tracked the investigation state for the service and version on 2025-02-05."
+  },
+  {
+    "document_id": "DISC-10046",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-02-12",
+    "version": "v2.6.0",
+    "title": "payments-api Incident follow-up",
+    "content": "During the root-cause review, engineers reviewed the queue backlog observed in payments-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 10 also tracked the investigation state for the service and version on 2025-02-12."
+  },
+  {
+    "document_id": "DISC-10138",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-02-18",
+    "version": "v2.5.1",
+    "title": "payments-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the elevated P95 latency observed in payments-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 11 also tracked the investigation state for the service and version on 2025-02-18."
+  },
+  {
+    "document_id": "DISC-10009",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-02-25",
+    "version": "v2.7.0",
+    "title": "shipping-api Investigation discussion",
+    "content": "During the evidence review, engineers reviewed the intermittent timeouts observed in shipping-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 12 also tracked the investigation state for the service and version on 2025-02-25."
+  },
+  {
+    "document_id": "DISC-10034",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2025-02-25",
+    "version": "v2.5.1",
+    "title": "catalog-api Reliability discussion",
+    "content": "During the initial triage, engineers reviewed the increased request errors observed in catalog-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 13 also tracked the investigation state for the service and version on 2025-02-25."
+  },
+  {
+    "document_id": "DISC-10069",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-02-26",
+    "version": "v2.7.0",
+    "title": "orders-api Reliability discussion",
+    "content": "During the root-cause review, engineers reviewed the dependency failures observed in orders-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 14 also tracked the investigation state for the service and version on 2025-02-26."
+  },
+  {
+    "document_id": "DISC-10150",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-02-27",
+    "version": "v3.0.0",
+    "title": "payments-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the cache misses observed in payments-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 15 also tracked the investigation state for the service and version on 2025-02-27."
+  },
+  {
+    "document_id": "DISC-10067",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-03-09",
+    "version": "v3.0.0",
+    "title": "orders-api Deployment analysis",
+    "content": "During the evidence review, engineers reviewed the database connection saturation observed in orders-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 16 also tracked the investigation state for the service and version on 2025-03-09."
+  },
+  {
+    "document_id": "DISC-10062",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-03-22",
+    "version": "v2.7.0",
+    "title": "shipping-api Performance discussion",
+    "content": "During the initial triage, engineers reviewed the CPU saturation observed in shipping-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 17 also tracked the investigation state for the service and version on 2025-03-22."
+  },
+  {
+    "document_id": "DISC-10070",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-03-26",
+    "version": "v3.0.0",
+    "title": "auth-service Root cause discussion",
+    "content": "During the root-cause review, engineers reviewed the memory pressure observed in auth-service. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 18 also tracked the investigation state for the service and version on 2025-03-26."
+  },
+  {
+    "document_id": "DISC-10065",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-04-06",
+    "version": "v2.5.1",
+    "title": "orders-api Reliability discussion",
+    "content": "During the follow-up analysis, engineers reviewed the queue backlog observed in orders-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 19 also tracked the investigation state for the service and version on 2025-04-06."
+  },
+  {
+    "document_id": "DISC-10145",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-04-07",
+    "version": "v2.8.1",
+    "title": "inventory-service Dependency analysis",
+    "content": "During the evidence review, engineers reviewed the elevated P95 latency observed in inventory-service. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 20 also tracked the investigation state for the service and version on 2025-04-07."
+  },
+  {
+    "document_id": "DISC-10081",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-04-13",
+    "version": "v2.4.0",
+    "title": "shipping-api Performance discussion",
+    "content": "During the initial triage, engineers reviewed the intermittent timeouts observed in shipping-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 21 also tracked the investigation state for the service and version on 2025-04-13."
+  },
+  {
+    "document_id": "DISC-10045",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-04-18",
+    "version": "v2.5.1",
+    "title": "user-api Reliability discussion",
+    "content": "During the root-cause review, engineers reviewed the increased request errors observed in user-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 22 also tracked the investigation state for the service and version on 2025-04-18."
+  },
+  {
+    "document_id": "DISC-10018",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-04-23",
+    "version": "v3.0.0",
+    "title": "shipping-api Investigation discussion",
+    "content": "During the follow-up analysis, engineers reviewed the dependency failures observed in shipping-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 23 also tracked the investigation state for the service and version on 2025-04-23."
+  },
+  {
+    "document_id": "DISC-10041",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-04-25",
+    "version": "v2.7.0",
+    "title": "auth-service Performance discussion",
+    "content": "During the evidence review, engineers reviewed the cache misses observed in auth-service. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 24 also tracked the investigation state for the service and version on 2025-04-25."
+  },
+  {
+    "document_id": "DISC-10091",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-04-26",
+    "version": "v2.6.0",
+    "title": "shipping-api Reliability discussion",
+    "content": "During the initial triage, engineers reviewed the database connection saturation observed in shipping-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 25 also tracked the investigation state for the service and version on 2025-04-26."
+  },
+  {
+    "document_id": "DISC-10108",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-05-01",
+    "version": "v2.4.0",
+    "title": "orders-api Deployment analysis",
+    "content": "During the root-cause review, engineers reviewed the CPU saturation observed in orders-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 26 also tracked the investigation state for the service and version on 2025-05-01."
+  },
+  {
+    "document_id": "DISC-10123",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-05-02",
+    "version": "v3.0.0",
+    "title": "shipping-api Performance discussion",
+    "content": "During the follow-up analysis, engineers reviewed the memory pressure observed in shipping-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 27 also tracked the investigation state for the service and version on 2025-05-02."
+  },
+  {
+    "document_id": "DISC-10107",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-05-11",
+    "version": "v2.4.0",
+    "title": "shipping-api Root cause discussion",
+    "content": "During the evidence review, engineers reviewed the queue backlog observed in shipping-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 28 also tracked the investigation state for the service and version on 2025-05-11."
+  },
+  {
+    "document_id": "DISC-10128",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-05-12",
+    "version": "v2.4.0",
+    "title": "orders-api Root cause discussion",
+    "content": "During the initial triage, engineers reviewed the elevated P95 latency observed in orders-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 29 also tracked the investigation state for the service and version on 2025-05-12."
+  },
+  {
+    "document_id": "DISC-10068",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-05-25",
+    "version": "v3.0.0",
+    "title": "payments-api Dependency analysis",
+    "content": "During the root-cause review, engineers reviewed the intermittent timeouts observed in payments-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 30 also tracked the investigation state for the service and version on 2025-05-25."
+  },
+  {
+    "document_id": "DISC-10132",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-05-25",
+    "version": "v2.5.1",
+    "title": "payments-api Incident follow-up",
+    "content": "During the follow-up analysis, engineers reviewed the increased request errors observed in payments-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 31 also tracked the investigation state for the service and version on 2025-05-25."
+  },
+  {
+    "document_id": "DISC-10039",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-05-28",
+    "version": "v3.0.0",
+    "title": "inventory-service Reliability discussion",
+    "content": "During the evidence review, engineers reviewed the dependency failures observed in inventory-service. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 32 also tracked the investigation state for the service and version on 2025-05-28."
+  },
+  {
+    "document_id": "DISC-10026",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-05-30",
+    "version": "v2.6.0",
+    "title": "orders-api Root cause discussion",
+    "content": "During the initial triage, engineers reviewed the cache misses observed in orders-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 33 also tracked the investigation state for the service and version on 2025-05-30."
+  },
+  {
+    "document_id": "DISC-10040",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-06-06",
+    "version": "v3.0.0",
+    "title": "shipping-api Root cause discussion",
+    "content": "During the root-cause review, engineers reviewed the database connection saturation observed in shipping-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 34 also tracked the investigation state for the service and version on 2025-06-06."
+  },
+  {
+    "document_id": "DISC-10031",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-06-08",
+    "version": "v2.8.1",
+    "title": "orders-api Investigation discussion",
+    "content": "During the follow-up analysis, engineers reviewed the CPU saturation observed in orders-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 35 also tracked the investigation state for the service and version on 2025-06-08."
+  },
+  {
+    "document_id": "DISC-10024",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-06-09",
+    "version": "v2.7.0",
+    "title": "shipping-api Performance discussion",
+    "content": "During the evidence review, engineers reviewed the memory pressure observed in shipping-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 36 also tracked the investigation state for the service and version on 2025-06-09."
+  },
+  {
+    "document_id": "DISC-10056",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-06-09",
+    "version": "v2.5.1",
+    "title": "user-api Performance discussion",
+    "content": "During the initial triage, engineers reviewed the queue backlog observed in user-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 37 also tracked the investigation state for the service and version on 2025-06-09."
+  },
+  {
+    "document_id": "DISC-10099",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-06-10",
+    "version": "v2.4.0",
+    "title": "orders-api Performance discussion",
+    "content": "During the root-cause review, engineers reviewed the elevated P95 latency observed in orders-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 38 also tracked the investigation state for the service and version on 2025-06-10."
+  },
+  {
+    "document_id": "DISC-10118",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-06-10",
+    "version": "v2.4.0",
+    "title": "inventory-service Dependency analysis",
+    "content": "During the follow-up analysis, engineers reviewed the intermittent timeouts observed in inventory-service. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 39 also tracked the investigation state for the service and version on 2025-06-10."
+  },
+  {
+    "document_id": "DISC-10014",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-06-15",
+    "version": "v2.5.1",
+    "title": "payments-api Deployment analysis",
+    "content": "During the evidence review, engineers reviewed the increased request errors observed in payments-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 40 also tracked the investigation state for the service and version on 2025-06-15."
+  },
+  {
+    "document_id": "DISC-10116",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-06-23",
+    "version": "v3.0.0",
+    "title": "shipping-api Reliability discussion",
+    "content": "During the initial triage, engineers reviewed the dependency failures observed in shipping-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 41 also tracked the investigation state for the service and version on 2025-06-23."
+  },
+  {
+    "document_id": "DISC-10090",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-06-25",
+    "version": "v2.7.0",
+    "title": "orders-api Reliability discussion",
+    "content": "During the root-cause review, engineers reviewed the cache misses observed in orders-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 42 also tracked the investigation state for the service and version on 2025-06-25."
+  },
+  {
+    "document_id": "DISC-10149",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-06-27",
+    "version": "v2.6.0",
+    "title": "orders-api Dependency analysis",
+    "content": "During the follow-up analysis, engineers reviewed the database connection saturation observed in orders-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 43 also tracked the investigation state for the service and version on 2025-06-27."
+  },
+  {
+    "document_id": "DISC-10012",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-06-29",
+    "version": "v3.0.0",
+    "title": "inventory-service Deployment analysis",
+    "content": "During the evidence review, engineers reviewed the CPU saturation observed in inventory-service. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 44 also tracked the investigation state for the service and version on 2025-06-29."
+  },
+  {
+    "document_id": "DISC-10127",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2025-07-01",
+    "version": "v2.5.1",
+    "title": "catalog-api Root cause discussion",
+    "content": "During the initial triage, engineers reviewed the memory pressure observed in catalog-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 45 also tracked the investigation state for the service and version on 2025-07-01."
+  },
+  {
+    "document_id": "DISC-10114",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-07-03",
+    "version": "v2.5.1",
+    "title": "auth-service Deployment analysis",
+    "content": "During the root-cause review, engineers reviewed the queue backlog observed in auth-service. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 46 also tracked the investigation state for the service and version on 2025-07-03."
+  },
+  {
+    "document_id": "DISC-10115",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-07-03",
+    "version": "v2.4.0",
+    "title": "shipping-api Performance discussion",
+    "content": "During the follow-up analysis, engineers reviewed the elevated P95 latency observed in shipping-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 47 also tracked the investigation state for the service and version on 2025-07-03."
+  },
+  {
+    "document_id": "DISC-10044",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-07-05",
+    "version": "v3.0.0",
+    "title": "auth-service Performance discussion",
+    "content": "During the evidence review, engineers reviewed the intermittent timeouts observed in auth-service. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 48 also tracked the investigation state for the service and version on 2025-07-05."
+  },
+  {
+    "document_id": "DISC-10110",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-07-14",
+    "version": "v3.0.0",
+    "title": "inventory-service Dependency analysis",
+    "content": "During the initial triage, engineers reviewed the increased request errors observed in inventory-service. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 49 also tracked the investigation state for the service and version on 2025-07-14."
+  },
+  {
+    "document_id": "DISC-10015",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-07-25",
+    "version": "v2.8.1",
+    "title": "shipping-api Reliability discussion",
+    "content": "During the root-cause review, engineers reviewed the dependency failures observed in shipping-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 50 also tracked the investigation state for the service and version on 2025-07-25."
+  },
+  {
+    "document_id": "DISC-10016",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-07-25",
+    "version": "v3.0.0",
+    "title": "auth-service Reliability discussion",
+    "content": "During the follow-up analysis, engineers reviewed the cache misses observed in auth-service. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 51 also tracked the investigation state for the service and version on 2025-07-25."
+  },
+  {
+    "document_id": "DISC-10117",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-07-28",
+    "version": "v3.0.0",
+    "title": "user-api Performance discussion",
+    "content": "During the evidence review, engineers reviewed the database connection saturation observed in user-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 52 also tracked the investigation state for the service and version on 2025-07-28."
+  },
+  {
+    "document_id": "DISC-10131",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-08-04",
+    "version": "v2.4.0",
+    "title": "auth-service Performance discussion",
+    "content": "During the initial triage, engineers reviewed the CPU saturation observed in auth-service. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 53 also tracked the investigation state for the service and version on 2025-08-04."
+  },
+  {
+    "document_id": "DISC-10007",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2025-08-12",
+    "version": "v2.6.0",
+    "title": "notification-service Investigation discussion",
+    "content": "During the root-cause review, engineers reviewed the memory pressure observed in notification-service. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 54 also tracked the investigation state for the service and version on 2025-08-12."
+  },
+  {
+    "document_id": "DISC-10055",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-08-15",
+    "version": "v2.7.0",
+    "title": "shipping-api Performance discussion",
+    "content": "During the follow-up analysis, engineers reviewed the queue backlog observed in shipping-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 55 also tracked the investigation state for the service and version on 2025-08-15."
+  },
+  {
+    "document_id": "DISC-10064",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-08-20",
+    "version": "v2.8.1",
+    "title": "orders-api Root cause discussion",
+    "content": "During the evidence review, engineers reviewed the elevated P95 latency observed in orders-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 56 also tracked the investigation state for the service and version on 2025-08-20."
+  },
+  {
+    "document_id": "DISC-10074",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-08-21",
+    "version": "v2.5.1",
+    "title": "shipping-api Dependency analysis",
+    "content": "During the initial triage, engineers reviewed the intermittent timeouts observed in shipping-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 57 also tracked the investigation state for the service and version on 2025-08-21."
+  },
+  {
+    "document_id": "DISC-10124",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-08-22",
+    "version": "v2.5.1",
+    "title": "auth-service Incident follow-up",
+    "content": "During the root-cause review, engineers reviewed the increased request errors observed in auth-service. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 58 also tracked the investigation state for the service and version on 2025-08-22."
+  },
+  {
+    "document_id": "DISC-10139",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2025-08-27",
+    "version": "v2.6.0",
+    "title": "notification-service Dependency analysis",
+    "content": "During the follow-up analysis, engineers reviewed the dependency failures observed in notification-service. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 59 also tracked the investigation state for the service and version on 2025-08-27."
+  },
+  {
+    "document_id": "DISC-10066",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2025-09-04",
+    "version": "v2.7.0",
+    "title": "notification-service Root cause discussion",
+    "content": "During the evidence review, engineers reviewed the cache misses observed in notification-service. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 60 also tracked the investigation state for the service and version on 2025-09-04."
+  },
+  {
+    "document_id": "DISC-10022",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-09-09",
+    "version": "v2.4.0",
+    "title": "orders-api Investigation discussion",
+    "content": "During the initial triage, engineers reviewed the database connection saturation observed in orders-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 61 also tracked the investigation state for the service and version on 2025-09-09."
+  },
+  {
+    "document_id": "DISC-10028",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2025-09-12",
+    "version": "v3.0.0",
+    "title": "catalog-api Root cause discussion",
+    "content": "During the root-cause review, engineers reviewed the CPU saturation observed in catalog-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 62 also tracked the investigation state for the service and version on 2025-09-12."
+  },
+  {
+    "document_id": "DISC-10146",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-09-13",
+    "version": "v2.4.0",
+    "title": "user-api Performance discussion",
+    "content": "During the follow-up analysis, engineers reviewed the memory pressure observed in user-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 63 also tracked the investigation state for the service and version on 2025-09-13."
+  },
+  {
+    "document_id": "DISC-10122",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2025-09-15",
+    "version": "v2.4.0",
+    "title": "auth-service Root cause discussion",
+    "content": "During the evidence review, engineers reviewed the queue backlog observed in auth-service. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 64 also tracked the investigation state for the service and version on 2025-09-15."
+  },
+  {
+    "document_id": "DISC-10079",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-09-23",
+    "version": "v2.6.0",
+    "title": "orders-api Performance discussion",
+    "content": "During the initial triage, engineers reviewed the elevated P95 latency observed in orders-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 65 also tracked the investigation state for the service and version on 2025-09-23."
+  },
+  {
+    "document_id": "DISC-10072",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2025-09-26",
+    "version": "v2.5.1",
+    "title": "catalog-api Incident follow-up",
+    "content": "During the root-cause review, engineers reviewed the intermittent timeouts observed in catalog-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 66 also tracked the investigation state for the service and version on 2025-09-26."
+  },
+  {
+    "document_id": "DISC-10087",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-09-30",
+    "version": "v2.7.0",
+    "title": "shipping-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the increased request errors observed in shipping-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 67 also tracked the investigation state for the service and version on 2025-09-30."
+  },
+  {
+    "document_id": "DISC-10049",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-10-03",
+    "version": "v2.6.0",
+    "title": "inventory-service Reliability discussion",
+    "content": "During the evidence review, engineers reviewed the dependency failures observed in inventory-service. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 68 also tracked the investigation state for the service and version on 2025-10-03."
+  },
+  {
+    "document_id": "DISC-10140",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2025-10-06",
+    "version": "v2.5.1",
+    "title": "catalog-api Deployment analysis",
+    "content": "During the initial triage, engineers reviewed the cache misses observed in catalog-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 69 also tracked the investigation state for the service and version on 2025-10-06."
+  },
+  {
+    "document_id": "DISC-10051",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-10-12",
+    "version": "v2.8.1",
+    "title": "user-api Performance discussion",
+    "content": "During the root-cause review, engineers reviewed the database connection saturation observed in user-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 70 also tracked the investigation state for the service and version on 2025-10-12."
+  },
+  {
+    "document_id": "DISC-10130",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-10-16",
+    "version": "v2.8.1",
+    "title": "payments-api Deployment analysis",
+    "content": "During the follow-up analysis, engineers reviewed the CPU saturation observed in payments-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 71 also tracked the investigation state for the service and version on 2025-10-16."
+  },
+  {
+    "document_id": "DISC-10121",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-10-19",
+    "version": "v3.0.0",
+    "title": "orders-api Performance discussion",
+    "content": "During the evidence review, engineers reviewed the memory pressure observed in orders-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 72 also tracked the investigation state for the service and version on 2025-10-19."
+  },
+  {
+    "document_id": "DISC-10082",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-10-21",
+    "version": "v2.8.1",
+    "title": "payments-api Deployment analysis",
+    "content": "During the initial triage, engineers reviewed the queue backlog observed in payments-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 73 also tracked the investigation state for the service and version on 2025-10-21."
+  },
+  {
+    "document_id": "DISC-10002",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-10-26",
+    "version": "v2.5.1",
+    "title": "inventory-service Incident follow-up",
+    "content": "During the root-cause review, engineers reviewed the elevated P95 latency observed in inventory-service. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 74 also tracked the investigation state for the service and version on 2025-10-26."
+  },
+  {
+    "document_id": "DISC-10135",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2025-11-06",
+    "version": "v2.6.0",
+    "title": "shipping-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the intermittent timeouts observed in shipping-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 75 also tracked the investigation state for the service and version on 2025-11-06."
+  },
+  {
+    "document_id": "DISC-10021",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-11-23",
+    "version": "v2.7.0",
+    "title": "payments-api Investigation discussion",
+    "content": "During the evidence review, engineers reviewed the increased request errors observed in payments-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 76 also tracked the investigation state for the service and version on 2025-11-23."
+  },
+  {
+    "document_id": "DISC-10092",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2025-12-02",
+    "version": "v2.5.1",
+    "title": "catalog-api Incident follow-up",
+    "content": "During the initial triage, engineers reviewed the dependency failures observed in catalog-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 77 also tracked the investigation state for the service and version on 2025-12-02."
+  },
+  {
+    "document_id": "DISC-10084",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-12-03",
+    "version": "v2.4.0",
+    "title": "inventory-service Deployment analysis",
+    "content": "During the root-cause review, engineers reviewed the cache misses observed in inventory-service. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 78 also tracked the investigation state for the service and version on 2025-12-03."
+  },
+  {
+    "document_id": "DISC-10057",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2025-12-05",
+    "version": "v2.7.0",
+    "title": "inventory-service Reliability discussion",
+    "content": "During the follow-up analysis, engineers reviewed the database connection saturation observed in inventory-service. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 79 also tracked the investigation state for the service and version on 2025-12-05."
+  },
+  {
+    "document_id": "DISC-10060",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-12-13",
+    "version": "v2.7.0",
+    "title": "payments-api Dependency analysis",
+    "content": "During the evidence review, engineers reviewed the CPU saturation observed in payments-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 80 also tracked the investigation state for the service and version on 2025-12-13."
+  },
+  {
+    "document_id": "DISC-10003",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-12-14",
+    "version": "v2.8.1",
+    "title": "user-api Dependency analysis",
+    "content": "During the initial triage, engineers reviewed the memory pressure observed in user-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 81 also tracked the investigation state for the service and version on 2025-12-14."
+  },
+  {
+    "document_id": "DISC-10136",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-12-14",
+    "version": "v2.6.0",
+    "title": "payments-api Dependency analysis",
+    "content": "During the root-cause review, engineers reviewed the queue backlog observed in payments-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 82 also tracked the investigation state for the service and version on 2025-12-14."
+  },
+  {
+    "document_id": "DISC-10005",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2025-12-17",
+    "version": "v2.7.0",
+    "title": "user-api Investigation discussion",
+    "content": "During the follow-up analysis, engineers reviewed the elevated P95 latency observed in user-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 83 also tracked the investigation state for the service and version on 2025-12-17."
+  },
+  {
+    "document_id": "DISC-10071",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2025-12-20",
+    "version": "v3.0.0",
+    "title": "payments-api Root cause discussion",
+    "content": "During the evidence review, engineers reviewed the intermittent timeouts observed in payments-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 84 also tracked the investigation state for the service and version on 2025-12-20."
+  },
+  {
+    "document_id": "DISC-10137",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2025-12-25",
+    "version": "v2.4.0",
+    "title": "notification-service Performance discussion",
+    "content": "During the initial triage, engineers reviewed the increased request errors observed in notification-service. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 85 also tracked the investigation state for the service and version on 2025-12-25."
+  },
+  {
+    "document_id": "DISC-10148",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2025-12-30",
+    "version": "v2.5.1",
+    "title": "orders-api Deployment analysis",
+    "content": "During the root-cause review, engineers reviewed the dependency failures observed in orders-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 86 also tracked the investigation state for the service and version on 2025-12-30."
+  },
+  {
+    "document_id": "DISC-10105",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-01-01",
+    "version": "v2.5.1",
+    "title": "payments-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the cache misses observed in payments-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 87 also tracked the investigation state for the service and version on 2026-01-01."
+  },
+  {
+    "document_id": "DISC-10080",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-01-02",
+    "version": "v2.4.0",
+    "title": "payments-api Reliability discussion",
+    "content": "During the evidence review, engineers reviewed the database connection saturation observed in payments-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 88 also tracked the investigation state for the service and version on 2026-01-02."
+  },
+  {
+    "document_id": "DISC-10017",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-01-08",
+    "version": "v2.6.0",
+    "title": "shipping-api Incident follow-up",
+    "content": "During the initial triage, engineers reviewed the CPU saturation observed in shipping-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 89 also tracked the investigation state for the service and version on 2026-01-08."
+  },
+  {
+    "document_id": "DISC-10036",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-01-16",
+    "version": "v2.4.0",
+    "title": "shipping-api Deployment analysis",
+    "content": "During the root-cause review, engineers reviewed the memory pressure observed in shipping-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 90 also tracked the investigation state for the service and version on 2026-01-16."
+  },
+  {
+    "document_id": "DISC-10112",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-01-16",
+    "version": "v2.8.1",
+    "title": "orders-api Reliability discussion",
+    "content": "During the follow-up analysis, engineers reviewed the queue backlog observed in orders-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 91 also tracked the investigation state for the service and version on 2026-01-16."
+  },
+  {
+    "document_id": "DISC-10134",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2026-01-17",
+    "version": "v2.7.0",
+    "title": "catalog-api Incident follow-up",
+    "content": "During the evidence review, engineers reviewed the elevated P95 latency observed in catalog-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 92 also tracked the investigation state for the service and version on 2026-01-17."
+  },
+  {
+    "document_id": "DISC-10113",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-01-19",
+    "version": "v2.4.0",
+    "title": "shipping-api Dependency analysis",
+    "content": "During the initial triage, engineers reviewed the intermittent timeouts observed in shipping-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 93 also tracked the investigation state for the service and version on 2026-01-19."
+  },
+  {
+    "document_id": "DISC-10095",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2026-01-20",
+    "version": "v2.6.0",
+    "title": "auth-service Investigation discussion",
+    "content": "During the root-cause review, engineers reviewed the increased request errors observed in auth-service. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 94 also tracked the investigation state for the service and version on 2026-01-20."
+  },
+  {
+    "document_id": "DISC-10033",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-01-25",
+    "version": "v2.5.1",
+    "title": "notification-service Dependency analysis",
+    "content": "During the follow-up analysis, engineers reviewed the dependency failures observed in notification-service. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 95 also tracked the investigation state for the service and version on 2026-01-25."
+  },
+  {
+    "document_id": "DISC-10058",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-01-28",
+    "version": "v3.0.0",
+    "title": "inventory-service Performance discussion",
+    "content": "During the evidence review, engineers reviewed the cache misses observed in inventory-service. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 96 also tracked the investigation state for the service and version on 2026-01-28."
+  },
+  {
+    "document_id": "DISC-10042",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2026-02-03",
+    "version": "v2.4.0",
+    "title": "auth-service Deployment analysis",
+    "content": "During the initial triage, engineers reviewed the database connection saturation observed in auth-service. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 97 also tracked the investigation state for the service and version on 2026-02-03."
+  },
+  {
+    "document_id": "DISC-10106",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-02-10",
+    "version": "v2.5.1",
+    "title": "payments-api Root cause discussion",
+    "content": "During the root-cause review, engineers reviewed the CPU saturation observed in payments-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 98 also tracked the investigation state for the service and version on 2026-02-10."
+  },
+  {
+    "document_id": "DISC-10037",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-03-04",
+    "version": "v3.0.0",
+    "title": "notification-service Reliability discussion",
+    "content": "During the follow-up analysis, engineers reviewed the memory pressure observed in notification-service. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 99 also tracked the investigation state for the service and version on 2026-03-04."
+  },
+  {
+    "document_id": "DISC-10100",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2026-03-05",
+    "version": "v2.6.0",
+    "title": "catalog-api Performance discussion",
+    "content": "During the evidence review, engineers reviewed the queue backlog observed in catalog-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 100 also tracked the investigation state for the service and version on 2026-03-05."
+  },
+  {
+    "document_id": "DISC-10059",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-03-06",
+    "version": "v2.7.0",
+    "title": "notification-service Reliability discussion",
+    "content": "During the initial triage, engineers reviewed the elevated P95 latency observed in notification-service. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 101 also tracked the investigation state for the service and version on 2026-03-06."
+  },
+  {
+    "document_id": "DISC-10010",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-03-09",
+    "version": "v2.8.1",
+    "title": "inventory-service Performance discussion",
+    "content": "During the root-cause review, engineers reviewed the intermittent timeouts observed in inventory-service. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 102 also tracked the investigation state for the service and version on 2026-03-09."
+  },
+  {
+    "document_id": "DISC-10001",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-03-14",
+    "version": "v2.7.0",
+    "title": "orders-api Performance discussion",
+    "content": "During the follow-up analysis, engineers reviewed the increased request errors observed in orders-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 103 also tracked the investigation state for the service and version on 2026-03-14."
+  },
+  {
+    "document_id": "DISC-10086",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2026-03-15",
+    "version": "v2.5.1",
+    "title": "auth-service Incident follow-up",
+    "content": "During the evidence review, engineers reviewed the dependency failures observed in auth-service. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 104 also tracked the investigation state for the service and version on 2026-03-15."
+  },
+  {
+    "document_id": "DISC-10013",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-03-19",
+    "version": "v2.7.0",
+    "title": "orders-api Performance discussion",
+    "content": "During the initial triage, engineers reviewed the cache misses observed in orders-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 105 also tracked the investigation state for the service and version on 2026-03-19."
+  },
+  {
+    "document_id": "DISC-10093",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-03-19",
+    "version": "v2.7.0",
+    "title": "shipping-api Performance discussion",
+    "content": "During the root-cause review, engineers reviewed the database connection saturation observed in shipping-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 106 also tracked the investigation state for the service and version on 2026-03-19."
+  },
+  {
+    "document_id": "DISC-10063",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2026-03-21",
+    "version": "v2.6.0",
+    "title": "catalog-api Dependency analysis",
+    "content": "During the follow-up analysis, engineers reviewed the CPU saturation observed in catalog-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 107 also tracked the investigation state for the service and version on 2026-03-21."
+  },
+  {
+    "document_id": "DISC-10061",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-03-23",
+    "version": "v2.8.1",
+    "title": "payments-api Performance discussion",
+    "content": "During the evidence review, engineers reviewed the memory pressure observed in payments-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 108 also tracked the investigation state for the service and version on 2026-03-23."
+  },
+  {
+    "document_id": "DISC-10120",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-03-26",
+    "version": "v2.4.0",
+    "title": "shipping-api Investigation discussion",
+    "content": "During the initial triage, engineers reviewed the queue backlog observed in shipping-api. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 109 also tracked the investigation state for the service and version on 2026-03-26."
+  },
+  {
+    "document_id": "DISC-10144",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-03-26",
+    "version": "v2.6.0",
+    "title": "inventory-service Incident follow-up",
+    "content": "During the root-cause review, engineers reviewed the elevated P95 latency observed in inventory-service. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 110 also tracked the investigation state for the service and version on 2026-03-26."
+  },
+  {
+    "document_id": "DISC-10141",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-04-05",
+    "version": "v2.8.1",
+    "title": "inventory-service Investigation discussion",
+    "content": "During the follow-up analysis, engineers reviewed the intermittent timeouts observed in inventory-service. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 111 also tracked the investigation state for the service and version on 2026-04-05."
+  },
+  {
+    "document_id": "DISC-10119",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-04-11",
+    "version": "v2.6.0",
+    "title": "notification-service Investigation discussion",
+    "content": "During the evidence review, engineers reviewed the increased request errors observed in notification-service. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 112 also tracked the investigation state for the service and version on 2026-04-11."
+  },
+  {
+    "document_id": "DISC-10098",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-04-13",
+    "version": "v2.4.0",
+    "title": "shipping-api Investigation discussion",
+    "content": "During the initial triage, engineers reviewed the dependency failures observed in shipping-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 113 also tracked the investigation state for the service and version on 2026-04-13."
+  },
+  {
+    "document_id": "DISC-10143",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-04-15",
+    "version": "v2.7.0",
+    "title": "inventory-service Root cause discussion",
+    "content": "During the root-cause review, engineers reviewed the cache misses observed in inventory-service. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 114 also tracked the investigation state for the service and version on 2026-04-15."
+  },
+  {
+    "document_id": "DISC-10019",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-04-20",
+    "version": "v2.5.1",
+    "title": "inventory-service Incident follow-up",
+    "content": "During the follow-up analysis, engineers reviewed the database connection saturation observed in inventory-service. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 115 also tracked the investigation state for the service and version on 2026-04-20."
+  },
+  {
+    "document_id": "DISC-10147",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2026-04-20",
+    "version": "v2.6.0",
+    "title": "catalog-api Investigation discussion",
+    "content": "During the evidence review, engineers reviewed the CPU saturation observed in catalog-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 116 also tracked the investigation state for the service and version on 2026-04-20."
+  },
+  {
+    "document_id": "DISC-10025",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2026-04-29",
+    "version": "v2.7.0",
+    "title": "user-api Dependency analysis",
+    "content": "During the initial triage, engineers reviewed the memory pressure observed in user-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 117 also tracked the investigation state for the service and version on 2026-04-29."
+  },
+  {
+    "document_id": "DISC-10004",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-05-13",
+    "version": "v2.7.0",
+    "title": "inventory-service Reliability discussion",
+    "content": "During the root-cause review, engineers reviewed the queue backlog observed in inventory-service. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 118 also tracked the investigation state for the service and version on 2026-05-13."
+  },
+  {
+    "document_id": "DISC-10029",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2026-05-19",
+    "version": "v2.4.0",
+    "title": "auth-service Performance discussion",
+    "content": "During the follow-up analysis, engineers reviewed the elevated P95 latency observed in auth-service. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 119 also tracked the investigation state for the service and version on 2026-05-19."
+  },
+  {
+    "document_id": "DISC-10035",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-05-21",
+    "version": "v2.8.1",
+    "title": "orders-api Incident follow-up",
+    "content": "During the evidence review, engineers reviewed the intermittent timeouts observed in orders-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 120 also tracked the investigation state for the service and version on 2026-05-21."
+  },
+  {
+    "document_id": "DISC-10085",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-05-29",
+    "version": "v2.8.1",
+    "title": "orders-api Investigation discussion",
+    "content": "During the initial triage, engineers reviewed the increased request errors observed in orders-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 121 also tracked the investigation state for the service and version on 2026-05-29."
+  },
+  {
+    "document_id": "DISC-10048",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-05-30",
+    "version": "v2.8.1",
+    "title": "notification-service Incident follow-up",
+    "content": "During the root-cause review, engineers reviewed the dependency failures observed in notification-service. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 122 also tracked the investigation state for the service and version on 2026-05-30."
+  },
+  {
+    "document_id": "DISC-10109",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-06-01",
+    "version": "v2.7.0",
+    "title": "payments-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the cache misses observed in payments-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 123 also tracked the investigation state for the service and version on 2026-06-01."
+  },
+  {
+    "document_id": "DISC-10076",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-06-02",
+    "version": "v2.5.1",
+    "title": "shipping-api Reliability discussion",
+    "content": "During the evidence review, engineers reviewed the database connection saturation observed in shipping-api. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 124 also tracked the investigation state for the service and version on 2026-06-02."
+  },
+  {
+    "document_id": "DISC-10027",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2026-06-04",
+    "version": "v2.4.0",
+    "title": "user-api Dependency analysis",
+    "content": "During the initial triage, engineers reviewed the CPU saturation observed in user-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 125 also tracked the investigation state for the service and version on 2026-06-04."
+  },
+  {
+    "document_id": "DISC-10073",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-06-13",
+    "version": "v2.4.0",
+    "title": "notification-service Incident follow-up",
+    "content": "During the root-cause review, engineers reviewed the memory pressure observed in notification-service. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 126 also tracked the investigation state for the service and version on 2026-06-13."
+  },
+  {
+    "document_id": "DISC-10129",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-06-29",
+    "version": "v3.0.0",
+    "title": "notification-service Incident follow-up",
+    "content": "During the follow-up analysis, engineers reviewed the queue backlog observed in notification-service. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 127 also tracked the investigation state for the service and version on 2026-06-29."
+  },
+  {
+    "document_id": "DISC-10089",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-07-04",
+    "version": "v2.7.0",
+    "title": "orders-api Deployment analysis",
+    "content": "During the evidence review, engineers reviewed the elevated P95 latency observed in orders-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 128 also tracked the investigation state for the service and version on 2026-07-04."
+  },
+  {
+    "document_id": "DISC-10126",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2026-07-06",
+    "version": "v2.6.0",
+    "title": "user-api Incident follow-up",
+    "content": "During the initial triage, engineers reviewed the intermittent timeouts observed in user-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 129 also tracked the investigation state for the service and version on 2026-07-06."
+  },
+  {
+    "document_id": "DISC-10006",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-07-07",
+    "version": "v3.0.0",
+    "title": "payments-api Dependency analysis",
+    "content": "During the root-cause review, engineers reviewed the increased request errors observed in payments-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 130 also tracked the investigation state for the service and version on 2026-07-07."
+  },
+  {
+    "document_id": "DISC-10078",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-07-10",
+    "version": "v2.8.1",
+    "title": "payments-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the dependency failures observed in payments-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.8.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 131 also tracked the investigation state for the service and version on 2026-07-10."
+  },
+  {
+    "document_id": "DISC-10023",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-07-17",
+    "version": "v2.6.0",
+    "title": "orders-api Reliability discussion",
+    "content": "During the evidence review, engineers reviewed the cache misses observed in orders-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 132 also tracked the investigation state for the service and version on 2026-07-17."
+  },
+  {
+    "document_id": "DISC-10097",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2026-07-20",
+    "version": "v3.0.0",
+    "title": "auth-service Reliability discussion",
+    "content": "During the initial triage, engineers reviewed the database connection saturation observed in auth-service. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 133 also tracked the investigation state for the service and version on 2026-07-20."
+  },
+  {
+    "document_id": "DISC-10043",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-07-21",
+    "version": "v2.6.0",
+    "title": "payments-api Dependency analysis",
+    "content": "During the root-cause review, engineers reviewed the CPU saturation observed in payments-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 134 also tracked the investigation state for the service and version on 2026-07-21."
+  },
+  {
+    "document_id": "DISC-10125",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-07-24",
+    "version": "v2.6.0",
+    "title": "orders-api Dependency analysis",
+    "content": "During the follow-up analysis, engineers reviewed the memory pressure observed in orders-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 135 also tracked the investigation state for the service and version on 2026-07-24."
+  },
+  {
+    "document_id": "DISC-10030",
+    "type": "engineering_discussion",
+    "service": "notification-service",
+    "date": "2026-07-25",
+    "version": "v2.5.1",
+    "title": "notification-service Dependency analysis",
+    "content": "During the evidence review, engineers reviewed the queue backlog observed in notification-service. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 136 also tracked the investigation state for the service and version on 2026-07-25."
+  },
+  {
+    "document_id": "DISC-10103",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-08-05",
+    "version": "v3.0.0",
+    "title": "payments-api Deployment analysis",
+    "content": "During the initial triage, engineers reviewed the elevated P95 latency observed in payments-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v3.0.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 137 also tracked the investigation state for the service and version on 2026-08-05."
+  },
+  {
+    "document_id": "DISC-10047",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2026-08-08",
+    "version": "v2.7.0",
+    "title": "auth-service Deployment analysis",
+    "content": "During the root-cause review, engineers reviewed the intermittent timeouts observed in auth-service. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 138 also tracked the investigation state for the service and version on 2026-08-08."
+  },
+  {
+    "document_id": "DISC-10083",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2026-08-14",
+    "version": "v2.7.0",
+    "title": "user-api Root cause discussion",
+    "content": "During the follow-up analysis, engineers reviewed the increased request errors observed in user-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 139 also tracked the investigation state for the service and version on 2026-08-14."
+  },
+  {
+    "document_id": "DISC-10088",
+    "type": "engineering_discussion",
+    "service": "payments-api",
+    "date": "2026-08-15",
+    "version": "v2.5.1",
+    "title": "payments-api Incident follow-up",
+    "content": "During the evidence review, engineers reviewed the dependency failures observed in payments-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 140 also tracked the investigation state for the service and version on 2026-08-15."
+  },
+  {
+    "document_id": "DISC-10102",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2026-08-16",
+    "version": "v2.5.1",
+    "title": "user-api Investigation discussion",
+    "content": "During the initial triage, engineers reviewed the cache misses observed in user-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 141 also tracked the investigation state for the service and version on 2026-08-16."
+  },
+  {
+    "document_id": "DISC-10053",
+    "type": "engineering_discussion",
+    "service": "inventory-service",
+    "date": "2026-08-17",
+    "version": "v2.6.0",
+    "title": "inventory-service Reliability discussion",
+    "content": "During the root-cause review, engineers reviewed the database connection saturation observed in inventory-service. The discussion focused on resource utilization, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.6.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 142 also tracked the investigation state for the service and version on 2026-08-17."
+  },
+  {
+    "document_id": "DISC-10101",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-08-20",
+    "version": "v2.7.0",
+    "title": "orders-api Investigation discussion",
+    "content": "During the follow-up analysis, engineers reviewed the CPU saturation observed in orders-api. The discussion focused on historical incident comparison, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to review retry counts, timeout settings, and circuit-breaker state and compare CPU, memory, and restart patterns across instances. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 143 also tracked the investigation state for the service and version on 2026-08-20."
+  },
+  {
+    "document_id": "DISC-10008",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2026-08-23",
+    "version": "v2.5.1",
+    "title": "catalog-api Reliability discussion",
+    "content": "During the evidence review, engineers reviewed the memory pressure observed in catalog-api. The discussion focused on capacity limits, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to inspect connection-pool wait time and active connections and compare cache hit rate, eviction activity, and recent cache changes. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 144 also tracked the investigation state for the service and version on 2026-08-23."
+  },
+  {
+    "document_id": "DISC-10020",
+    "type": "engineering_discussion",
+    "service": "auth-service",
+    "date": "2026-08-24",
+    "version": "v2.7.0",
+    "title": "auth-service Performance discussion",
+    "content": "During the initial triage, engineers reviewed the queue backlog observed in auth-service. The discussion focused on deployment correlation, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare the first symptom timestamp with deployment events and break the metric down by endpoint, instance, and version. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 145 also tracked the investigation state for the service and version on 2026-08-24."
+  },
+  {
+    "document_id": "DISC-10075",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-08-31",
+    "version": "v2.4.0",
+    "title": "orders-api Root cause discussion",
+    "content": "During the root-cause review, engineers reviewed the elevated P95 latency observed in orders-api. The discussion focused on database behavior, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to check queue depth, consumer lag, producer rate, and worker throughput and review retry counts, timeout settings, and circuit-breaker state. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 146 also tracked the investigation state for the service and version on 2026-08-31."
+  },
+  {
+    "document_id": "DISC-10096",
+    "type": "engineering_discussion",
+    "service": "orders-api",
+    "date": "2026-09-04",
+    "version": "v2.5.1",
+    "title": "orders-api Investigation discussion",
+    "content": "During the follow-up analysis, engineers reviewed the intermittent timeouts observed in orders-api. The discussion focused on request traces, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to trace affected requests into downstream services and inspect connection-pool wait time and active connections. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 147 also tracked the investigation state for the service and version on 2026-09-04."
+  },
+  {
+    "document_id": "DISC-10142",
+    "type": "engineering_discussion",
+    "service": "catalog-api",
+    "date": "2026-09-04",
+    "version": "v2.4.0",
+    "title": "catalog-api Dependency analysis",
+    "content": "During the evidence review, engineers reviewed the increased request errors observed in catalog-api. The discussion focused on configuration changes, with particular attention to whether a recent configuration change could explain the timing and scope of the impact. Engineers planned to compare CPU, memory, and restart patterns across instances and compare the first symptom timestamp with deployment events. The team also compared the behavior with historical incidents and the currently deployed version v2.4.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to roll back or isolate the suspect change if the evidence supports it. Discussion record 148 also tracked the investigation state for the service and version on 2026-09-04."
+  },
+  {
+    "document_id": "DISC-10054",
+    "type": "engineering_discussion",
+    "service": "user-api",
+    "date": "2026-09-08",
+    "version": "v2.7.0",
+    "title": "user-api Investigation discussion",
+    "content": "During the initial triage, engineers reviewed the dependency failures observed in user-api. The discussion focused on failure propagation, with particular attention to whether connection-pool pressure could explain the timing and scope of the impact. Engineers planned to compare cache hit rate, eviction activity, and recent cache changes and check queue depth, consumer lag, producer rate, and worker throughput. The team also compared the behavior with historical incidents and the currently deployed version v2.7.0. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to bound retries and add dependency-specific timeouts. Discussion record 149 also tracked the investigation state for the service and version on 2026-09-08."
+  },
+  {
+    "document_id": "DISC-10133",
+    "type": "engineering_discussion",
+    "service": "shipping-api",
+    "date": "2026-09-08",
+    "version": "v2.5.1",
+    "title": "shipping-api Dependency analysis",
+    "content": "During the root-cause review, engineers reviewed the cache misses observed in shipping-api. The discussion focused on dependency behavior, with particular attention to whether resource contention between workloads could explain the timing and scope of the impact. Engineers planned to break the metric down by endpoint, instance, and version and trace affected requests into downstream services. The team also compared the behavior with historical incidents and the currently deployed version v2.5.1. The discussion did not treat the symptom alone as proof of root cause; the working hypothesis was to gather evidence before concluding. If the evidence confirms the suspected mechanism, the proposed follow-up was to separate long-running work from the latency-sensitive request path. Discussion record 150 also tracked the investigation state for the service and version on 2026-09-08."
+  }
+]

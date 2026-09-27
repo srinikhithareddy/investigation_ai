@@ -38,21 +38,36 @@ def load_documents(path: Optional[str] = None) -> list[dict]:
     return raw
 
 
-def validate_document(doc: dict) -> list[str]:
+def validate_document(doc: object) -> list[str]:
     """Return a list of validation error strings (empty list = valid)."""
+    if not isinstance(doc, dict):
+        return ["document must be a JSON object"]
+
     errors = []
     missing = REQUIRED_FIELDS - doc.keys()
     if missing:
         errors.append(f"missing required fields: {sorted(missing)}")
-    if not str(doc.get("document_id", "")).strip():
-        errors.append("document_id must be a non-empty string")
-    if not str(doc.get("content", "")).strip():
-        errors.append("content must be a non-empty string")
+
+    for field in REQUIRED_FIELDS:
+        value = doc.get(field)
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"{field} must be a non-empty string")
+
+    for field in OPTIONAL_FIELDS:
+        value = doc.get(field)
+        if value is not None and not isinstance(value, str):
+            errors.append(f"{field} must be a string when provided")
+
     return errors
 
 
 def chunk_text(text: str, chunk_size: int, overlap: int) -> list[str]:
     """Simple character-based sliding window chunker with paragraph awareness."""
+    if chunk_size <= 0:
+        raise ValueError("chunk_size must be greater than zero")
+    if overlap < 0 or overlap >= chunk_size:
+        raise ValueError("overlap must be non-negative and smaller than chunk_size")
+
     text = text.strip()
     if len(text) <= chunk_size:
         return [text] if text else []
@@ -107,17 +122,24 @@ def ingest(path: Optional[str] = None, reset: bool = False, store: Optional[SQLi
     if reset:
         reset_collection()
 
-    ingested, skipped, all_chunks = 0, [], []
+    skipped = []
+    valid_documents = {}
 
     for doc in documents:
         errors = validate_document(doc)
         if errors:
-            skipped.append({"document_id": doc.get("document_id", "<unknown>"), "errors": errors})
+            document_id = doc.get("document_id", "<unknown>") if isinstance(doc, dict) else "<unknown>"
+            skipped.append({"document_id": document_id, "errors": errors})
             continue
 
+        document_id = doc["document_id"].strip()
+        valid_documents[document_id] = {**doc, "document_id": document_id}
+
+    all_chunks = []
+    for doc in valid_documents.values():
         record = DocumentRecord(
-            document_id=str(doc["document_id"]),
-            title=str(doc["title"]),
+            document_id=doc["document_id"],
+            title=doc["title"],
             type=doc.get("type"),
             service=doc.get("service"),
             date=doc.get("date"),
@@ -127,13 +149,12 @@ def ingest(path: Optional[str] = None, reset: bool = False, store: Optional[SQLi
         )
         store.upsert_document(record)
         all_chunks.extend(build_chunks(doc))
-        ingested += 1
 
     if all_chunks:
         upsert_chunks(all_chunks)
 
     return {
-        "ingested_documents": ingested,
+        "ingested_documents": len(valid_documents),
         "skipped_documents": skipped,
         "chunks_indexed": len(all_chunks),
         "total_documents_in_store": store.count(),
