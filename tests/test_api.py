@@ -85,7 +85,10 @@ def test_investigate_happy_path(client, monkeypatch):
                 "title": "Order API latency spike",
                 "type": "incident_report",
                 "date": "2026-09-16",
+                "document_date": "2026-09-16",
                 "version": "v2.8.1",
+                "status": "active",
+                "valid_from": "2026-09-16",
                 "content": "P95 latency increased...",
             }
         ],
@@ -113,8 +116,11 @@ def test_investigate_happy_path(client, monkeypatch):
     assert len(body["evidence"]) == 1
     assert body["evidence"][0]["document_id"] == "INC-1042"
     assert set(body["evidence"][0]) == {
-        "document_id", "title", "type", "date", "version", "content"
+        "document_id", "title", "type", "date", "document_date", "version",
+        "status", "superseded_by", "valid_from", "valid_until", "content"
     }
+    assert body["evidence"][0]["status"] == "active"
+    assert body["evidence"][0]["valid_from"] == "2026-09-16"
     assert body["trace"] == fake_state["investigation_steps"]
 
 

@@ -10,6 +10,7 @@ Responsible for:
 from __future__ import annotations
 
 import json
+from typing import Optional
 
 from app.llm.client import LLMError, get_llm_client
 
@@ -45,8 +46,10 @@ documents. You will be given the original question, the entities already identif
 evidence already found, and a list of gaps/unanswered questions.
 
 Generate 1-3 NEW, more specific search queries that would help close those gaps. Do not repeat \
-queries that have already been run. Base new queries on facts actually discovered in the evidence \
-(e.g. a version number, a root cause, a related component) rather than generic rephrasing.
+queries that have already been run or only returned already-known documents. Use known facts, \
+hypotheses, remaining gaps, and per-query outcomes to make each query specific to missing information. \
+Base new queries on discovered evidence (e.g. a version number, a root cause, a related component), \
+not generic rephrasing.
 
 Respond with ONLY a JSON object: {"queries": [string, ...]}
 
@@ -109,6 +112,9 @@ def generate_followup_queries(
     evidence_summary: str,
     gaps: list[str],
     already_executed: list[str],
+    known_facts: Optional[list[str]] = None,
+    hypotheses: Optional[list[str]] = None,
+    search_history: Optional[list[dict]] = None,
 ) -> list[str]:
     if not gaps:
         return []
@@ -122,15 +128,30 @@ def generate_followup_queries(
                     "question": question,
                     "entities": entities,
                     "evidence_summary": evidence_summary,
+                    "known_facts": known_facts or [],
+                    "hypotheses": hypotheses or [],
                     "gaps": gaps,
                     "already_executed_queries": already_executed,
+                    "search_history": search_history or [],
                 }
             ),
             max_tokens=400,
         )
         queries = [q for q in result.get("queries", []) if isinstance(q, str) and q.strip()]
         # Filter out near-duplicates of already-executed queries
-        existing_lower = {q.lower().strip() for q in already_executed}
-        return [q for q in queries if q.lower().strip() not in existing_lower]
+        normalize = lambda query: " ".join(query.casefold().strip(" .?!").split())
+        seen = {normalize(query) for query in already_executed}
+        seen.update(
+            normalize(entry["query"])
+            for entry in search_history or []
+            if entry.get("query")
+        )
+        unique_queries = []
+        for query in queries:
+            normalized = normalize(query)
+            if normalized and normalized not in seen:
+                unique_queries.append(query)
+                seen.add(normalized)
+        return unique_queries
     except LLMError:
         return []

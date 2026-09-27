@@ -12,6 +12,7 @@ from typing import Optional
 
 from app.retrieval.metadata import metadata_retrieve
 from app.retrieval.semantic import distance_to_score, semantic_retrieve
+from app.retrieval.temporal import document_topic_key, historical_year_from_text
 from app.storage.sqlite import get_store
 
 
@@ -73,6 +74,56 @@ def _normalize_service(service: Optional[str]) -> str:
         .replace(" ", "-")
     )
 
+
+def _date_for_lifecycle(document: dict) -> Optional[datetime]:
+    return _parse_date(document.get("document_date") or document.get("valid_from"))
+
+
+def _valid_now(document: dict) -> bool:
+    today = datetime.utcnow()
+    valid_from = _parse_date(document.get("valid_from"))
+    valid_until = _parse_date(document.get("valid_until"))
+    return not (
+        (valid_from and valid_from > today)
+        or (valid_until and valid_until < today)
+    )
+
+
+def _lifecycle_score(document: dict, historical_year: Optional[int]) -> float:
+    status = str(document.get("status") or "").strip().lower()
+    if historical_year is not None:
+        year_start = datetime(historical_year, 1, 1)
+        year_end = datetime(historical_year, 12, 31, 23, 59, 59)
+        valid_from = _parse_date(document.get("valid_from"))
+        valid_until = _parse_date(document.get("valid_until"))
+        publication_date = _parse_date(document.get("document_date") or document.get("date"))
+
+        if valid_from or valid_until:
+            return (
+                0.35
+                if (valid_from is None or valid_from <= year_end)
+                and (valid_until is None or valid_until >= year_start)
+                else -0.2
+            )
+        if publication_date and publication_date.year == historical_year:
+            return 0.35
+        return 0.0
+
+    valid_from = _parse_date(document.get("valid_from"))
+    valid_until = _parse_date(document.get("valid_until"))
+    today = datetime.utcnow()
+    if (valid_from and valid_from > today) or (valid_until and valid_until < today):
+        return -0.2
+    if document.get("superseded_by"):
+        return -0.3
+    if status == "active":
+        return 0.25
+    if status == "superseded":
+        return -0.3
+    if status == "archived":
+        return -0.15
+    return 0.0
+
 def search_documents(
     query: str,
     service: Optional[str] = None,
@@ -82,6 +133,7 @@ def search_documents(
     version: Optional[str] = None,
     anchor_date: Optional[str] = None,
     top_k: int = 10,
+    historical_year: Optional[int] = None,
 ) -> list[dict]:
     """
     Hybrid retrieval combining semantic search and metadata filtering.
@@ -91,6 +143,7 @@ def search_documents(
     (these are internal fields, not part of the public evidence schema).
     """
     store = get_store()
+    historical_year = historical_year or historical_year_from_text(query)
 
     # 1. Semantic retrieval (over chunks)
     semantic_hits = semantic_retrieve(query, top_k=max(top_k * 3, 15), service=service) if query else []
@@ -102,6 +155,7 @@ def search_documents(
         date_from=date_from,
         date_to=date_to,
         version=version,
+        historical_year=historical_year,
         limit=max(top_k * 3, 20),
     )
 
@@ -133,6 +187,22 @@ def search_documents(
     # 4. Hydrate full documents from SQLite (single source of truth for content/metadata)
     full_docs = {d["document_id"]: d for d in store.get_documents(candidates.keys())}
 
+    latest_active_dates: dict[tuple[str, str, str], datetime] = {}
+    if historical_year is None:
+        for doc in full_docs.values():
+            if (
+                str(doc.get("status") or "").strip().lower() != "active"
+                or doc.get("superseded_by")
+                or not _valid_now(doc)
+            ):
+                continue
+            document_date = _date_for_lifecycle(doc)
+            if document_date is None:
+                continue
+            topic = document_topic_key(doc)
+            if document_date > latest_active_dates.get(topic, datetime.min):
+                latest_active_dates[topic] = document_date
+
     # 5. Score + rank
     ranked = []
     for doc_id, cand in candidates.items():
@@ -154,9 +224,25 @@ def search_documents(
         )
         version_score = 1.0 if version and doc.get("version") == version else 0.0
         type_score = 1.0 if document_type and doc.get("type") and doc["type"].lower() == document_type.lower() else 0.0
-        date_prox = _date_proximity_score(doc.get("date"), anchor_date or date_from or date_to)
-        recency = _recency_score(doc.get("date"))
+        date_prox = _date_proximity_score(
+            doc.get("document_date") or doc.get("date"),
+            anchor_date or date_from or date_to,
+        )
+        recency = 0.0 if historical_year is not None else _recency_score(
+            doc.get("document_date") or doc.get("date")
+        )
         metadata_match_bonus = 0.15 if cand.get("from_metadata") else 0.0
+        lifecycle_score = _lifecycle_score(doc, historical_year)
+        latest_active = False
+        if (
+            historical_year is None
+            and str(doc.get("status") or "").strip().lower() == "active"
+            and not doc.get("superseded_by")
+            and _valid_now(doc)
+        ):
+            doc_date = _date_for_lifecycle(doc)
+            latest_active = bool(doc_date and doc_date == latest_active_dates.get(document_topic_key(doc)))
+        latest_active_bonus = 0.15 if latest_active else 0.0
 
         total = (
             sem_score * 0.45
@@ -166,6 +252,8 @@ def search_documents(
             + date_prox * 0.15
             + recency * 0.05
             + metadata_match_bonus
+            + lifecycle_score
+            + latest_active_bonus
         )
 
         ranked.append(
@@ -182,6 +270,8 @@ def search_documents(
                     "date_proximity": round(date_prox, 3),
                     "recency": round(recency, 3),
                     "metadata_match_bonus": metadata_match_bonus,
+                    "lifecycle": lifecycle_score,
+                    "latest_active": latest_active_bonus,
                 },
             }
         )

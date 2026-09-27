@@ -8,7 +8,12 @@ class EvidenceItem(BaseModel):
     title: str
     type: str
     date: Optional[str] = None
+    document_date: Optional[str] = None
     version: Optional[str] = None
+    status: Optional[str] = None
+    superseded_by: Optional[str] = None
+    valid_from: Optional[str] = None
+    valid_until: Optional[str] = None
     content: str
 
 

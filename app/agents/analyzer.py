@@ -117,6 +117,8 @@ as complete as it will get, or the topic simply not being covered by the documen
 
 Respond with ONLY a JSON object:
 {
+    "known_facts": [string],      // established facts grounded in evidence IDs
+    "hypotheses": [string],       // plausible explanations that remain unconfirmed
   "gaps": [string],              // specific unanswered questions/targets, empty list if none
   "needs_more_evidence": boolean,
   "reasoning": string             // brief explanation
@@ -133,9 +135,15 @@ def analyze_gaps(
     iteration: int,
     max_iterations: int,
     last_round_found_new: bool,
+    known_facts: Optional[list[str]] = None,
+    hypotheses: Optional[list[str]] = None,
+    search_history: Optional[list[dict]] = None,
+    new_document_ids: Optional[list[str]] = None,
 ) -> dict:
     if iteration >= max_iterations:
         return {
+            "known_facts": known_facts or [],
+            "hypotheses": hypotheses or [],
             "gaps": [],
             "needs_more_evidence": False,
             "reasoning": "Maximum investigation iterations reached.",
@@ -160,6 +168,10 @@ def analyze_gaps(
         "question": question,
         "entities": entities,
         "investigation_targets": entities.get("investigation_targets", []),
+        "previously_known_facts": known_facts or [],
+        "previous_hypotheses": hypotheses or [],
+        "previous_search_history": search_history or [],
+        "newly_discovered_document_ids": new_document_ids or [],
         "evidence_gathered": evidence_summary,
         "iteration": iteration,
         "max_iterations": max_iterations,
@@ -169,9 +181,23 @@ def analyze_gaps(
     try:
         result = client.complete_json(system=GAP_ANALYSIS_SYSTEM, user=json.dumps(payload), max_tokens=600)
         return {
+            "known_facts": [
+                item for item in result.get("known_facts", [])
+                if isinstance(item, str) and item.strip()
+            ],
+            "hypotheses": [
+                item for item in result.get("hypotheses", [])
+                if isinstance(item, str) and item.strip()
+            ],
             "gaps": result.get("gaps") or [],
             "needs_more_evidence": bool(result.get("needs_more_evidence")),
             "reasoning": result.get("reasoning", ""),
         }
     except LLMError:
-        return {"gaps": [], "needs_more_evidence": False, "reasoning": "Gap analysis unavailable (LLM error)."}
+        return {
+            "known_facts": known_facts or [],
+            "hypotheses": hypotheses or [],
+            "gaps": [],
+            "needs_more_evidence": False,
+            "reasoning": "Gap analysis unavailable (LLM error).",
+        }

@@ -33,12 +33,26 @@ from typing import Literal
 from app.agents import analyzer, answer as answer_agent, contradiction, investigator, planner
 from app.config import settings
 from app.graph.state import InvestigationState
+from app.retrieval.temporal import historical_year_from_text
 
 
 def _append_trace(state: InvestigationState, message: str) -> list[str]:
     steps = list(state.get("investigation_steps", []))
     steps.append(message)
     return steps
+
+
+def _merge_unique(existing: list[str], additions: list[str]) -> list[str]:
+    merged = list(existing)
+    seen = {item.casefold().strip() for item in existing}
+    for item in additions:
+        if not isinstance(item, str) or not item.strip():
+            continue
+        normalized = item.casefold().strip()
+        if normalized not in seen:
+            merged.append(item.strip())
+            seen.add(normalized)
+    return merged
 
 
 def _docs_to_evidence(documents: dict[str, dict]) -> list[dict]:
@@ -52,6 +66,11 @@ def _docs_to_evidence(documents: dict[str, dict]) -> list[dict]:
                 "service": doc.get("service"),
                 "date": doc.get("date"),
                 "version": doc.get("version"),
+                "document_date": doc.get("document_date"),
+                "status": doc.get("status"),
+                "superseded_by": doc.get("superseded_by"),
+                "valid_from": doc.get("valid_from"),
+                "valid_until": doc.get("valid_until"),
                 "content": doc.get("content") or "",
                 "_score": doc.get("_score", 0.0),
             }
@@ -68,6 +87,9 @@ def _docs_to_evidence(documents: dict[str, dict]) -> list[dict]:
 def analyze_question_node(state: InvestigationState) -> dict:
     question = state["question"]
     entities = planner.analyze_question(question)
+    historical_year = historical_year_from_text(question)
+    if historical_year is not None:
+        entities["historical_year"] = historical_year
     queries = planner.generate_initial_queries(question, entities)
 
     summary_bits = []
@@ -83,29 +105,60 @@ def analyze_question_node(state: InvestigationState) -> dict:
 
     return {
         "entities": entities,
+        "original_question": question,
+        "investigation_plan": {
+            "objective": question,
+            "targets": list(entities.get("investigation_targets", [])),
+            "initial_queries": list(queries),
+        },
         "search_queries": queries,
+        "current_queries": list(queries),
         "executed_queries": [],
+        "search_history": [],
+        "discovered_document_ids": [],
         "retrieved_documents": [],
         "evidence": [],
+        "known_facts": [],
+        "hypotheses": list(entities.get("suspected_causes", [])),
+        "evidence_gaps": [],
+        "findings_history": [],
         "iteration": 0,
+        "investigation_iteration": 0,
         "max_iterations": max(1, settings.max_investigation_iterations),
         "investigation_steps": trace,
     }
 
 
 def search_node(state: InvestigationState) -> dict:
-    queries = state.get("search_queries", [])
+    queries = state.get("current_queries", state.get("search_queries", []))
     entities = state.get("entities", {})
     existing_raw = {d["document_id"]: d for d in state.get("retrieved_documents", [])}
+    iteration = state.get("investigation_iteration", state.get("iteration", 0)) + 1
+    search_history = list(state.get("search_history", []))
 
-    updated_docs, search_trace = investigator.run_searches(queries, entities, existing_raw)
-    last_round_found_new = any(document_id not in existing_raw for document_id in updated_docs)
+    updated_docs, search_trace = investigator.run_searches(
+        queries,
+        entities,
+        existing_raw,
+        search_history=search_history,
+        iteration=iteration,
+    )
+    new_document_ids = [document_id for document_id in updated_docs if document_id not in existing_raw]
+    discovered_document_ids = list(state.get("discovered_document_ids", []))
+    discovered_document_ids = _merge_unique(discovered_document_ids, list(updated_docs))
+    last_round_found_new = bool(new_document_ids)
 
     trace = list(state.get("investigation_steps", []))
+    if iteration == 1:
+        trace.append("Iteration 1: Initial searches from the original question.")
+    else:
+        trace.append(
+            f"Iteration {iteration}: Targeted searches based on prior findings and evidence gaps."
+        )
     trace.extend(search_trace)
 
     executed = list(state.get("executed_queries", []))
-    executed.extend(queries)
+    executed = _merge_unique(executed, queries)
 
     evidence = _docs_to_evidence(updated_docs)
 
@@ -114,7 +167,12 @@ def search_node(state: InvestigationState) -> dict:
         "evidence": evidence,
         "executed_queries": executed,
         "search_queries": [],
-        "iteration": state.get("iteration", 0) + 1,
+        "current_queries": [],
+        "search_history": search_history,
+        "discovered_document_ids": discovered_document_ids,
+        "new_document_ids": new_document_ids,
+        "iteration": iteration,
+        "investigation_iteration": iteration,
         "last_round_found_new": last_round_found_new,
         "investigation_steps": trace,
     }
@@ -130,26 +188,70 @@ def analyze_evidence_node(state: InvestigationState) -> dict:
 
     last_round_found_new = state.get("last_round_found_new", bool(evidence))
 
+    iteration = state.get("investigation_iteration", state.get("iteration", 0))
+    previous_known_facts = state.get("known_facts", [])
+    previous_hypotheses = state.get("hypotheses", [])
+    new_document_ids = state.get("new_document_ids", [])
     gap_result = analyzer.analyze_gaps(
-        question=state["question"],
+        question=state.get("original_question", state["question"]),
         entities=state.get("entities", {}),
         evidence=evidence,
-        iteration=state.get("iteration", 0),
+        iteration=iteration,
         max_iterations=state.get("max_iterations", settings.max_investigation_iterations),
         last_round_found_new=last_round_found_new,
+        known_facts=previous_known_facts,
+        hypotheses=previous_hypotheses,
+        search_history=state.get("search_history", []),
+        new_document_ids=new_document_ids,
     )
 
     gaps = gap_result.get("gaps", [])
+    if gap_result.get("reasoning") == "Gap analysis unavailable (LLM error).":
+        gaps = list(state.get("evidence_gaps", state.get("gaps", gaps)))
     needs_more = gap_result.get("needs_more_evidence", False)
+    reported_facts = gap_result.get("known_facts", [])
+    if not reported_facts:
+        reported_facts = [
+            f"{doc.get('document_id')}: {doc.get('title') or 'Untitled'}"
+            + (f" ({doc.get('version')})" if doc.get("version") else "")
+            + f" — {(doc.get('content') or '')[:180].strip()}"
+            for doc in evidence
+            if doc.get("document_id") in set(new_document_ids)
+        ]
+    known_facts = _merge_unique(previous_known_facts, reported_facts)
+    hypotheses = _merge_unique(previous_hypotheses, gap_result.get("hypotheses", []))
+    findings_history = list(state.get("findings_history", []))
+    findings_history.append(
+        {
+            "iteration": iteration,
+            "new_document_ids": list(new_document_ids),
+            "known_facts": list(known_facts),
+            "hypotheses": list(hypotheses),
+            "evidence_gaps": list(gaps),
+        }
+    )
+    investigation_plan = dict(state.get("investigation_plan", {}))
+    investigation_plan["latest_evidence_gaps"] = list(gaps)
+    investigation_plan["completed_iterations"] = iteration
 
     if gaps:
-        trace.append(f"Identified gaps: {gaps}.")
+        trace.append(f"Iteration {iteration} UNKNOWN / EVIDENCE GAPS: {gaps}.")
     else:
-        trace.append("No significant evidence gaps identified.")
+        trace.append(f"Iteration {iteration} UNKNOWN / EVIDENCE GAPS: none remaining.")
+    trace.append(
+        f"Iteration {iteration} KNOWN: "
+        + ("; ".join(known_facts) if known_facts else "no evidence-backed facts established yet")
+        + "."
+    )
 
     return {
         "timeline": timeline,
         "gaps": gaps,
+        "evidence_gaps": list(gaps),
+        "known_facts": known_facts,
+        "hypotheses": hypotheses,
+        "findings_history": findings_history,
+        "investigation_plan": investigation_plan,
         "needs_more_evidence": needs_more,
         "investigation_steps": trace,
     }
@@ -214,6 +316,11 @@ def similar_incidents_node(state: InvestigationState) -> dict:
                 "title": doc.get("title"),
                 "date": doc.get("date"),
                 "version": doc.get("version"),
+                "document_date": doc.get("document_date"),
+                "status": doc.get("status"),
+                "superseded_by": doc.get("superseded_by"),
+                "valid_from": doc.get("valid_from"),
+                "valid_until": doc.get("valid_until"),
                 "classification": c["classification"],
                 "reasoning": c.get("reasoning", ""),
             }
@@ -233,10 +340,10 @@ def similar_incidents_node(state: InvestigationState) -> dict:
 
 
 def expand_queries_node(state: InvestigationState) -> dict:
-    question = state["question"]
+    question = state.get("original_question", state["question"])
     entities = state.get("entities", {})
     evidence = state.get("evidence", [])
-    gaps = state.get("gaps", [])
+    gaps = state.get("evidence_gaps", state.get("gaps", []))
     executed = state.get("executed_queries", [])
 
     evidence_summary = "; ".join(
@@ -245,26 +352,46 @@ def expand_queries_node(state: InvestigationState) -> dict:
         for e in evidence[:8]
     )
 
-    new_queries = planner.generate_followup_queries(question, entities, evidence_summary, gaps, executed)
+    new_queries = planner.generate_followup_queries(
+        question,
+        entities,
+        evidence_summary,
+        gaps,
+        executed,
+        known_facts=state.get("known_facts", []),
+        hypotheses=state.get("hypotheses", []),
+        search_history=state.get("search_history", []),
+    )
 
     trace = list(state.get("investigation_steps", []))
     if new_queries:
-        trace.append(f"Generated follow-up searches based on gaps: {new_queries}.")
+        iteration = state.get("investigation_iteration", state.get("iteration", 0)) + 1
+        trace.append(
+            f"Iteration {iteration}: Generated targeted searches from prior known facts and gaps: "
+            f"{new_queries}."
+        )
     else:
         trace.append("No productive follow-up searches could be generated; ending search phase.")
 
-    return {"search_queries": new_queries, "investigation_steps": trace}
+    return {
+        "search_queries": new_queries,
+        "current_queries": list(new_queries),
+        "investigation_steps": trace,
+    }
 
 
 def generate_answer_node(state: InvestigationState) -> dict:
     result = answer_agent.generate_answer(
-        question=state["question"],
+        question=state.get("original_question", state["question"]),
         entities=state.get("entities", {}),
         evidence=state.get("evidence", []),
         contradictions=state.get("contradictions", []),
         timeline=state.get("timeline", []),
         similar_incidents=state.get("similar_incidents", []),
         gaps=state.get("gaps", []),
+        known_facts=state.get("known_facts", []),
+        hypotheses=state.get("hypotheses", []),
+        search_history=state.get("search_history", []),
     )
 
     trace = list(state.get("investigation_steps", []))

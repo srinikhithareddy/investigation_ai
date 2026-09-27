@@ -76,7 +76,12 @@ def investigate(request: InvestigateRequest) -> InvestigateResponse:
             title=e.get("title") or "",
             type=e.get("type") or "",
             date=e.get("date"),
+            document_date=e.get("document_date"),
             version=e.get("version"),
+            status=e.get("status"),
+            superseded_by=e.get("superseded_by"),
+            valid_from=e.get("valid_from"),
+            valid_until=e.get("valid_until"),
             content=e.get("content") or "",
         )
         for e in state.get("evidence", [])

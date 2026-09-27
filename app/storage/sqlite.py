@@ -24,6 +24,11 @@ CREATE TABLE IF NOT EXISTS documents (
     service TEXT,
     date TEXT,
     version TEXT,
+    document_date TEXT,
+    status TEXT,
+    superseded_by TEXT,
+    valid_from TEXT,
+    valid_until TEXT,
     content TEXT NOT NULL,
     source TEXT
 );
@@ -33,6 +38,14 @@ CREATE INDEX IF NOT EXISTS idx_documents_type ON documents(type);
 CREATE INDEX IF NOT EXISTS idx_documents_date ON documents(date);
 CREATE INDEX IF NOT EXISTS idx_documents_version ON documents(version);
 """
+
+LIFECYCLE_COLUMNS = {
+    "document_date": "TEXT",
+    "status": "TEXT",
+    "superseded_by": "TEXT",
+    "valid_from": "TEXT",
+    "valid_until": "TEXT",
+}
 
 
 @dataclass
@@ -45,6 +58,11 @@ class DocumentRecord:
     version: Optional[str]
     content: str
     source: Optional[str] = None
+    document_date: Optional[str] = None
+    status: Optional[str] = None
+    superseded_by: Optional[str] = None
+    valid_from: Optional[str] = None
+    valid_until: Optional[str] = None
 
     def to_dict(self) -> dict:
         return {
@@ -54,6 +72,11 @@ class DocumentRecord:
             "service": self.service,
             "date": self.date,
             "version": self.version,
+            "document_date": self.document_date,
+            "status": self.status,
+            "superseded_by": self.superseded_by,
+            "valid_from": self.valid_from,
+            "valid_until": self.valid_until,
             "content": self.content,
             "source": self.source,
         }
@@ -78,19 +101,47 @@ class SQLiteStore:
     def _init_schema(self) -> None:
         with self._connect() as conn:
             conn.executescript(SCHEMA)
+            existing_columns = {
+                row["name"] for row in conn.execute("PRAGMA table_info(documents)")
+            }
+            for column, column_type in LIFECYCLE_COLUMNS.items():
+                if column not in existing_columns:
+                    conn.execute(
+                        f"ALTER TABLE documents ADD COLUMN {column} {column_type}"
+                    )
+            conn.executescript(
+                """
+                CREATE INDEX IF NOT EXISTS idx_documents_document_date ON documents(document_date);
+                CREATE INDEX IF NOT EXISTS idx_documents_status ON documents(status);
+                CREATE INDEX IF NOT EXISTS idx_documents_validity ON documents(valid_from, valid_until);
+                """
+            )
 
     def upsert_document(self, doc: DocumentRecord) -> None:
         with self._connect() as conn:
             conn.execute(
                 """
-                INSERT INTO documents (document_id, title, type, service, date, version, content, source)
-                VALUES (:document_id, :title, :type, :service, :date, :version, :content, :source)
+                INSERT INTO documents (
+                    document_id, title, type, service, date, version,
+                    document_date, status, superseded_by, valid_from, valid_until,
+                    content, source
+                )
+                VALUES (
+                    :document_id, :title, :type, :service, :date, :version,
+                    :document_date, :status, :superseded_by, :valid_from, :valid_until,
+                    :content, :source
+                )
                 ON CONFLICT(document_id) DO UPDATE SET
                     title=excluded.title,
                     type=excluded.type,
                     service=excluded.service,
                     date=excluded.date,
                     version=excluded.version,
+                    document_date=excluded.document_date,
+                    status=excluded.status,
+                    superseded_by=excluded.superseded_by,
+                    valid_from=excluded.valid_from,
+                    valid_until=excluded.valid_until,
                     content=excluded.content,
                     source=excluded.source
                 """,
@@ -135,6 +186,7 @@ class SQLiteStore:
         date_to: Optional[str] = None,
         version: Optional[str] = None,
         limit: int = 50,
+        historical_year: Optional[int] = None,
     ) -> list[dict]:
         clauses = []
         params: list = []
@@ -148,15 +200,30 @@ class SQLiteStore:
         if version:
             clauses.append("version = ?")
             params.append(version)
-        if date_from:
-            clauses.append("date >= ?")
+        if date_from and not historical_year:
+            clauses.append("COALESCE(document_date, date) >= ?")
             params.append(date_from)
-        if date_to:
-            clauses.append("date <= ?")
+        if date_to and not historical_year:
+            clauses.append("COALESCE(document_date, date) <= ?")
             params.append(date_to)
 
+        if historical_year:
+            year_start = f"{historical_year:04d}-01-01"
+            year_end = f"{historical_year:04d}-12-31"
+            clauses.append(
+                "((valid_from IS NULL AND valid_until IS NULL "
+                "AND COALESCE(document_date, date) BETWEEN ? AND ?) "
+                "OR ((valid_from IS NOT NULL OR valid_until IS NOT NULL) "
+                "AND (valid_from IS NULL OR valid_from <= ?) "
+                "AND (valid_until IS NULL OR valid_until >= ?)))"
+            )
+            params.extend([year_start, year_end, year_end, year_start])
+
         where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
-        query = f"SELECT * FROM documents {where} ORDER BY date DESC LIMIT ?"
+        query = (
+            f"SELECT * FROM documents {where} "
+            "ORDER BY COALESCE(document_date, date) DESC LIMIT ?"
+        )
         params.append(limit)
 
         with self._connect() as conn:

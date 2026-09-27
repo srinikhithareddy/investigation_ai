@@ -12,6 +12,7 @@ def metadata_retrieve(
     date_to: Optional[str] = None,
     version: Optional[str] = None,
     limit: int = 50,
+    historical_year: Optional[int] = None,
 ) -> list[dict]:
     """
     Structured metadata search over SQLite. Returns full documents (not
@@ -24,5 +25,6 @@ def metadata_retrieve(
         date_from=date_from,
         date_to=date_to,
         version=version,
+        historical_year=historical_year,
         limit=limit,
     )

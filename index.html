@@ -794,6 +794,19 @@
                 item.className =
                     "evidence-item";
 
+                const metadata = [
+                    doc.type || "Unknown type",
+                    doc.document_date
+                        ? `Document date ${doc.document_date}`
+                        : `Event date ${doc.date || "unknown"}`,
+                    doc.version ? `Version ${doc.version}` : "Version unknown",
+                    doc.status ? `Status ${doc.status}` : "",
+                    doc.superseded_by ? `Superseded by ${doc.superseded_by}` : "",
+                    doc.valid_from || doc.valid_until
+                        ? `Valid ${doc.valid_from || "from unknown"} to ${doc.valid_until || "present"}`
+                        : ""
+                ].filter(Boolean).join(" • ");
+
 
                 item.innerHTML = `
 
@@ -811,19 +824,7 @@
 
                     <div class="document-meta">
                         ${escapeHtml(
-                            doc.type || "Unknown type"
-                        )}
-
-                        •
-
-                        ${escapeHtml(
-                            doc.date || "Unknown date"
-                        )}
-
-                        •
-
-                        ${escapeHtml(
-                            doc.version || "Unknown version"
+                            metadata
                         )}
                     </div>
 

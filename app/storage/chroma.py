@@ -82,7 +82,8 @@ def reset_collection():
 def upsert_chunks(chunks: list[dict]) -> None:
     """
     chunks: list of dicts with keys:
-        chunk_id, document_id, title, type, service, date, version, content
+        chunk_id, document_id, title, type, service, date, version,
+        document_date, status, superseded_by, valid_from, valid_until, content
     """
     if not chunks:
         return
@@ -101,6 +102,11 @@ def upsert_chunks(chunks: list[dict]) -> None:
             "service": c.get("service") or "",
             "date": c.get("date") or "",
             "version": c.get("version") or "",
+            "document_date": c.get("document_date") or "",
+            "status": c.get("status") or "",
+            "superseded_by": c.get("superseded_by") or "",
+            "valid_from": c.get("valid_from") or "",
+            "valid_until": c.get("valid_until") or "",
         }
         for c in chunks
     ]
@@ -155,6 +161,11 @@ def semantic_search(query: str, top_k: int = 10, where: Optional[dict] = None) -
                 "service": meta.get("service") or None,
                 "date": meta.get("date") or None,
                 "version": meta.get("version") or None,
+                "document_date": meta.get("document_date") or None,
+                "status": meta.get("status") or None,
+                "superseded_by": meta.get("superseded_by") or None,
+                "valid_from": meta.get("valid_from") or None,
+                "valid_until": meta.get("valid_until") or None,
                 "content": docs[i],
                 "distance": dists[i],
             }

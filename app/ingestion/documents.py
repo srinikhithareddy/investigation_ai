@@ -24,7 +24,26 @@ from app.storage.sqlite import DocumentRecord, SQLiteStore
 
 
 REQUIRED_FIELDS = {"document_id", "title", "content"}
-OPTIONAL_FIELDS = {"type", "service", "date", "version", "source"}
+OPTIONAL_FIELDS = {
+    "type",
+    "service",
+    "date",
+    "version",
+    "document_date",
+    "status",
+    "superseded_by",
+    "valid_from",
+    "valid_until",
+    "source",
+}
+DOCUMENT_STATUSES = {"active", "superseded", "archived"}
+LIFECYCLE_FIELDS = (
+    "document_date",
+    "status",
+    "superseded_by",
+    "valid_from",
+    "valid_until",
+)
 
 
 def load_documents(path: Optional[str] = None) -> list[dict]:
@@ -57,6 +76,10 @@ def validate_document(doc: object) -> list[str]:
         value = doc.get(field)
         if value is not None and not isinstance(value, str):
             errors.append(f"{field} must be a string when provided")
+
+    status = doc.get("status")
+    if isinstance(status, str) and status.strip() and status.strip().lower() not in DOCUMENT_STATUSES:
+        errors.append(f"status must be one of {sorted(DOCUMENT_STATUSES)}")
 
     return errors
 
@@ -109,6 +132,11 @@ def build_chunks(doc: dict) -> list[dict]:
                 "service": doc.get("service"),
                 "date": doc.get("date"),
                 "version": doc.get("version"),
+                "document_date": doc.get("document_date"),
+                "status": doc.get("status"),
+                "superseded_by": doc.get("superseded_by"),
+                "valid_from": doc.get("valid_from"),
+                "valid_until": doc.get("valid_until"),
                 "content": piece,
             }
         )
@@ -133,7 +161,16 @@ def ingest(path: Optional[str] = None, reset: bool = False, store: Optional[SQLi
             continue
 
         document_id = doc["document_id"].strip()
-        valid_documents[document_id] = {**doc, "document_id": document_id}
+        normalized_doc = {**doc, "document_id": document_id}
+        existing = store.get_document(document_id)
+        if existing:
+            for field in LIFECYCLE_FIELDS:
+                if field not in doc:
+                    normalized_doc[field] = existing.get(field)
+        normalized_doc["status"] = (
+            normalized_doc.get("status") or ""
+        ).strip().lower() or None
+        valid_documents[document_id] = normalized_doc
 
     all_chunks = []
     for doc in valid_documents.values():
@@ -146,9 +183,14 @@ def ingest(path: Optional[str] = None, reset: bool = False, store: Optional[SQLi
             version=doc.get("version"),
             content=str(doc["content"]),
             source=doc.get("source"),
+            document_date=doc.get("document_date"),
+            status=(doc.get("status") or "").strip().lower() or None,
+            superseded_by=doc.get("superseded_by"),
+            valid_from=doc.get("valid_from"),
+            valid_until=doc.get("valid_until"),
         )
         store.upsert_document(record)
-        all_chunks.extend(build_chunks(doc))
+        all_chunks.extend(build_chunks(store.get_document(doc["document_id"])))
 
     if all_chunks:
         upsert_chunks(all_chunks)

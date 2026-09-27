@@ -300,7 +300,17 @@ curl -X POST http://localhost:8000/investigate -H "Content-Type: application/jso
   merges semantic hits (Chroma) with metadata hits (SQLite), deduplicates by
   `document_id`, and re-ranks with a weighted score over semantic relevance,
   service match, version match, type match, date proximity to the question's
-  anchor date, and general recency.
+  anchor date, lifecycle status, validity, and general recency. Optional
+  document metadata includes `document_date`, `status` (`active`, `superseded`,
+  or `archived`), `superseded_by`, `valid_from`, and `valid_until`; `version`
+  remains supported. SQLite adds nullable columns in place, so existing rows
+  and older document records remain valid. Current queries prefer explicitly
+  active/latest valid versions and downgrade explicitly superseded/expired
+  records. A single explicit historical year instead prioritizes matching
+  publication dates or validity periods while retaining legacy records. Age
+  alone never makes a document obsolete or excludes it. If lifecycle metadata
+  cannot establish the current version, the answer preserves the evidence and
+  states that currentness is uncertain.
 - **Query expansion is a real graph node** (`expand_queries_node`): after the
   first search + evidence analysis pass, an LLM call looks at what was
   actually discovered (e.g. a version number, a root cause keyword) and gaps
